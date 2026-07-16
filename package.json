@@ -1,7 +1,7 @@
 {
   "name": "sales-planner",
   "version": "1.0.0",
-  "description": "销售工作计划拆解器 - 五级任务卡片系统 + 实时同步",
+  "description": "销售工作计划拆解器 - 五级任务卡片系统 + Socket.IO实时同步 + MongoDB持久化",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
@@ -9,6 +9,6 @@
   "dependencies": {
     "express": "^4.21.0",
     "socket.io": "^4.8.0",
-    "pg": "^8.13.0"
+    "mongoose": "^8.9.0"
   }
 }
