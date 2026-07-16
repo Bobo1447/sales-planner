@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>销售工作计划拆解器 | BrightWay Sales</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<!-- ===== 登录页 ===== -->
+<div id="loginPage" class="login-page">
+  <div class="login-container">
+    <div class="login-logo">
+      <div class="logo-icon">⚡</div>
+      <h1>销售工作计划拆解器</h1>
+      <p class="login-subtitle">年度 → 季度 → 月 → 周 → 日 · 五级层层拆解</p>
+    </div>
+    <div class="login-form">
+      <div class="form-group">
+        <label>选择身份</label>
+        <select id="loginIdentity">
+          <option value="">请选择身份</option>
+          <option value="管理员">管理员（查看全部）</option>
+          <option value="陆华">陆华</option>
+          <option value="过健">过健</option>
+          <option value="刘童">刘童</option>
+          <option value="杨景妮">杨景妮</option>
+          <option value="薛琳">薛琳</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>输入密码</label>
+        <input type="password" id="loginPassword" placeholder="请输入密码" autocomplete="off">
+      </div>
+      <button id="loginBtn" class="btn-primary" onclick="handleLogin()">登 录</button>
+      <div id="loginError" class="login-error" style="display:none"></div>
+      <div class="login-tips">
+        <p>首次登录密码提示：身份名+2026（如：luhua2026 / admin2026）</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 主应用 ===== -->
+<div id="mainApp" class="main-app" style="display:none">
+
+  <!-- 顶部栏 -->
+  <header class="top-bar">
+    <div class="top-left">
+      <div class="app-logo">⚡</div>
+      <span class="app-title">销售工作计划拆解器</span>
+      <span class="level-nav" id="levelBreadcrumb"></span>
+    </div>
+    <div class="top-right">
+      <span class="user-badge" id="userBadge"></span>
+      <span class="sync-status" id="syncStatus">🔄 已同步</span>
+      <button class="btn-logout" onclick="handleLogout()">退出</button>
+    </div>
+  </header>
+
+  <!-- 五级导航 -->
+  <nav class="level-tabs">
+    <div class="level-tab active" data-level="annual" onclick="switchLevel('annual')">
+      <span class="tab-icon">🎯</span>
+      <span class="tab-label">年度</span>
+    </div>
+    <div class="level-tab" data-level="quarterly" onclick="switchLevel('quarterly')">
+      <span class="tab-icon">📅</span>
+      <span class="tab-label">季度</span>
+    </div>
+    <div class="level-tab" data-level="monthly" onclick="switchLevel('monthly')">
+      <span class="tab-icon">📊</span>
+      <span class="tab-label">月度</span>
+    </div>
+    <div class="level-tab" data-level="weekly" onclick="switchLevel('weekly')">
+      <span class="tab-icon">📋</span>
+      <span class="tab-label">周计划</span>
+    </div>
+    <div class="level-tab" data-level="daily" onclick="switchLevel('daily')">
+      <span class="tab-icon">✅</span>
+      <span class="tab-label">日计划</span>
+    </div>
+  </nav>
+
+  <!-- 侧栏筛选 + 主内容 -->
+  <div class="app-layout">
+    <!-- 侧栏 -->
+    <aside class="sidebar">
+      <div class="sidebar-section">
+        <h3 class="sidebar-title">人员筛选</h3>
+        <div class="person-filters" id="personFilters">
+          <button class="person-btn active" data-person="all" onclick="filterPerson('all')">全部</button>
+          <button class="person-btn" data-person="陆华" onclick="filterPerson('陆华')">陆华</button>
+          <button class="person-btn" data-person="过健" onclick="filterPerson('过健')">过健</button>
+          <button class="person-btn" data-person="刘童" onclick="filterPerson('刘童')">刘童</button>
+          <button class="person-btn" data-person="杨景妮" onclick="filterPerson('杨景妮')">杨景妮</button>
+          <button class="person-btn" data-person="薛琳" onclick="filterPerson('薛琳')">薛琳</button>
+        </div>
+      </div>
+
+      <div class="sidebar-section" id="weekSelector" style="display:none">
+        <h3 class="sidebar-title">周次选择</h3>
+        <div class="week-buttons" id="weekButtons">
+          <button class="week-btn active" data-week="1" onclick="filterWeek(1)">第1周<br><small>7/1周三-7/3周五</small></button>
+          <button class="week-btn" data-week="2" onclick="filterWeek(2)">第2周<br><small>7/6周一-7/10周五</small></button>
+          <button class="week-btn" data-week="3" onclick="filterWeek(3)">第3周<br><small>7/13周一-7/17周五</small></button>
+          <button class="week-btn" data-week="4" onclick="filterWeek(4)">第4周<br><small>7/20周一-7/24周五</small></button>
+          <button class="week-btn" data-week="5" onclick="filterWeek(5)">第5周<br><small>7/27周一-7/31周五</small></button>
+        </div>
+      </div>
+
+      <div class="sidebar-section" id="daySelector" style="display:none">
+        <h3 class="sidebar-title">日期选择</h3>
+        <div class="day-buttons" id="dayButtons"></div>
+      </div>
+
+      <div class="sidebar-section" id="priorityFilter">
+        <h3 class="sidebar-title">优先级筛选</h3>
+        <div class="priority-filters">
+          <button class="priority-btn active" data-priority="all" onclick="filterPriority('all')">全部</button>
+          <button class="priority-btn p-must" data-priority="必成" onclick="filterPriority('必成')">必成</button>
+          <button class="priority-btn p-push" data-priority="冲刺" onclick="filterPriority('冲刺')">冲刺</button>
+          <button class="priority-btn p-backup" data-priority="补位" onclick="filterPriority('补位')">补位</button>
+          <button class="priority-btn p-core" data-priority="核心" onclick="filterPriority('核心')">核心</button>
+        </div>
+      </div>
+
+      <div class="sidebar-section sidebar-stats">
+        <h3 class="sidebar-title">本月进度概览</h3>
+        <div id="statsPanel" class="stats-panel"></div>
+      </div>
+    </aside>
+
+    <!-- 主内容区 -->
+    <main class="main-content">
+      <div class="content-header">
+        <div class="content-header-left">
+          <h2 id="contentTitle">七月周计划</h2>
+          <div class="admin-person-filter" id="adminPersonFilter" style="display:none">
+            <label class="filter-label">👤 查看人员</label>
+            <select id="adminPersonSelect" onchange="adminFilterPerson(this.value)">
+              <option value="all">全部销售</option>
+              <option value="陆华">陆华</option>
+              <option value="过健">过健</option>
+              <option value="刘童">刘童</option>
+              <option value="杨景妮">杨景妮</option>
+              <option value="薛琳">薛琳</option>
+            </select>
+          </div>
+        </div>
+        <div class="content-actions">
+          <button class="btn-add" onclick="openAddModal()" id="addTaskBtn">
+            + 新增任务
+          </button>
+          <button class="btn-refresh" onclick="refreshData()">🔄 刷新</button>
+        </div>
+      </div>
+      <div class="task-cards" id="taskCards"></div>
+    </main>
+  </div>
+</div>
+
+<!-- ===== 编辑/新增弹窗 ===== -->
+<div id="taskModal" class="modal" style="display:none">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3 id="modalTitle">新增任务</h3>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="editTaskId">
+      <div class="form-row">
+        <div class="form-group">
+          <label>所属人</label>
+          <select id="editOwner">
+            <option value="陆华">陆华</option>
+            <option value="过健">过健</option>
+            <option value="刘童">刘童</option>
+            <option value="杨景妮">杨景妮</option>
+            <option value="薛琳">薛琳</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>计划层级</label>
+          <select id="editLevel">
+            <option value="annual">年度</option>
+            <option value="quarterly">季度</option>
+            <option value="monthly">月度</option>
+            <option value="weekly">周计划</option>
+            <option value="daily">日计划</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>周期标识</label>
+          <input type="text" id="editPeriod" placeholder="如 2026-W28 或 2026-07-01">
+        </div>
+        <div class="form-group">
+          <label>周次(1-5)</label>
+          <input type="number" id="editWeek" min="0" max="5" placeholder="0=不指定">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>任务标题</label>
+        <input type="text" id="editTitle" placeholder="简明描述任务和金额">
+      </div>
+      <div class="form-group">
+        <label>详细说明</label>
+        <textarea id="editDescription" rows="3" placeholder="具体动作、卡点、下一步"></textarea>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>目标金额(万)</label>
+          <input type="number" id="editAmount" step="0.1" placeholder="万元">
+        </div>
+        <div class="form-group">
+          <label>客户</label>
+          <input type="text" id="editClient" placeholder="相关客户名称">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>关键动作</label>
+          <input type="text" id="editAction" placeholder="报价/见面/复购等">
+        </div>
+        <div class="form-group">
+          <label>预期结果</label>
+          <input type="text" id="editExpected" placeholder="成交/约访/报价等">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>风险/兜底</label>
+          <input type="text" id="editRisk" placeholder="补位客户或风险">
+        </div>
+        <div class="form-group">
+          <label>优先级</label>
+          <select id="editPriority">
+            <option value="必成">必成</option>
+            <option value="冲刺">冲刺</option>
+            <option value="补位">补位</option>
+            <option value="核心">核心</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>日期</label>
+          <input type="date" id="editDate">
+        </div>
+        <div class="form-group">
+          <label>状态</label>
+          <select id="editStatus">
+            <option value="pending">待执行</option>
+            <option value="in_progress">进行中</option>
+            <option value="completed">已完成</option>
+            <option value="cancelled">已取消</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-secondary" onclick="closeModal()">取消</button>
+      <button class="btn-primary" onclick="saveTask()">保存</button>
+      <button class="btn-danger" onclick="deleteTask()" id="deleteBtn" style="display:none">删除</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 详情弹窗 ===== -->
+<div id="detailModal" class="modal" style="display:none">
+  <div class="modal-content detail-content">
+    <div class="modal-header">
+      <h3 id="detailTitle">任务详情</h3>
+      <button class="modal-close" onclick="closeDetailModal()">✕</button>
+    </div>
+    <div class="detail-body" id="detailBody"></div>
+    <div class="modal-footer">
+      <button class="btn-secondary" onclick="closeDetailModal()">关闭</button>
+      <button class="btn-primary" onclick="editFromDetail()">编辑</button>
+    </div>
+  </div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/app.js"></script>
+</body>
+</html>
