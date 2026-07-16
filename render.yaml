@@ -2,8 +2,12 @@ services:
   - type: web
     name: sales-planner
     runtime: node
+    region: singapore
     buildCommand: npm install
     startCommand: node server.js
+    plan: free
     envVars:
       - key: MONGODB_URI
         sync: false
+        # 可选：填入 MongoDB Atlas 连接字符串可实现数据持久化
+        # 不填则使用内存存储（实时同步仍可用，重启后恢复种子数据）
