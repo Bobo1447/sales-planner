@@ -23,6 +23,7 @@ const GITHUB_API = 'https://api.github.com';
 let useMongoDB = false;
 let useGitHub = false;
 let mongoose, Task;
+let lastInitError = null;
 
 // 内存数据（所有模式共用）
 let memoryTasks = [];
@@ -162,6 +163,7 @@ async function initDatabase() {
       memoryInitialized = true;
       console.log('✅ GitHub 持久化模式启动');
     } catch (err) {
+      lastInitError = `GitHub加载失败: ${err.message}`;
       console.error('❌ GitHub 加载失败:', err.message);
       console.log('⚠️ 切换到内存存储模式...');
       initMemoryStore();
@@ -290,6 +292,10 @@ app.get('/api/sync-status', (req, res) => {
     mode,
     persistent: useMongoDB || useGitHub,
     taskCount: memoryTasks.length,
+    hasGithubToken: !!GITHUB_TOKEN,
+    hasGithubRepo: !!GITHUB_REPO,
+    githubRepo: GITHUB_REPO,
+    lastInitError,
     message: useMongoDB
       ? '数据持久化到 MongoDB，重启不丢失'
       : useGitHub
