@@ -1,6 +1,16 @@
 // seed-data.js - 种子数据生成模块
 // 2026年7月日历与任务数据
 
+// ============ 用户认证系统 ============
+const USERS = {
+  '管理员': { password: 'admin2026', role: 'admin' },
+  '陆华':   { password: 'luhua2026', role: 'sales', name: '陆华' },
+  '过健':   { password: 'guojian2026', role: 'sales', name: '过健' },
+  '刘童':   { password: 'liutong2026', role: 'sales', name: '刘童' },
+  '杨景妮': { password: 'nina2026',   role: 'sales', name: '杨景妮' },
+  '薛琳':   { password: 'shelly2026', role: 'sales', name: '薛琳' },
+};
+
 // ============ 种子数据生成 ============
 function generateSeedData() {
   // 2026年7月日历: 7月1日=周三
@@ -1519,4 +1529,4 @@ function generateSeedData() {
 
 // ============ 启动服务器 ============
 
-module.exports = { generateSeedData };
+module.exports = { generateSeedData, USERS };
