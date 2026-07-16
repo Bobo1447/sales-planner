@@ -3014,13 +3014,13 @@
       "action": "报价/见面/关键人",
       "expectedResult": "成交",
       "risk": "关键人卡点",
-      "status": "in_progress",
+      "status": "completed",
       "priority": "必成",
       "date": "2026-07-01",
       "week": 1,
       "createdAt": "2026-07-01T00:00:00Z",
-      "updatedAt": "2026-07-01T00:00:00Z"
+      "updatedAt": "2026-07-16T16:33:04.033Z"
     }
   ],
-  "savedAt": "2026-07-16T16:32:28.724Z"
+  "savedAt": "2026-07-16T16:33:07.046Z"
 }
