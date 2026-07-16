@@ -3020,7 +3020,26 @@
       "week": 1,
       "createdAt": "2026-07-01T00:00:00Z",
       "updatedAt": "2026-07-16T16:33:04.033Z"
+    },
+    {
+      "owner": "杨景妮",
+      "level": "weekly",
+      "period": "2026-W28",
+      "week": 1,
+      "title": "123456",
+      "description": "",
+      "targetAmount": 0,
+      "client": "",
+      "action": "",
+      "expectedResult": "",
+      "risk": "",
+      "priority": "必成",
+      "date": "2026-07-01",
+      "status": "pending",
+      "id": "task_1784223793587_181e05ed",
+      "createdAt": "2026-07-16T17:43:13.587Z",
+      "updatedAt": "2026-07-16T17:43:13.587Z"
     }
   ],
-  "savedAt": "2026-07-16T17:40:34.308Z"
+  "savedAt": "2026-07-16T17:43:16.591Z"
 }
