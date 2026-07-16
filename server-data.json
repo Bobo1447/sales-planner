@@ -12,12 +12,12 @@
       "action": "",
       "expectedResult": "",
       "risk": "",
-      "status": "in_progress",
+      "status": "in-progress",
       "priority": "核心",
       "date": "2026",
       "week": 0,
       "createdAt": "2026-07-01T00:00:00Z",
-      "updatedAt": "2026-07-01T00:00:00Z"
+      "updatedAt": "2026-07-16T17:40:31.305Z"
     },
     {
       "id": "task_gj_q3",
@@ -3022,5 +3022,5 @@
       "updatedAt": "2026-07-16T16:33:04.033Z"
     }
   ],
-  "savedAt": "2026-07-16T16:33:07.046Z"
+  "savedAt": "2026-07-16T17:40:34.308Z"
 }
