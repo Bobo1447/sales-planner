@@ -2387,12 +2387,12 @@
       "action": "新领域方案",
       "expectedResult": "成交",
       "risk": "新需求挖掘不足",
-      "status": "in_progress",
+      "status": "completed",
       "priority": "必成",
       "date": "2026-07-01",
       "week": 1,
       "createdAt": "2026-07-01T00:00:00Z",
-      "updatedAt": "2026-07-01T00:00:00Z"
+      "updatedAt": "2026-07-17T07:30:01.306Z"
     },
     {
       "id": "task_sl_client_zxsj",
@@ -3041,5 +3041,5 @@
       "updatedAt": "2026-07-16T17:43:13.587Z"
     }
   ],
-  "savedAt": "2026-07-17T06:49:13.900Z"
+  "savedAt": "2026-07-17T07:30:04.081Z"
 }
