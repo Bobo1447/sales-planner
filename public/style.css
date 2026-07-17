@@ -345,11 +345,103 @@ html, body { height: 100%; font-family: var(--font); background: var(--bg-primar
   .form-row { grid-template-columns: 1fr; }
   .level-tab { padding: 10px 14px; }
   .summary-grid { grid-template-columns: 1fr; }
+  .level-tabs { padding: 0 8px; }
+  .level-tab .tab-label { font-size: 12px; }
+  .level-tab .tab-icon { font-size: 14px; }
+  .main-content { padding: 16px 12px; }
+  .content-header { flex-wrap: wrap; gap: 8px; }
+  .content-header-left { flex-wrap: wrap; }
+  .content-actions { flex-wrap: wrap; }
 }
 
 @media (max-width: 480px) {
-  .sidebar { display: none; }
+  /* 侧边栏变为可滑出抽屉面板 */
+  .sidebar {
+    position: fixed;
+    left: -280px;
+    top: 0;
+    bottom: 0;
+    width: 260px;
+    z-index: 100;
+    background: var(--bg-sidebar);
+    border-right: 1px solid var(--border);
+    padding: 16px;
+    overflow-y: auto;
+    transition: left 0.3s ease;
+    box-shadow: none;
+  }
+  .sidebar.open {
+    left: 0;
+    box-shadow: 4px 0 20px rgba(0,0,0,0.15);
+  }
+  /* 侧边栏遮罩 */
+  .sidebar-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.3);
+    z-index: 99;
+    display: none;
+  }
+  .sidebar-overlay.active {
+    display: block;
+  }
+  /* 菜单按钮：只在手机上显示 */
+  .sidebar-toggle {
+    display: flex;
+    width: 36px; height: 36px;
+    align-items: center; justify-content: center;
+    background: var(--accent-bg);
+    border: 1.5px solid var(--accent-light);
+    border-radius: 8px;
+    font-size: 20px;
+    color: var(--accent);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .sidebar-toggle:hover { background: var(--accent); color: #fff; }
+  /* 关闭按钮：只在手机上显示 */
+  .sidebar-close {
+    display: flex;
+    width: 32px; height: 32px;
+    align-items: center; justify-content: center;
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 16px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    position: absolute;
+    top: 12px; right: 12px;
+  }
+  .sidebar-close:hover { background: var(--red); color: #fff; }
+  /* 手机上内容区域全宽 */
+  .main-content { padding: 12px 8px; }
   .content-header h2 { font-size: 16px; }
+  .level-tabs { padding: 0; }
+  .level-tab { padding: 8px 10px; font-size: 12px; }
+  .level-tab .tab-icon { font-size: 14px; }
+  .level-tab .tab-label { font-size: 11px; }
+  .task-card { padding: 14px; }
+  .card-title { font-size: 14px; }
+  .admin-person-filter select { min-width: 100px; font-size: 13px; }
+  /* 日期按钮在手机上稍微大一些 */
+  .week-buttons { grid-template-columns: 1fr 1fr; gap: 6px; }
+  .week-btn { padding: 10px 8px; font-size: 13px; }
+  .day-buttons { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .day-btn { padding: 10px 6px; font-size: 13px; }
+  .day-btn small { font-size: 10px; }
+  /* 按钮触摸区域更大 */
+  .person-btn { padding: 8px 14px; font-size: 13px; }
+  .priority-btn { padding: 7px 12px; font-size: 13px; }
+}
+
+/* 桌面上隐藏菜单按钮和关闭按钮 */
+.sidebar-toggle { display: none; }
+.sidebar-close { display: none; }
+
+@media (max-width: 480px) {
+  .sidebar-toggle { display: flex; }
+  .sidebar-close { display: flex; }
 }
 
 /* ===== 动画 ===== */
