@@ -539,17 +539,17 @@
       "period": "2026",
       "title": "年度业绩目标（上半年完成290万）",
       "description": "上半年4-6月业绩205万，新客户13家，KPI达成100%",
-      "targetAmount": 700,
+      "targetAmount": 999,
       "client": "",
       "action": "",
       "expectedResult": "",
       "risk": "",
       "status": "in_progress",
       "priority": "核心",
-      "date": "2026",
+      "date": "",
       "week": 0,
       "createdAt": "2026-07-01T00:00:00Z",
-      "updatedAt": "2026-07-01T00:00:00Z"
+      "updatedAt": "2026-07-17T02:18:08.548Z"
     },
     {
       "id": "task_lt_q3",
@@ -3041,5 +3041,5 @@
       "updatedAt": "2026-07-16T17:43:13.587Z"
     }
   ],
-  "savedAt": "2026-07-17T02:18:03.032Z"
+  "savedAt": "2026-07-17T02:18:11.551Z"
 }
