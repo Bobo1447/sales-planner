@@ -49,6 +49,7 @@
   <!-- 顶部栏 -->
   <header class="top-bar">
     <div class="top-left">
+      <button class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()">☰</button>
       <div class="app-logo">⚡</div>
       <span class="app-title">销售工作计划拆解器</span>
       <span class="level-nav" id="levelBreadcrumb"></span>
@@ -85,9 +86,11 @@
   </nav>
 
   <!-- 侧栏筛选 + 主内容 -->
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
   <div class="app-layout">
     <!-- 侧栏 -->
-    <aside class="sidebar">
+    <aside class="sidebar" id="sidebar">
+      <button class="sidebar-close" id="sidebarClose" onclick="toggleSidebar()">✕</button>
       <div class="sidebar-section">
         <h3 class="sidebar-title">人员筛选</h3>
         <div class="person-filters" id="personFilters">
