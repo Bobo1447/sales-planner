@@ -3,6 +3,29 @@ let currentUser = null;
 let allTasks = [];
 let currentLevel = 'weekly';
 let currentPerson = 'all';
+
+// ===== 手机侧边栏抽屉 =====
+function toggleSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+  const isOpen = sidebar.classList.contains('open');
+  if (isOpen) {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('active');
+  } else {
+    sidebar.classList.add('open');
+    overlay.classList.add('active');
+  }
+}
+// 手机上选择筛选条件后自动关闭侧边栏
+function closeSidebarOnMobile() {
+  if (window.innerWidth <= 480) {
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+    sidebar.classList.remove('open');
+    overlay.classList.remove('active');
+  }
+}
 let currentWeek = 1;
 let currentDay = null;
 let currentPriority = 'all';
@@ -226,6 +249,7 @@ function filterPerson(person) {
   const select = document.getElementById('adminPersonSelect');
   if (select) select.value = person;
   renderCurrentView();
+  closeSidebarOnMobile();
 }
 
 // ===== 管理员下拉筛选 =====
@@ -236,6 +260,7 @@ function adminFilterPerson(value) {
     btn.classList.toggle('active', btn.dataset.person === value);
   });
   renderCurrentView();
+  closeSidebarOnMobile();
 }
 
 // ===== 周次筛选 =====
@@ -249,6 +274,7 @@ function filterWeek(week) {
     renderDayButtons();
   }
   renderCurrentView();
+  closeSidebarOnMobile();
 }
 
 // ===== 日期按钮 =====
@@ -274,6 +300,7 @@ function selectDay(day) {
     btn.classList.toggle('active', btn.textContent.startsWith(day + '日'));
   });
   renderCurrentView();
+  closeSidebarOnMobile();
 }
 
 // ===== 优先级筛选 =====
@@ -283,6 +310,7 @@ function filterPriority(priority) {
     btn.classList.toggle('active', btn.dataset.priority === priority);
   });
   renderCurrentView();
+  closeSidebarOnMobile();
 }
 
 // ===== 核心渲染 =====
