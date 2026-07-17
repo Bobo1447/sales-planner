@@ -7,17 +7,17 @@
       "period": "2026",
       "title": "年度业绩目标 450万（上半年完成107万）",
       "description": "上半年完成率24%，下半年需完成880万",
-      "targetAmount": 450,
+      "targetAmount": 980,
       "client": "",
       "action": "",
       "expectedResult": "",
       "risk": "",
-      "status": "in-progress",
+      "status": "",
       "priority": "核心",
-      "date": "2026",
+      "date": "",
       "week": 0,
       "createdAt": "2026-07-01T00:00:00Z",
-      "updatedAt": "2026-07-16T17:40:31.305Z"
+      "updatedAt": "2026-07-17T02:18:00.031Z"
     },
     {
       "id": "task_gj_q3",
@@ -3041,5 +3041,5 @@
       "updatedAt": "2026-07-16T17:43:13.587Z"
     }
   ],
-  "savedAt": "2026-07-16T17:43:16.591Z"
+  "savedAt": "2026-07-17T02:18:03.032Z"
 }
