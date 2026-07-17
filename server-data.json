@@ -1874,12 +1874,12 @@
       "action": "方案提交",
       "expectedResult": "方案确认",
       "risk": "技术支持不足",
-      "status": "pending",
+      "status": "in_progress",
       "priority": "必成",
       "date": "2026-07-01",
       "week": 1,
       "createdAt": "2026-07-01T00:00:00Z",
-      "updatedAt": "2026-07-01T00:00:00Z"
+      "updatedAt": "2026-07-17T06:49:10.898Z"
     },
     {
       "id": "task_sl_w1d2",
@@ -3041,5 +3041,5 @@
       "updatedAt": "2026-07-16T17:43:13.587Z"
     }
   ],
-  "savedAt": "2026-07-17T06:42:01.466Z"
+  "savedAt": "2026-07-17T06:49:13.900Z"
 }
