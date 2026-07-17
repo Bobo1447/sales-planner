@@ -2420,17 +2420,17 @@
       "period": "2026",
       "title": "年度业绩目标642万（上半年完成202万，完成率31%）",
       "description": "9家新增客户，1个B类以上客户，老客户复购160万",
-      "targetAmount": 642,
+      "targetAmount": 1288,
       "client": "",
       "action": "",
       "expectedResult": "",
       "risk": "",
       "status": "in_progress",
       "priority": "核心",
-      "date": "2026",
+      "date": "",
       "week": 0,
       "createdAt": "2026-07-01T00:00:00Z",
-      "updatedAt": "2026-07-01T00:00:00Z"
+      "updatedAt": "2026-07-17T02:18:22.525Z"
     },
     {
       "id": "task_lh_q3",
@@ -3041,5 +3041,5 @@
       "updatedAt": "2026-07-16T17:43:13.587Z"
     }
   ],
-  "savedAt": "2026-07-17T02:18:11.551Z"
+  "savedAt": "2026-07-17T02:18:25.527Z"
 }
