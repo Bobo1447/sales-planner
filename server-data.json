@@ -2800,7 +2800,7 @@
       "period": "2026-07-20",
       "title": "上海AB客户联系启动 | 7/20周一 | 目标10万",
       "description": "启动上海区域A/B类客户联系推进",
-      "targetAmount": 10,
+      "targetAmount": 15,
       "client": "上海AB客户",
       "action": "联系启动",
       "expectedResult": "线索确认",
@@ -2810,7 +2810,7 @@
       "date": "2026-07-20",
       "week": 4,
       "createdAt": "2026-07-01T00:00:00Z",
-      "updatedAt": "2026-07-20T10:51:18.272Z"
+      "updatedAt": "2026-07-20T10:51:34.937Z"
     },
     {
       "id": "task_lh_w4d2",
@@ -3041,5 +3041,5 @@
       "updatedAt": "2026-07-16T17:43:13.587Z"
     }
   ],
-  "savedAt": "2026-07-20T10:51:21.273Z"
+  "savedAt": "2026-07-20T10:51:37.938Z"
 }
