@@ -1526,18 +1526,18 @@
       "level": "weekly",
       "period": "2026-W4",
       "title": "第4周目标：20万 | 7/20周一-7/24周五 | 收尾期：合同闭环+下月铺垫",
-      "description": "电话30个，外出4家，饭局1顿，报价10万",
+      "description": "电话70个，外出4家（展会2次），饭局1顿，报价30万",
       "targetAmount": 20,
-      "client": "欧陆医药等",
-      "action": "合同收尾+下月铺垫",
-      "expectedResult": "合同闭环",
-      "risk": "合同延迟",
+      "client": "福腾宝，山科等",
+      "action": "业绩推进+开票收款收尾+下月外出铺垫",
+      "expectedResult": "业绩合格，项目闭环",
+      "risk": "KPI不能达100%/加大外出量",
       "status": "pending",
       "priority": "核心",
-      "date": "2026-07-20",
+      "date": "2026-07-24",
       "week": 4,
       "createdAt": "2026-07-01T00:00:00Z",
-      "updatedAt": "2026-07-01T00:00:00Z"
+      "updatedAt": "2026-07-21T01:22:34.577Z"
     },
     {
       "id": "task_nina_w4d1",
@@ -3041,5 +3041,5 @@
       "updatedAt": "2026-07-16T17:43:13.587Z"
     }
   ],
-  "savedAt": "2026-07-20T10:51:37.938Z"
+  "savedAt": "2026-07-21T01:22:37.608Z"
 }
