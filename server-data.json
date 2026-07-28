@@ -1646,12 +1646,12 @@
       "action": "收尾+铺垫",
       "expectedResult": "月度目标达成",
       "risk": "缺口未补",
-      "status": "pending",
+      "status": "completed",
       "priority": "核心",
       "date": "2026-07-27",
       "week": 5,
       "createdAt": "2026-07-01T00:00:00Z",
-      "updatedAt": "2026-07-28T02:48:00.732Z"
+      "updatedAt": "2026-07-28T02:48:25.028Z"
     },
     {
       "id": "task_nina_w5d1",
@@ -3041,5 +3041,5 @@
       "updatedAt": "2026-07-16T17:43:13.587Z"
     }
   ],
-  "savedAt": "2026-07-28T02:48:03.734Z"
+  "savedAt": "2026-07-28T02:48:28.031Z"
 }
