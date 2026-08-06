@@ -30,22 +30,13 @@ function generateSeedData() {
   // 年度目标
   tasks.push({
     id: 'task_gj_annual', owner: '过健', level: 'annual', period: '2026',
-    title: '年度业绩目标 450万（上半年完成107万）',
-    description: '上半年完成率24%，下半年需完成880万',
+    title: '年度目标450万 | Q3目标440万',
+    description: '上半年完成率24%，下半年需完成343万。Q3目标440万：7月80万起步冲刺',
     targetAmount: 450, client: '', action: '', expectedResult: '', risk: '',
     status: 'in_progress', priority: '核心', date: '2026', week: 0,
     createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
   });
-  // 季度目标
-  tasks.push({
-    id: 'task_gj_q3', owner: '过健', level: 'quarterly', period: '2026-Q3',
-    title: 'Q3目标：完成440万',
-    description: '下半年前半段冲刺，重点7月80万起步',
-    targetAmount: 440, client: '', action: '', expectedResult: '', risk: '',
-    status: 'in_progress', priority: '核心', date: '2026-Q3', week: 0,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  // 月度目标
+  // 季度目标  // 月度目标
   tasks.push({
     id: 'task_gj_jul', owner: '过健', level: 'monthly', period: '2026-07',
     title: '七月目标：80万',
@@ -296,21 +287,12 @@ function generateSeedData() {
   // ============ 刘童(Ace)的数据 ============
   tasks.push({
     id: 'task_lt_annual', owner: '刘童', level: 'annual', period: '2026',
-    title: '年度业绩目标（上半年完成290万）',
-    description: '上半年4-6月业绩205万，新客户13家，KPI达成100%',
+    title: '年度目标700万 | Q3目标300万',
+    description: '上半年4-6月业绩205万，新客户13家，KPI达成100%。Q3目标300万：7月100万起步，新老客户各贡献50万',
     targetAmount: 700, client: '', action: '', expectedResult: '', risk: '',
     status: 'in_progress', priority: '核心', date: '2026', week: 0,
     createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lt_q3', owner: '刘童', level: 'quarterly', period: '2026-Q3',
-    title: 'Q3目标：300万',
-    description: '7月100万起步，新老客户各贡献50万',
-    targetAmount: 300, client: '', action: '', expectedResult: '', risk: '',
-    status: 'in_progress', priority: '核心', date: '2026-Q3', week: 0,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
+  });  tasks.push({
     id: 'task_lt_jul', owner: '刘童', level: 'monthly', period: '2026-07',
     title: '七月目标：100万（新客户50万+老客户50万）',
     description: '较6月111万进一步提升，确保Q3稳步高速推进',
@@ -604,18 +586,10 @@ function generateSeedData() {
   // ============ 杨景妮(Nina)的数据 ============
   tasks.push({
     id: 'task_nina_annual', owner: '杨景妮', level: 'annual', period: '2026',
-    title: '年度业绩目标968万（上半年完成128万，完成率13%）',
-    description: '上半年业绩严重滞后，9家新增客户，1家AB类客户',
+    title: '年度目标968万 | Q3目标420万',
+    description: '上半年业绩严重滞后，9家新增客户，1家AB类客户。Q3目标420万：首战必胜，7月100万起步',
     targetAmount: 968, client: '', action: '', expectedResult: '', risk: '',
     status: 'in_progress', priority: '核心', date: '2026', week: 0,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_nina_q3', owner: '杨景妮', level: 'quarterly', period: '2026-Q3',
-    title: 'Q3目标：420万（月均140万）',
-    description: '首战必胜，7月100万起步',
-    targetAmount: 420, client: '', action: '', expectedResult: '', risk: '',
-    status: 'in_progress', priority: '核心', date: '2026-Q3', week: 0,
     createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
   });
   tasks.push({
@@ -912,21 +886,12 @@ function generateSeedData() {
   // ============ 薛琳(Shelly)的数据 ============
   tasks.push({
     id: 'task_sl_annual', owner: '薛琳', level: 'annual', period: '2026',
-    title: '年度业绩目标820万（上半年完成94万，完成率11.5%）',
-    description: '14家新客户但单客产出0.54万，客户质量偏低。下半年缺口726万',
+    title: '年度目标820万 | Q3目标363万',
+    description: '14家新客户但单客产出0.54万，客户质量偏低，下半年缺口726万。Q3目标363万：七月启动首月锚定80万底线，快速拉动节奏',
     targetAmount: 820, client: '', action: '', expectedResult: '', risk: '',
     status: 'in_progress', priority: '核心', date: '2026', week: 0,
     createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_sl_q3', owner: '薛琳', level: 'quarterly', period: '2026-Q3',
-    title: 'Q3目标：363万（月均121万）',
-    description: '七月启动首月锚定80万底线，快速拉动节奏',
-    targetAmount: 363, client: '', action: '', expectedResult: '', risk: '',
-    status: 'in_progress', priority: '核心', date: '2026-Q3', week: 0,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
+  });  tasks.push({
     id: 'task_sl_jul', owner: '薛琳', level: 'monthly', period: '2026-07',
     title: '七月目标：121万 | 精准客户分层破局',
     description: '必成20万(爱科百发)+冲刺20万(科伦/药明康德)+冲刺20万(智享/森松)+补位20万(维健/兆科)',
@@ -1220,21 +1185,12 @@ function generateSeedData() {
   // ============ 陆华的数据 ============
   tasks.push({
     id: 'task_lh_annual', owner: '陆华', level: 'annual', period: '2026',
-    title: '年度业绩目标642万（上半年完成202万，完成率31%）',
-    description: '9家新增客户，1个B类以上客户，老客户复购160万',
+    title: '年度目标642万 | Q3目标543万',
+    description: '9家新增客户，1个B类以上客户，老客户复购160万。Q3目标543万：深耕客群、主动破局',
     targetAmount: 642, client: '', action: '', expectedResult: '', risk: '',
     status: 'in_progress', priority: '核心', date: '2026', week: 0,
     createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lh_q3', owner: '陆华', level: 'quarterly', period: '2026-Q3',
-    title: 'Q3目标：543万（月均107万）',
-    description: '深耕客群、主动破局',
-    targetAmount: 543, client: '', action: '', expectedResult: '', risk: '',
-    status: 'in_progress', priority: '核心', date: '2026-Q3', week: 0,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
+  });  tasks.push({
     id: 'task_lh_jul', owner: '陆华', level: 'monthly', period: '2026-07',
     title: '七月目标：107万 | 深耕客群主动破局',
     description: '已报价10万+老客户复购70万+新客户首单10万+大客户突破10万+展会线索10万',

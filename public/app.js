@@ -125,11 +125,11 @@ function switchMonth(month) {
   document.querySelectorAll('.month-btn').forEach(btn => {
     btn.classList.toggle('active', parseInt(btn.dataset.month) === month);
   });
-  // 8月合并了年度+季度，隐藏季度tab
+  // 年度+季度已合并为一层，隐藏季度tab
   const qTab = document.querySelector('.level-tab[data-level="quarterly"]');
-  if (qTab) qTab.style.display = (month === 8) ? 'none' : '';
-  // 如果当前在季度视图但切到了8月，跳到年度
-  if (month === 8 && currentLevel === 'quarterly') {
+  if (qTab) qTab.style.display = 'none';
+  // 如果当前在季度视图，跳到年度
+  if (currentLevel === 'quarterly') {
     currentLevel = 'annual';
   }
   // Update tasks pointer
@@ -159,6 +159,9 @@ function updateWeekButtons() {
 
 // ===== 初始化 =====
 function init() {
+  // 年度+季度已合并，页面加载时隐藏季度tab
+  const qTab = document.querySelector('.level-tab[data-level="quarterly"]');
+  if (qTab) qTab.style.display = 'none';
   setupSocketIO();
 }
 
@@ -326,8 +329,8 @@ function refreshData() {
 
 // ===== 级别切换 =====
 function switchLevel(level) {
-  // 8月没有季度层级，自动跳到年度
-  if (level === 'quarterly' && currentMonth === 8) {
+  // 年度+季度已合并，季度自动跳到年度
+  if (level === 'quarterly') {
     level = 'annual';
   }
   currentLevel = level;
@@ -785,9 +788,9 @@ function openAddModal() {
   if (currentUser.role === 'sales') {
     document.getElementById('editOwner').value = currentUser.name;
   }
-  // 8月隐藏季度选项
+  // 年度+季度已合并，隐藏季度选项
   const qOpt = document.querySelector('#editLevel option[value="quarterly"]');
-  if (qOpt) qOpt.style.display = (currentMonth === 8) ? 'none' : '';
+  if (qOpt) qOpt.style.display = 'none';
   // 根据级别设置默认周期
   const monthPeriod = getMonthPeriod();
   const weekDefault = currentMonth === 7 ? '2026-W28' : '2026-W32';
