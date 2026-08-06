@@ -32,9 +32,9 @@ function generateAugustSeedData() {
   // ============ 杨景妮的数据 ============
   tasks.push({
     id: 'task_nj_annual', owner: '杨景妮', level: 'annual', period: '2026',
-    title: '年度业绩目标 · 信达+山科为核心支撑',
-    description: '年度目标以信达生物、山科工具两大客户为核心，辅以新客开拓与商机转化',
-    targetAmount: 100, client: '', action: '',
+    title: '年度业绩目标968万（上半年完成128万，完成率13%）',
+    description: '上半年业绩严重滞后，9家新增客户，1家AB类客户',
+    targetAmount: 968, client: '', action: '',
     expectedResult: '', risk: '',
     status: 'in_progress', priority: '核心', date: '2026', week: 0,
     createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
@@ -42,9 +42,9 @@ function generateAugustSeedData() {
 
   tasks.push({
     id: 'task_nj_q3', owner: '杨景妮', level: 'quarterly', period: '2026-Q3',
-    title: 'Q3目标：业绩200万+回款100万',
-    description: '7月已完成14万业绩/10万回款，8月冲刺108万业绩/50万回款',
-    targetAmount: 200, client: '', action: '',
+    title: 'Q3目标：420万（月均140万）',
+    description: '首战必胜，7月100万起步，8月冲刺108万',
+    targetAmount: 420, client: '', action: '',
     expectedResult: '', risk: '',
     status: 'in_progress', priority: '核心', date: '2026-Q3', week: 0,
     createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
@@ -323,9 +323,9 @@ function generateAugustSeedData() {
   // ============ 薛琳的数据 ============
   tasks.push({
     id: 'task_sl_annual', owner: '薛琳', level: 'annual', period: '2026',
-    title: '年度业绩目标 · 老客深耕+新客开拓',
-    description: '年度目标以老客户基石+新客户开拓双轮驱动',
-    targetAmount: 0, client: '', action: '',
+    title: '年度业绩目标820万（上半年完成94万，完成率11.5%）',
+    description: '14家新客户但单客产出0.54万，客户质量偏低。下半年缺口726万',
+    targetAmount: 820, client: '', action: '',
     expectedResult: '', risk: '',
     status: 'in_progress', priority: '核心', date: '2026', week: 0,
     createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
@@ -333,9 +333,9 @@ function generateAugustSeedData() {
 
   tasks.push({
     id: 'task_sl_q3', owner: '薛琳', level: 'quarterly', period: '2026-Q3',
-    title: 'Q3目标：业绩180万',
-    description: '7月起逐步提升，8月68万为Q3核心',
-    targetAmount: 180, client: '', action: '',
+    title: 'Q3目标：363万（月均121万）',
+    description: '七月启动首月锚定80万底线，快速拉动节奏，8月68万冲刺',
+    targetAmount: 363, client: '', action: '',
     expectedResult: '', risk: '',
     status: 'in_progress', priority: '核心', date: '2026-Q3', week: 0,
     createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
@@ -624,9 +624,9 @@ function generateAugustSeedData() {
 
   tasks.push({
     id: 'task_gj_q3', owner: '过健', level: 'quarterly', period: '2026-Q3',
-    title: 'Q3目标：完成220万',
+    title: 'Q3目标：完成440万',
     description: '7月已完成13万，8月80万起步冲刺',
-    targetAmount: 220, client: '', action: '',
+    targetAmount: 440, client: '', action: '',
     expectedResult: '', risk: '',
     status: 'in_progress', priority: '核心', date: '2026-Q3', week: 0,
     createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
@@ -905,9 +905,9 @@ function generateAugustSeedData() {
   // ============ 刘童的数据 ============
   tasks.push({
     id: 'task_lt_annual', owner: '刘童', level: 'annual', period: '2026',
-    title: '年度业绩目标 · 脉亿链大客+横向开拓',
-    description: '年度业绩已323万，年度达标率32%，老客不丢弃新客不放弃',
-    targetAmount: 0, client: '', action: '',
+    title: '年度业绩目标（上半年完成290万）',
+    description: '上半年4-6月业绩205万，新客户13家，KPI达成100%',
+    targetAmount: 700, client: '', action: '',
     expectedResult: '', risk: '',
     status: 'in_progress', priority: '核心', date: '2026', week: 0,
     createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
@@ -915,8 +915,8 @@ function generateAugustSeedData() {
 
   tasks.push({
     id: 'task_lt_q3', owner: '刘童', level: 'quarterly', period: '2026-Q3',
-    title: 'Q3目标：业绩300万',
-    description: '7月已完成30万，8月100万↑冲刺',
+    title: 'Q3目标：300万',
+    description: '7月已完成30万，8月100万冲刺',
     targetAmount: 300, client: '', action: '',
     expectedResult: '', risk: '',
     status: 'in_progress', priority: '核心', date: '2026-Q3', week: 0,
@@ -1196,9 +1196,9 @@ function generateAugustSeedData() {
   // ============ 陆华的数据 ============
   tasks.push({
     id: 'task_lh_annual', owner: '陆华', level: 'annual', period: '2026',
-    title: '年度业绩目标 · 四大客户定点突破',
-    description: '年度完成率21.8%，四大客户惠升/正大天晴/济煜/信达定点突破',
-    targetAmount: 0, client: '', action: '',
+    title: '年度业绩目标642万（上半年完成202万，完成率31%）',
+    description: '9家新增客户，1个B类以上客户，老客户复购160万',
+    targetAmount: 642, client: '', action: '',
     expectedResult: '', risk: '',
     status: 'in_progress', priority: '核心', date: '2026', week: 0,
     createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
@@ -1206,9 +1206,9 @@ function generateAugustSeedData() {
 
   tasks.push({
     id: 'task_lh_q3', owner: '陆华', level: 'quarterly', period: '2026-Q3',
-    title: 'Q3目标：业绩250万',
-    description: '7月已完成32.8万，8月冲刺108万',
-    targetAmount: 250, client: '', action: '',
+    title: 'Q3目标：543万（月均107万）',
+    description: '深耕客群、主动破局，7月已完成32.8万，8月冲刺108万',
+    targetAmount: 543, client: '', action: '',
     expectedResult: '', risk: '',
     status: 'in_progress', priority: '核心', date: '2026-Q3', week: 0,
     createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'

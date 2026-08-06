@@ -1,6 +1,9 @@
 // ===== 全局状态 =====
 let currentUser = null;
 let allTasks = [];
+let julyTasks = [];
+let augustTasks = [];
+let currentMonth = 7;
 let currentLevel = 'weekly';
 let currentPerson = 'all';
 
@@ -69,6 +72,84 @@ const julyCalendar = {
   isWorkday: (d) => !julyCalendar.isWeekend(d)
 };
 
+// ===== 2026年8月日历映射 =====
+const augustCalendar = {
+  weekdays: {
+    1:'周六',2:'周日',
+    3:'周一',4:'周二',5:'周三',6:'周四',7:'周五',
+    8:'周六',9:'周日',
+    10:'周一',11:'周二',12:'周三',13:'周四',14:'周五',
+    15:'周六',16:'周日',
+    17:'周一',18:'周二',19:'周三',20:'周四',21:'周五',
+    22:'周六',23:'周日',
+    24:'周一',25:'周二',26:'周三',27:'周四',28:'周五',
+    29:'周六',30:'周日',
+    31:'周一'
+  },
+  weekMap: {
+    3:1,4:1,5:1,6:1,7:1,
+    10:2,11:2,12:2,13:2,14:2,
+    17:3,18:3,19:3,20:3,21:3,
+    24:4,25:4,26:4,27:4,28:4,
+    31:5
+  },
+  weekWorkdays: {
+    1: [3,4,5,6,7],
+    2: [10,11,12,13,14],
+    3: [17,18,19,20,21],
+    4: [24,25,26,27,28],
+    5: [31]
+  },
+  weekLabels: {
+    1: '8/3周一-8/7周五',
+    2: '8/10周一-8/14周五',
+    3: '8/17周一-8/21周五',
+    4: '8/24周一-8/28周五',
+    5: '8/31周一'
+  },
+  isWeekend: (d) => d===1||d===2||d===8||d===9||d===15||d===16||d===22||d===23||d===29||d===30,
+  isWorkday: (d) => !augustCalendar.isWeekend(d)
+};
+
+// ===== 月份工具函数 =====
+function getCalendar() { return currentMonth === 7 ? julyCalendar : augustCalendar; }
+function getApiBase() { return currentMonth === 7 ? '/api' : '/api/august'; }
+function getMonthLabel() { return currentMonth === 7 ? '七月' : '八月'; }
+function getMonthNum() { return currentMonth; }
+function getMonthPeriod() { return currentMonth === 7 ? '2026-07' : '2026-08'; }
+
+function switchMonth(month) {
+  if (month === currentMonth) return;
+  currentMonth = month;
+  // Update toggle buttons
+  document.querySelectorAll('.month-btn').forEach(btn => {
+    btn.classList.toggle('active', parseInt(btn.dataset.month) === month);
+  });
+  // Update tasks pointer
+  allTasks = month === 7 ? julyTasks : augustTasks;
+  // Update week button labels
+  updateWeekButtons();
+  // Reset filters
+  currentWeek = 1;
+  currentDay = null;
+  document.querySelectorAll('.week-btn').forEach(btn => {
+    btn.classList.toggle('active', parseInt(btn.dataset.week) === 1);
+  });
+  // Reload data
+  refreshData();
+  // Reset to weekly view
+  switchLevel('weekly');
+}
+
+function updateWeekButtons() {
+  const cal = getCalendar();
+  document.querySelectorAll('.week-btn').forEach(btn => {
+    const w = parseInt(btn.dataset.week);
+    const label = cal.weekLabels[w] || '';
+    btn.innerHTML = `第${w}周<br><small>${label}</small>`;
+  });
+}
+
 // ===== 初始化 =====
 function init() {
   setupSocketIO();
@@ -79,25 +160,47 @@ function setupSocketIO() {
   socket.on('connect', () => {
     updateSyncStatus('已连接');
     socket.emit('request_sync');
+    socket.emit('request_august_sync');
   });
+  // 7月事件
   socket.on('full_sync', (data) => {
     if (data && data.tasks) {
-      allTasks = data.tasks;
-      if (currentUser) renderCurrentView();
+      julyTasks = data.tasks;
+      if (currentMonth === 7) { allTasks = julyTasks; if (currentUser) renderCurrentView(); }
     }
   });
   socket.on('task_created', (task) => {
-    allTasks.push(task);
-    if (currentUser) renderCurrentView();
+    julyTasks.push(task);
+    if (currentMonth === 7) { allTasks = julyTasks; if (currentUser) renderCurrentView(); }
   });
   socket.on('task_updated', (task) => {
-    const idx = allTasks.findIndex(t => t.id === task.id);
-    if (idx !== -1) allTasks[idx] = task;
-    if (currentUser) renderCurrentView();
+    const idx = julyTasks.findIndex(t => t.id === task.id);
+    if (idx !== -1) julyTasks[idx] = task;
+    if (currentMonth === 7) { allTasks = julyTasks; if (currentUser) renderCurrentView(); }
   });
   socket.on('task_deleted', ({id}) => {
-    allTasks = allTasks.filter(t => t.id !== id);
-    if (currentUser) renderCurrentView();
+    julyTasks = julyTasks.filter(t => t.id !== id);
+    if (currentMonth === 7) { allTasks = julyTasks; if (currentUser) renderCurrentView(); }
+  });
+  // 8月事件
+  socket.on('august_full_sync', (data) => {
+    if (data && data.tasks) {
+      augustTasks = data.tasks;
+      if (currentMonth === 8) { allTasks = augustTasks; if (currentUser) renderCurrentView(); }
+    }
+  });
+  socket.on('august_task_created', (task) => {
+    augustTasks.push(task);
+    if (currentMonth === 8) { allTasks = augustTasks; if (currentUser) renderCurrentView(); }
+  });
+  socket.on('august_task_updated', (task) => {
+    const idx = augustTasks.findIndex(t => t.id === task.id);
+    if (idx !== -1) augustTasks[idx] = task;
+    if (currentMonth === 8) { allTasks = augustTasks; if (currentUser) renderCurrentView(); }
+  });
+  socket.on('august_task_deleted', ({id}) => {
+    augustTasks = augustTasks.filter(t => t.id !== id);
+    if (currentMonth === 8) { allTasks = augustTasks; if (currentUser) renderCurrentView(); }
   });
   socket.on('disconnect', () => updateSyncStatus('已断开'));
 }
@@ -201,11 +304,13 @@ function checkSession() {
 
 // ===== 数据加载 =====
 function refreshData() {
-  fetch('/api/data')
+  fetch(getApiBase() + '/data')
   .then(r => r.json())
   .then(res => {
     if (res.success) {
-      allTasks = res.data.tasks;
+      const tasks = res.data.tasks;
+      if (currentMonth === 7) { julyTasks = tasks; allTasks = julyTasks; }
+      else { augustTasks = tasks; allTasks = augustTasks; }
       renderCurrentView();
       updateSyncStatus('已同步');
     }
@@ -229,7 +334,7 @@ function switchLevel(level) {
 
   // 更新面包屑
   const breadcrumb = document.getElementById('levelBreadcrumb');
-  const labels = {annual:'年度目标', quarterly:'Q3季度', monthly:'七月月度', weekly:'第'+currentWeek+'周计划', daily:'日计划'};
+  const labels = {annual:'年度目标', quarterly:'Q3季度', monthly:getMonthLabel()+'月度', weekly:'第'+currentWeek+'周计划', daily:'日计划'};
   breadcrumb.textContent = '› ' + labels[level];
 
   if (level === 'daily') {
@@ -280,12 +385,13 @@ function filterWeek(week) {
 // ===== 日期按钮 =====
 function renderDayButtons() {
   const container = document.getElementById('dayButtons');
-  const days = julyCalendar.weekWorkdays[currentWeek] || [];
+  const cal = getCalendar();
+  const days = cal.weekWorkdays[currentWeek] || [];
   container.innerHTML = '';
   days.forEach(d => {
     const btn = document.createElement('button');
     btn.className = `day-btn ${currentDay === d ? 'active' : ''}`;
-    btn.innerHTML = `${d}日<small>${julyCalendar.weekdays[d]}</small>`;
+    btn.innerHTML = `${d}日<small>${cal.weekdays[d]}</small>`;
     btn.onclick = () => selectDay(d);
     container.appendChild(btn);
   });
@@ -329,15 +435,15 @@ function renderCurrentView() {
       renderQuarterlyView(tasks, cardsEl);
       break;
     case 'monthly':
-      titleEl.textContent = '七月月度计划';
+      titleEl.textContent = getMonthLabel() + '月度计划';
       renderMonthlyView(tasks, cardsEl);
       break;
     case 'weekly':
-      titleEl.textContent = `第${currentWeek}周计划 (7月${getWeekRange(currentWeek)})`;
+      titleEl.textContent = `第${currentWeek}周计划 (${getMonthNum()}月${getWeekRange(currentWeek)})`;
       renderWeeklyView(tasks, cardsEl);
       break;
     case 'daily':
-      titleEl.textContent = `7月${currentDay}日计划 (${julyCalendar.weekdays[currentDay]})`;
+      titleEl.textContent = `${getMonthNum()}月${currentDay}日计划 (${getCalendar().weekdays[currentDay]})`;
       renderDailyView(tasks, cardsEl);
       break;
   }
@@ -365,7 +471,7 @@ function getFilteredTasks() {
 }
 
 function getWeekRange(w) {
-  return julyCalendar.weekLabels[w] || '';
+  return getCalendar().weekLabels[w] || '';
 }
 
 // ===== 年度视图 =====
@@ -418,10 +524,10 @@ function renderMonthlyView(tasks, container) {
     const card = document.createElement('div');
     card.className = 'summary-card';
     card.innerHTML = `
-      <h3>${person} · 七月计划</h3>
+      <h3>${person} · ${getMonthLabel()}计划</h3>
       <div class="summary-grid">
         <div class="summary-stat">
-          <div class="label">七月目标</div>
+          <div class="label">${getMonthLabel()}目标</div>
           <div class="value red">${target}万</div>
         </div>
         <div class="summary-stat">
@@ -466,11 +572,11 @@ function renderMonthlyView(tasks, container) {
     container.appendChild(wCard);
 
     // 核心客户池
-    const clientTasks = personTasks.filter(t => t.level === 'weekly' && t.period === '2026-07' && t.priority);
+    const clientTasks = personTasks.filter(t => t.level === 'weekly' && t.period === getMonthPeriod() && t.priority);
     if (clientTasks.length) {
       const cCard = document.createElement('div');
       cCard.className = 'summary-card';
-      cCard.innerHTML = `<h3>${person} · 七月核心客户池</h3>`;
+      cCard.innerHTML = `<h3>${person} · ${getMonthLabel()}核心客户池</h3>`;
       const cGrid = document.createElement('div');
       cGrid.className = 'task-cards grid-view';
       clientTasks.forEach(ct => cGrid.appendChild(createTaskCard(ct)));
@@ -597,7 +703,7 @@ function renderStats() {
 
   panel.innerHTML = `
     <div class="stat-item">
-      <div class="stat-label">七月目标</div>
+      <div class="stat-label">${getMonthLabel()}目标</div>
       <div class="stat-value" style="color:var(--red)">${totalTarget}万</div>
       <div class="stat-bar"><div class="stat-fill" style="width:${progress}%;background:var(--accent)"></div></div>
     </div>
@@ -669,14 +775,17 @@ function openAddModal() {
     document.getElementById('editOwner').value = currentUser.name;
   }
   // 根据级别设置默认周期
-  const periodDefaults = {annual:'2026', quarterly:'2026-Q3', monthly:'2026-07', weekly:'2026-W28', daily:'2026-07-01'};
+  const monthPeriod = getMonthPeriod();
+  const weekDefault = currentMonth === 7 ? '2026-W28' : '2026-W32';
+  const periodDefaults = {annual:'2026', quarterly:'2026-Q3', monthly:monthPeriod, weekly:weekDefault, daily:monthPeriod+'-01'};
   document.getElementById('editPeriod').value = periodDefaults[currentLevel] || '';
   if (currentLevel === 'daily' && currentDay) {
-    document.getElementById('editDate').value = `2026-07-${currentDay.toString().padStart(2,'0')}`;
-    document.getElementById('editPeriod').value = `2026-07-${currentDay.toString().padStart(2,'0')}`;
+    const mm = currentMonth === 7 ? '07' : '08';
+    document.getElementById('editDate').value = `2026-${mm}-${currentDay.toString().padStart(2,'0')}`;
+    document.getElementById('editPeriod').value = `2026-${mm}-${currentDay.toString().padStart(2,'0')}`;
   }
   if (currentLevel === 'weekly') {
-    document.getElementById('editDate').value = `2026-07-${getWeekStartDate(currentWeek)}`;
+    document.getElementById('editDate').value = `2026-${currentMonth === 7 ? '07' : '08'}-${getWeekStartDate(currentWeek)}`;
   }
 }
 
@@ -707,8 +816,13 @@ function closeModal() {
 }
 
 function getWeekStartDate(w) {
-  const starts = {1:'01', 2:'06', 3:'13', 4:'20'};
-  return starts[w] || '01';
+  if (currentMonth === 7) {
+    const starts = {1:'01', 2:'06', 3:'13', 4:'20'};
+    return starts[w] || '01';
+  } else {
+    const starts = {1:'03', 2:'10', 3:'17', 4:'24', 5:'31'};
+    return starts[w] || '03';
+  }
 }
 
 // ===== 保存任务 =====
@@ -736,7 +850,7 @@ function saveTask() {
 
   if (taskId) {
     // 编辑
-    fetch(`/api/tasks/${taskId}`, {
+    fetch(`${getApiBase()}/tasks/${taskId}`, {
       method: 'PUT',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(data)
@@ -746,7 +860,7 @@ function saveTask() {
     });
   } else {
     // 新增
-    fetch('/api/tasks', {
+    fetch(`${getApiBase()}/tasks`, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(data)
@@ -763,7 +877,7 @@ function deleteTask() {
   if (!taskId) return;
   if (!confirm('确定删除此任务？此操作不可恢复。')) return;
 
-  fetch(`/api/tasks/${taskId}`, { method: 'DELETE' })
+  fetch(`${getApiBase()}/tasks/${taskId}`, { method: 'DELETE' })
   .then(r => r.json()).then(res => {
     if (res.success) { closeModal(); }
     else { alert(res.message); }
