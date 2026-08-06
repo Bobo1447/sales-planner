@@ -1,5 +1,5 @@
 // seed-data.js - 种子数据生成模块
-// 2026年7月日历与任务数据
+// 2026年8月日历与任务数据
 
 // ============ 用户认证系统 ============
 const USERS = {
@@ -13,1516 +13,1484 @@ const USERS = {
 
 // ============ 种子数据生成 ============
 function generateSeedData() {
-  // 2026年7月日历: 7月1日=周三
-  const july2026 = {
-    1: '周三', 2: '周四', 3: '周五', 4: '周六', 5: '周日',
-    6: '周一', 7: '周二', 8: '周三', 9: '周四', 10: '周五',
-    11: '周六', 12: '周日', 13: '周一', 14: '周二', 15: '周三',
-    16: '周四', 17: '周五', 18: '周六', 19: '周日', 20: '周一',
-    21: '周二', 22: '周三', 23: '周四', 24: '周五', 25: '周六',
-    26: '周日', 27: '周一', 28: '周二', 29: '周三', 30: '周四',
-    31: '周五'
+  // 2026年8月日历: 8月1日=周六
+  const august2026 = {
+    1: '周六', 2: '周日',
+    3: '周一', 4: '周二', 5: '周三', 6: '周四', 7: '周五',
+    8: '周六', 9: '周日',
+    10: '周一', 11: '周二', 12: '周三', 13: '周四', 14: '周五',
+    15: '周六', 16: '周日',
+    17: '周一', 18: '周二', 19: '周三', 20: '周四', 21: '周五',
+    22: '周六', 23: '周日',
+    24: '周一', 25: '周二', 26: '周三', 27: '周四', 28: '周五',
+    29: '周六', 30: '周日',
+    31: '周一'
   };
 
   const tasks = [];
 
-  // ============ 过健的数据 ============
-  // 年度目标
+  // ============ 杨景妮的数据 ============
   tasks.push({
-    id: 'task_gj_annual', owner: '过健', level: 'annual', period: '2026',
-    title: '年度业绩目标 450万（上半年完成107万）',
-    description: '上半年完成率24%，下半年需完成880万',
-    targetAmount: 450, client: '', action: '', expectedResult: '', risk: '',
+    id: 'task_nj_annual', owner: '杨景妮', level: 'annual', period: '2026',
+    title: '年度业绩目标 · 信达+山科为核心支撑',
+    description: '年度目标以信达生物、山科工具两大客户为核心，辅以新客开拓与商机转化',
+    targetAmount: 100, client: '', action: '',
+    expectedResult: '', risk: '',
     status: 'in_progress', priority: '核心', date: '2026', week: 0,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
   });
-  // 季度目标
+
   tasks.push({
-    id: 'task_gj_q3', owner: '过健', level: 'quarterly', period: '2026-Q3',
-    title: 'Q3目标：完成440万',
-    description: '下半年前半段冲刺，重点7月80万起步',
-    targetAmount: 440, client: '', action: '', expectedResult: '', risk: '',
+    id: 'task_nj_q3', owner: '杨景妮', level: 'quarterly', period: '2026-Q3',
+    title: 'Q3目标：业绩200万+回款100万',
+    description: '7月已完成14万业绩/10万回款，8月冲刺108万业绩/50万回款',
+    targetAmount: 200, client: '', action: '',
+    expectedResult: '', risk: '',
     status: 'in_progress', priority: '核心', date: '2026-Q3', week: 0,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  // 月度目标
-  tasks.push({
-    id: 'task_gj_jul', owner: '过健', level: 'monthly', period: '2026-07',
-    title: '七月目标：80万',
-    description: '已报价15万 + 老客户复购30万 + 新客户首单5万 + 大客户突破10万 + 展会线索10万',
-    targetAmount: 80, client: '', action: '', expectedResult: '', risk: '',
-    status: 'in_progress', priority: '核心', date: '2026-07', week: 0,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
   });
 
-  // 过健 - 第1周 (7/1周三-7/3周五)
   tasks.push({
-    id: 'task_gj_w1', owner: '过健', level: 'weekly', period: '2026-W1',
-    title: '第1周目标：15万 | 7/1周三-7/3周五 | 伯汇、万邦',
-    description: '报价/复购，预期成交。补位客户：三生',
-    targetAmount: 15, client: '伯汇、万邦', action: '报价/复购',
-    expectedResult: '成交', risk: '补位客户三生',
-    status: 'in_progress', priority: '必成', date: '2026-07-01', week: 1,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  // 过健 - 第1周每日任务
-  tasks.push({
-    id: 'task_gj_w1d1', owner: '过健', level: 'daily', period: '2026-07-01',
-    title: '伯汇报价跟进 | 7/1周三 | 目标3万',
-    description: '已报价客户伯汇，待老板回来决策，7月10日前完成',
-    targetAmount: 3, client: '伯汇', action: '报价跟进',
-    expectedResult: '成交确认', risk: '老板未回',
-    status: 'pending', priority: '必成', date: '2026-07-01', week: 1,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_gj_w1d2', owner: '过健', level: 'daily', period: '2026-07-02',
-    title: '万邦报价整理 | 7/2周四 | 目标5万',
-    description: '万邦文件整理中，7月10日前完成报价',
-    targetAmount: 5, client: '万邦', action: '报价整理',
-    expectedResult: '报价完成', risk: '文件未齐全',
-    status: 'pending', priority: '必成', date: '2026-07-02', week: 1,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_gj_w1d3', owner: '过健', level: 'daily', period: '2026-07-03',
-    title: '三生客户维护 | 7/3周五 | 拓新2个联系人',
-    description: '手上B类客户维护，每日新增2个B类联系人',
-    targetAmount: 3, client: '三生', action: '客户维护+拓新',
-    expectedResult: '新增联系人2个', risk: '同行比价',
-    status: 'pending', priority: '补位', date: '2026-07-03', week: 1,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
+    id: 'task_nj_aug', owner: '杨景妮', level: 'monthly', period: '2026-08',
+    title: '八月目标：业绩108万 | 回款50万 | 外出20家 | 出差2次',
+    description: '过程指标上墙：线索30条、电话240通、报价回访100%；五步闭环冲刺108万',
+    targetAmount: 108, client: '', action: '',
+    expectedResult: '', risk: '',
+    status: 'in_progress', priority: '核心', date: '2026-08', week: 0,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
   });
 
-  // 过健 - 第2周 (7/6周一-7/10周五)
   tasks.push({
-    id: 'task_gj_w2', owner: '过健', level: 'weekly', period: '2026-W2',
-    title: '第2周目标：20万 | 7/6周一-7/10周五 | 欧康、京新',
-    description: '报价/见面，预期成交/约访。补位客户：广生',
-    targetAmount: 20, client: '欧康、京新', action: '报价/见面',
-    expectedResult: '成交/约访', risk: '补位客户广生',
-    status: 'pending', priority: '冲刺', date: '2026-07-06', week: 2,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_gj_w2d1', owner: '过健', level: 'daily', period: '2026-07-06',
-    title: '欧康报价推进 | 7/6周一 | 目标15万',
-    description: '欧康文件没有拿到，7月15日前完成报价',
-    targetAmount: 15, client: '欧康', action: '报价推进',
-    expectedResult: '报价完成', risk: '文件缺失',
-    status: 'pending', priority: '冲刺', date: '2026-07-06', week: 2,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_gj_w2d2', owner: '过健', level: 'daily', period: '2026-07-07',
-    title: '京新见面拜访 | 7/7周二 | 拓新2个联系人',
-    description: '京新可以复购，见面推进关系',
-    targetAmount: 3, client: '京新', action: '见面拜访',
-    expectedResult: '约访成功', risk: '客户忙碌',
-    status: 'pending', priority: '冲刺', date: '2026-07-07', week: 2,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_gj_w2d3', owner: '过健', level: 'daily', period: '2026-07-08',
-    title: '三生报价推进 | 7/8周三 | 目标15万',
-    description: '三生项目未确认，7月15日前完成报价，需经理支持',
-    targetAmount: 2, client: '三生', action: '报价推进',
-    expectedResult: '报价完成', risk: '项目未确认',
-    status: 'pending', priority: '冲刺', date: '2026-07-08', week: 2,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_gj_w2d4', owner: '过健', level: 'daily', period: '2026-07-09',
-    title: '广生复购跟进 | 7/9周四 | 拓新2个联系人',
-    description: '补位客户广生，项目谈判中，7月30日前完成',
-    targetAmount: 2, client: '广生', action: '复购跟进',
-    expectedResult: '项目确认', risk: '谈判僵持',
-    status: 'pending', priority: '补位', date: '2026-07-09', week: 2,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_gj_w2d5', owner: '过健', level: 'daily', period: '2026-07-10',
-    title: '万邦报价收尾 | 7/10周五 | 目标2万',
-    description: '万邦报价本周收尾，确保10日前发出报价',
-    targetAmount: 2, client: '万邦', action: '报价收尾',
-    expectedResult: '报价发出', risk: '延期',
-    status: 'pending', priority: '必成', date: '2026-07-10', week: 2,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
+    id: 'task_nj_w1', owner: '杨景妮', level: 'weekly', period: '2026-W1',
+    title: '第1周目标：客户梳理+催收启动 | 8/3周一-8/7周五',
+    description: '客户分级清单输出、信达专项催收启动、电话60通、线索8条',
+    targetAmount: 10, client: '信达生物、山科工具', action: '梳理/催收/电话开发',
+    expectedResult: '分级清单+催收计划', risk: '大单进度不明',
+    status: 'in_progress', priority: '必成', date: '2026-08-03', week: 1,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
   });
 
-  // 过健 - 第3周 (7/13周一-7/17周五)
   tasks.push({
-    id: 'task_gj_w3', owner: '过健', level: 'weekly', period: '2026-W3',
-    title: '第3周目标：30万 | 7/13周一-7/17周五 | 三生集团、亿帆',
-    description: '复购/关键人突破，预期约访/成交。补位客户：东诚',
-    targetAmount: 30, client: '三生集团、亿帆', action: '复购/关键人',
-    expectedResult: '约访/成交', risk: '补位客户东诚',
-    status: 'pending', priority: '冲刺', date: '2026-07-13', week: 3,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_gj_w3d1', owner: '过健', level: 'daily', period: '2026-07-13',
-    title: '三生集团约访 | 7/13周一 | 目标15万',
-    description: '三生新项目推进，约访新的高层见面',
-    targetAmount: 15, client: '三生集团', action: '约访高层',
-    expectedResult: '约访成功', risk: '高层未约到',
-    status: 'pending', priority: '冲刺', date: '2026-07-13', week: 3,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_gj_w3d2', owner: '过健', level: 'daily', period: '2026-07-14',
-    title: '亿帆报价推进 | 7/14周二 | 拓新2个联系人',
-    description: '亿帆新客户开发，报价推进',
-    targetAmount: 5, client: '亿帆', action: '报价推进+拓新',
-    expectedResult: '报价发出', risk: '客户需求不明确',
-    status: 'pending', priority: '冲刺', date: '2026-07-14', week: 3,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_gj_w3d3', owner: '过健', level: 'daily', period: '2026-07-15',
-    title: '东诚补位跟进 | 7/15周三 | 目标10万',
-    description: '东诚关系不到位，专利给律所，7月25日前完成',
-    targetAmount: 5, client: '东诚', action: '关系推进',
-    expectedResult: '报价发出', risk: '关系不到位',
-    status: 'pending', priority: '补位', date: '2026-07-15', week: 3,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_gj_w3d4', owner: '过健', level: 'daily', period: '2026-07-16',
-    title: '三生报价收尾 | 7/16周四 | 目标3万',
-    description: '三生报价15日前完成，本周收尾跟进',
-    targetAmount: 3, client: '三生', action: '报价收尾',
-    expectedResult: '报价确认', risk: '延期',
-    status: 'pending', priority: '冲刺', date: '2026-07-16', week: 3,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_gj_w3d5', owner: '过健', level: 'daily', period: '2026-07-17',
-    title: '亿帆见面拜访 | 7/17周五 | 目标2万',
-    description: '亿帆见面推进，周末前确认下周重点',
-    targetAmount: 2, client: '亿帆', action: '见面推进',
-    expectedResult: '约访成功', risk: '客户不在',
-    status: 'pending', priority: '冲刺', date: '2026-07-17', week: 3,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
+    id: 'task_nj_w1d1', owner: '杨景妮', level: 'daily', period: '2026-08-03',
+    title: '客户梳理分级 | 8/3周一 | 输出未完成率清单',
+    description: '梳理所有客户年度完成率，制定20家分级拜访优先级与拜访日历',
+    targetAmount: 0, client: '全部客户', action: '梳理分级',
+    expectedResult: '拜访日历', risk: '数据不全',
+    status: 'pending', priority: '必成', date: '2026-08-03', week: 1,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
   });
 
-  // 过健 - 第4周 (7/20周一-7/24周五)
   tasks.push({
-    id: 'task_gj_w4', owner: '过健', level: 'weekly', period: '2026-W4',
-    title: '第4周目标：15万 | 7/20周一-7/24周五 | 东诚、先声',
-    description: '见面/关键人突破，预期约访。补位客户：新客户',
-    targetAmount: 15, client: '东诚、先声', action: '见面/关键人',
-    expectedResult: '约访', risk: '补位新客户',
-    status: 'pending', priority: '补位', date: '2026-07-20', week: 4,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_gj_w4d1', owner: '过健', level: 'daily', period: '2026-07-20',
-    title: '东诚报价推进 | 7/20周一 | 目标10万',
-    description: '东诚关系不到位需报价支持，7月25日前完成',
-    targetAmount: 10, client: '东诚', action: '报价推进',
-    expectedResult: '报价完成', risk: '专利给律所',
-    status: 'pending', priority: '补位', date: '2026-07-20', week: 4,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_gj_w4d2', owner: '过健', level: 'daily', period: '2026-07-21',
-    title: '先声关键人突破 | 7/21周二 | 拓新2个联系人',
-    description: '先声见面推进关键人关系',
-    targetAmount: 3, client: '先声', action: '关键人突破',
-    expectedResult: '约访成功', risk: '关键人未接触',
-    status: 'pending', priority: '补位', date: '2026-07-21', week: 4,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_gj_w4d3', owner: '过健', level: 'daily', period: '2026-07-22',
-    title: '辅必成线索跟进 | 7/22周三 | 目标2万',
-    description: '辅必成新客户线索跟进',
-    targetAmount: 2, client: '辅必成', action: '线索跟进',
-    expectedResult: '需求确认', risk: '需求不明',
-    status: 'pending', priority: '补位', date: '2026-07-22', week: 4,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
+    id: 'task_nj_w1d2', owner: '杨景妮', level: 'daily', period: '2026-08-04',
+    title: '信达专项催收启动 | 8/4周二 | 清理25年未到款',
+    description: '启动信达25年未到款项专项清理，加速50万未开票开票',
+    targetAmount: 0, client: '信达生物', action: '催收/开票',
+    expectedResult: '回款推进', risk: '客户拖延',
+    status: 'pending', priority: '必成', date: '2026-08-04', week: 1,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
   });
 
-  // 过健 - 第5周 (7/27周一-7/31周五，月度收尾)
   tasks.push({
-    id: 'task_gj_w5', owner: '过健', level: 'weekly', period: '2026-W5',
-    title: '第5周：月度收尾+8月铺垫 | 7/27周一-7/31周五',
-    description: '缺口补位、合同收尾、8月客户池铺垫',
-    targetAmount: 5, client: '补位客户+新线索', action: '收尾+铺垫',
-    expectedResult: '月度目标达成', risk: '缺口未补',
-    status: 'pending', priority: '核心', date: '2026-07-27', week: 5,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_gj_w5d1', owner: '过健', level: 'daily', period: '2026-07-27',
-    title: '月度复盘+缺口梳理 | 7/27周一',
-    description: '复盘7月目标缺口，梳理补位方向',
-    targetAmount: 1, client: '多客户', action: '复盘+梳理',
-    expectedResult: '缺口明确', risk: '缺口过大',
-    status: 'pending', priority: '核心', date: '2026-07-27', week: 5,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
+    id: 'task_nj_w1d3', owner: '杨景妮', level: 'daily', period: '2026-08-05',
+    title: '电话开发放量 | 8/5周三 | 12通',
+    description: '老客激活+新客首触，A级线索48h内跟进',
+    targetAmount: 0, client: '老客+新客', action: '电话开发',
+    expectedResult: '线索≥3条', risk: '接通率低',
+    status: 'pending', priority: '重要', date: '2026-08-05', week: 1,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
   });
 
-  // 过健 - 核心客户池任务卡片
   tasks.push({
-    id: 'task_gj_client_bh', owner: '过健', level: 'weekly', period: '2026-07',
-    title: '伯汇 | 必成客户 | 10万',
-    description: '已报价，待老板回来决策，7月10日前完成。需要项目支持。',
-    targetAmount: 10, client: '伯汇', action: '报价跟进',
-    expectedResult: '成交', risk: '老板决策延迟', status: 'in_progress',
-    priority: '必成', date: '2026-07-01', week: 1,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_gj_client wb', owner: '过健', level: 'weekly', period: '2026-07',
-    title: '万邦 | 必成客户 | 5万',
-    description: '待报价，文件整理中，7月10日前完成。需要经理支持。',
-    targetAmount: 5, client: '万邦', action: '报价整理',
-    expectedResult: '成交', risk: '文件不全', status: 'in_progress',
-    priority: '必成', date: '2026-07-01', week: 1,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_gj_client_ok', owner: '过健', level: 'weekly', period: '2026-07',
-    title: '欧康 | 冲刺客户 | 15万',
-    description: '待报价，文件没有拿到，7月15日前完成报价',
-    targetAmount: 15, client: '欧康', action: '报价推进',
-    expectedResult: '报价完成', risk: '文件缺失', status: 'pending',
-    priority: '冲刺', date: '2026-07-06', week: 2,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
+    id: 'task_nj_w1d4', owner: '杨景妮', level: 'daily', period: '2026-08-06',
+    title: '电话开发+报价线索 | 8/6周四 | 12通+2条线索',
+    description: '电话12通，报价线索补给2条',
+    targetAmount: 0, client: '老客+新客', action: '电话/报价',
+    expectedResult: '线索≥2条', risk: '',
+    status: 'pending', priority: '重要', date: '2026-08-06', week: 1,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
   });
 
-  // ============ 刘童(Ace)的数据 ============
   tasks.push({
-    id: 'task_lt_annual', owner: '刘童', level: 'annual', period: '2026',
-    title: '年度业绩目标（上半年完成290万）',
-    description: '上半年4-6月业绩205万，新客户13家，KPI达成100%',
-    targetAmount: 700, client: '', action: '', expectedResult: '', risk: '',
-    status: 'in_progress', priority: '核心', date: '2026', week: 0,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lt_q3', owner: '刘童', level: 'quarterly', period: '2026-Q3',
-    title: 'Q3目标：300万',
-    description: '7月100万起步，新老客户各贡献50万',
-    targetAmount: 300, client: '', action: '', expectedResult: '', risk: '',
-    status: 'in_progress', priority: '核心', date: '2026-Q3', week: 0,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lt_jul', owner: '刘童', level: 'monthly', period: '2026-07',
-    title: '七月目标：100万（新客户50万+老客户50万）',
-    description: '较6月111万进一步提升，确保Q3稳步高速推进',
-    targetAmount: 100, client: '', action: '', expectedResult: '', risk: '',
-    status: 'in_progress', priority: '核心', date: '2026-07', week: 0,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
+    id: 'task_nj_w1d5', owner: '杨景妮', level: 'daily', period: '2026-08-07',
+    title: '周度检视+线索补给 | 8/7周五 | 12通+2条线索',
+    description: '本周60通电话检视，线索达标8条，未达标当周补齐',
+    targetAmount: 0, client: '全部', action: '检视/电话',
+    expectedResult: '周结', risk: '',
+    status: 'pending', priority: '重要', date: '2026-08-07', week: 1,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
   });
 
-  // 刘童 - 第1周
   tasks.push({
-    id: 'task_lt_w1', owner: '刘童', level: 'weekly', period: '2026-W1',
-    title: '第1周目标：30万 | 7/1周三-7/3周五 | 辉瑞、甘李、康联达、脉亿链',
-    description: '至少联系2次，至少拜访1次。日：10个跟进，2个B客户，5万线索',
-    targetAmount: 30, client: '辉瑞、甘李、康联达、脉亿链、华润三九',
-    action: '联系+拜访', expectedResult: '成交推进', risk: '客户预算卡点',
-    status: 'in_progress', priority: '核心', date: '2026-07-01', week: 1,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lt_w1d1', owner: '刘童', level: 'daily', period: '2026-07-01',
-    title: '辉瑞报价跟进 | 7/1周三 | 目标2万',
-    description: '辉瑞合同翻译，推进报价',
-    targetAmount: 2, client: '辉瑞', action: '报价跟进',
-    expectedResult: '报价确认', risk: '预算审批', status: 'pending',
-    priority: '核心', date: '2026-07-01', week: 1,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lt_w1d2', owner: '刘童', level: 'daily', period: '2026-07-02',
-    title: '甘李老客户推进 | 7/2周四 | 目标10万',
-    description: '甘李A类老客户可复购，推进新项目',
-    targetAmount: 10, client: '甘李', action: '复购推进',
-    expectedResult: '项目确认', risk: '需求变化', status: 'pending',
-    priority: '核心', date: '2026-07-02', week: 1,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lt_w1d3', owner: '刘童', level: 'daily', period: '2026-07-03',
-    title: '康联达+脉亿链推进 | 7/3周五 | 目标30万',
-    description: '康联达30万+脉亿链30万，A类老客户推进',
-    targetAmount: 30, client: '康联达、脉亿链', action: '项目推进+拜访',
-    expectedResult: '约访成功', risk: '项目进度延迟', status: 'pending',
-    priority: '核心', date: '2026-07-03', week: 1,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
+    id: 'task_nj_w2', owner: '杨景妮', level: 'weekly', period: '2026-W2',
+    title: '第2周目标：出差深圳签约40万 | 8/10周一-8/14周五',
+    description: '出差①深圳：新客20万签约+和泽医药20万落地，8月第一优先级',
+    targetAmount: 40, client: '和泽医药、深圳新客', action: '出差/签约',
+    expectedResult: '签约40万', risk: '出差变数',
+    status: 'in_progress', priority: '必成', date: '2026-08-10', week: 2,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
   });
 
-  // 刘童 - 第2周
   tasks.push({
-    id: 'task_lt_w2', owner: '刘童', level: 'weekly', period: '2026-W2',
-    title: '第2周目标：30万 | 7/6周一-7/10周五 | 科曼新需求+老客户稳定',
-    description: '稳住老客户潜在订单，开拓科曼新需求，横向拓展AB类客户',
-    targetAmount: 30, client: '科曼、华润三九等', action: '稳单+拓新',
-    expectedResult: '成交推进', risk: '老客户订单延迟',
-    status: 'pending', priority: '核心', date: '2026-07-06', week: 2,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lt_w2d1', owner: '刘童', level: 'daily', period: '2026-07-06',
-    title: '科曼新需求开拓 | 7/6周一 | 拓新AB类联系人',
-    description: '从现有合作客户扩列新客户，开发客户方BD联系人',
-    targetAmount: 10, client: '科曼', action: '新需求开拓',
-    expectedResult: '需求确认', risk: '需求不明确', status: 'pending',
-    priority: '冲刺', date: '2026-07-06', week: 2,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lt_w2d2', owner: '刘童', level: 'daily', period: '2026-07-07',
-    title: '华润三九复购推进 | 7/7周二 | 目标10万',
-    description: '华润三九老客户复购推进，确认新项目需求',
-    targetAmount: 10, client: '华润三九', action: '复购推进',
-    expectedResult: '项目确认', risk: '需求变化', status: 'pending',
-    priority: '冲刺', date: '2026-07-07', week: 2,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lt_w2d3', owner: '刘童', level: 'daily', period: '2026-07-08',
-    title: '辉瑞合同翻译冲刺 | 7/8周三 | 目标5万',
-    description: '辉瑞合同翻译收尾，推动报价确认',
-    targetAmount: 5, client: '辉瑞', action: '合同翻译+报价',
-    expectedResult: '报价确认', risk: '翻译进度', status: 'pending',
-    priority: '核心', date: '2026-07-08', week: 2,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lt_w2d4', owner: '刘童', level: 'daily', period: '2026-07-09',
-    title: '新客户线索筛选 | 7/9周四 | 拓新10个联系人',
-    description: '筛选BD线索，新增10个有效联系人',
-    targetAmount: 3, client: '多客户', action: '线索筛选+拓新',
-    expectedResult: '10个有效联系人', risk: '线索质量低', status: 'pending',
-    priority: '冲刺', date: '2026-07-09', week: 2,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lt_w2d5', owner: '刘童', level: 'daily', period: '2026-07-10',
-    title: '科曼拜访安排 | 7/10周五 | 目标2万',
-    description: '科曼拜访确认，梳理下周推进方向',
-    targetAmount: 2, client: '科曼', action: '拜访安排',
-    expectedResult: '拜访确认', risk: '客户不在', status: 'pending',
-    priority: '冲刺', date: '2026-07-10', week: 2,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
+    id: 'task_nj_w2d1', owner: '杨景妮', level: 'daily', period: '2026-08-10',
+    title: '出差深圳：新客现场推进 | 8/10周一 | 20万签约',
+    description: '深圳新客户现场推进签约，20万商机落地',
+    targetAmount: 20, client: '深圳新客', action: '出差/签约',
+    expectedResult: '签约20万', risk: '客户犹豫',
+    status: 'pending', priority: '必成', date: '2026-08-10', week: 2,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
   });
 
-  // 刘童 - 第3周
   tasks.push({
-    id: 'task_lt_w3', owner: '刘童', level: 'weekly', period: '2026-W3',
-    title: '第3周目标：20万 | 7/13周一-7/17周五 | 新客户突破',
-    description: '集中攻克新客户转化，提升拜访效率至70%+',
-    targetAmount: 20, client: '新客户', action: '拜访+转化',
-    expectedResult: '新客户成交', risk: '转化效率低',
-    status: 'pending', priority: '冲刺', date: '2026-07-13', week: 3,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lt_w3d1', owner: '刘童', level: 'daily', period: '2026-07-13',
-    title: '新客户拜访推进 | 7/13周一 | 目标5万',
-    description: '集中拜访新客户，确认合作意向',
-    targetAmount: 5, client: '新客户', action: '拜访推进',
-    expectedResult: '合作意向确认', risk: '客户拒绝', status: 'pending',
-    priority: '冲刺', date: '2026-07-13', week: 3,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lt_w3d2', owner: '刘童', level: 'daily', period: '2026-07-14',
-    title: '华润三九方案提交 | 7/14周二 | 目标8万',
-    description: '华润三九定制化方案提交，推进报价',
-    targetAmount: 8, client: '华润三九', action: '方案提交',
-    expectedResult: '方案确认', risk: '方案不匹配', status: 'pending',
-    priority: '冲刺', date: '2026-07-14', week: 3,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lt_w3d3', owner: '刘童', level: 'daily', period: '2026-07-15',
-    title: '新客户报价推进 | 7/15周三 | 目标5万',
-    description: '第二批新客户报价推进，加快转化节奏',
-    targetAmount: 5, client: '新客户', action: '报价推进',
-    expectedResult: '报价发出', risk: '客户犹豫', status: 'pending',
-    priority: '冲刺', date: '2026-07-15', week: 3,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lt_w3d4', owner: '刘童', level: 'daily', period: '2026-07-16',
-    title: '科曼需求深度对接 | 7/16周四 | 目标2万',
-    description: '科曼新需求深度对接，推进横向拓展',
-    targetAmount: 2, client: '科曼', action: '需求对接',
-    expectedResult: '需求明确', risk: '需求分散', status: 'pending',
-    priority: '冲刺', date: '2026-07-16', week: 3,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lt_w3d5', owner: '刘童', level: 'daily', period: '2026-07-17',
-    title: '本周复盘+线索整理 | 7/17周五 | 拓新5个联系人',
-    description: '复盘本周拜访成果，整理新线索为下周铺垫',
-    targetAmount: 0, client: '多客户', action: '复盘+整理',
-    expectedResult: '下周计划明确', risk: '进展不足', status: 'pending',
-    priority: '核心', date: '2026-07-17', week: 3,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
+    id: 'task_nj_w2d2', owner: '杨景妮', level: 'daily', period: '2026-08-11',
+    title: '出差深圳：和泽医药签约 | 8/11周二 | 20万落地',
+    description: '和泽医药20万签约落地——8月第一优先级',
+    targetAmount: 20, client: '和泽医药', action: '签约',
+    expectedResult: '签约20万', risk: '合同条款',
+    status: 'pending', priority: '必成', date: '2026-08-11', week: 2,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
   });
 
-  // 刘童 - 第4周
   tasks.push({
-    id: 'task_lt_w4', owner: '刘童', level: 'weekly', period: '2026-W4',
-    title: '第4周目标：20万 | 7/20周一-7/24周五 | 业务匀速增长',
-    description: '保持业务匀速增长，完成月度收尾',
-    targetAmount: 20, client: '综合客户', action: '跟进+收尾',
-    expectedResult: '月目标达成', risk: '缺口补位',
-    status: 'pending', priority: '核心', date: '2026-07-20', week: 4,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lt_w4d1', owner: '刘童', level: 'daily', period: '2026-07-20',
-    title: '老客户复购收尾 | 7/20周一 | 目标10万',
-    description: '甘李、辉瑞老客户复购项目收尾推进',
-    targetAmount: 10, client: '甘李、辉瑞', action: '复购收尾',
-    expectedResult: '复购确认', risk: '客户拖延', status: 'pending',
-    priority: '核心', date: '2026-07-20', week: 4,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lt_w4d2', owner: '刘童', level: 'daily', period: '2026-07-21',
-    title: '新客户合同推进 | 7/21周二 | 目标5万',
-    description: '新客户合同签订推进，确保本月出单',
-    targetAmount: 5, client: '新客户', action: '合同推进',
-    expectedResult: '合同签订', risk: '审批延迟', status: 'pending',
-    priority: '冲刺', date: '2026-07-21', week: 4,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lt_w4d3', owner: '刘童', level: 'daily', period: '2026-07-22',
-    title: '康联达+脉亿链项目收尾 | 7/22周三 | 目标5万',
-    description: 'A类客户康联达、脉亿链本月项目收尾确认',
-    targetAmount: 5, client: '康联达、脉亿链', action: '项目收尾',
-    expectedResult: '项目闭环', risk: '项目延期', status: 'pending',
-    priority: '核心', date: '2026-07-22', week: 4,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lt_w4d4', owner: '刘童', level: 'daily', period: '2026-07-23',
-    title: '8月客户池铺垫 | 7/23周四 | 拓新10个联系人',
-    description: '为8月提前储备客户资源，新增有效联系人',
-    targetAmount: 0, client: '多客户', action: '客户池铺垫',
-    expectedResult: '10个有效联系人', risk: '线索质量', status: 'pending',
-    priority: '补位', date: '2026-07-23', week: 4,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lt_w4d5', owner: '刘童', level: 'daily', period: '2026-07-24',
-    title: '月度成果复盘 | 7/24周五 | 梳理缺口',
-    description: '复盘本月业绩完成情况，明确下周收尾重点',
-    targetAmount: 0, client: '综合客户', action: '复盘+梳理',
-    expectedResult: '缺口明确', risk: '缺口过大', status: 'pending',
-    priority: '核心', date: '2026-07-24', week: 4,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
+    id: 'task_nj_w2d3', owner: '杨景妮', level: 'daily', period: '2026-08-12',
+    title: '出差深圳：周边客户拜访 | 8/12周三 | 2家',
+    description: '深圳区域AB级客户拜访',
+    targetAmount: 0, client: '深圳AB级', action: '拜访',
+    expectedResult: '拜访2家', risk: '',
+    status: 'pending', priority: '重要', date: '2026-08-12', week: 2,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
   });
 
-  // 刘童 - 第5周 (月度收尾+8月铺垫)
   tasks.push({
-    id: 'task_lt_w5', owner: '刘童', level: 'weekly', period: '2026-W5',
-    title: '第5周：月度收尾+8月铺垫 | 7/27周一-7/31周五',
-    description: '缺口补位、合同收尾、8月客户池铺垫',
-    targetAmount: 5, client: '补位客户+新线索', action: '收尾+铺垫',
-    expectedResult: '月度目标达成', risk: '缺口未补',
-    status: 'pending', priority: '核心', date: '2026-07-27', week: 5,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lt_w5d1', owner: '刘童', level: 'daily', period: '2026-07-27',
-    title: '月度复盘+缺口梳理 | 7/27周一',
-    description: '复盘7月目标缺口，梳理补位方向',
-    targetAmount: 1, client: '多客户', action: '复盘+梳理',
-    expectedResult: '缺口明确', risk: '缺口过大',
-    status: 'pending', priority: '核心', date: '2026-07-27', week: 5,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lt_w5d2', owner: '刘童', level: 'daily', period: '2026-07-28',
-    title: '补位客户突击跟进 | 7/28周二',
-    description: '针对缺口客户集中突击，争取补单',
-    targetAmount: 2, client: '补位客户', action: '突击跟进',
-    expectedResult: '补单确认', risk: '客户不配合',
-    status: 'pending', priority: '冲刺', date: '2026-07-28', week: 5,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lt_w5d3', owner: '刘童', level: 'daily', period: '2026-07-29',
-    title: '合同收尾+回款确认 | 7/29周三',
-    description: '本月所有合同收尾，确认回款进度',
-    targetAmount: 2, client: '多客户', action: '合同收尾',
-    expectedResult: '回款确认', risk: '回款延迟',
-    status: 'pending', priority: '核心', date: '2026-07-29', week: 5,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lt_w5d4', owner: '刘童', level: 'daily', period: '2026-07-30',
-    title: '8月客户池梳理+拜访预约 | 7/30周四',
-    description: '整理8月目标客户清单，预约下月拜访',
-    targetAmount: 0, client: '多客户', action: '客户池+预约',
-    expectedResult: '8月计划明确', risk: '预约困难',
-    status: 'pending', priority: '核心', date: '2026-07-30', week: 5,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lt_w5d5', owner: '刘童', level: 'daily', period: '2026-07-31',
-    title: '月度总结+8月kickoff准备 | 7/31周五',
-    description: '完整复盘7月，准备8月目标分解与启动',
-    targetAmount: 0, client: '综合', action: '总结+准备',
-    expectedResult: '8月计划落地', risk: '准备不足',
-    status: 'pending', priority: '核心', date: '2026-07-31', week: 5,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
+    id: 'task_nj_w2d4', owner: '杨景妮', level: 'daily', period: '2026-08-13',
+    title: '出差返程+电话跟进 | 8/13周四 | 12通',
+    description: '出差期间电话12通，新增人2个',
+    targetAmount: 0, client: '全部', action: '电话',
+    expectedResult: '12通+2新增人', risk: '',
+    status: 'pending', priority: '重要', date: '2026-08-13', week: 2,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
   });
 
-  // 刘童 - 核心客户
   tasks.push({
-    id: 'task_lt_client_kld', owner: '刘童', level: 'weekly', period: '2026-07',
-    title: '康联达 | A类老客户 | 30万',
-    description: '老客户可复购，推进新项目合作',
-    targetAmount: 30, client: '康联达', action: '复购推进',
-    expectedResult: '成交', risk: '项目变化', status: 'in_progress',
-    priority: '必成', date: '2026-07-01', week: 1,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lt_client_myl', owner: '刘童', level: 'weekly', period: '2026-07',
-    title: '脉亿链 | A类新客户 | 30万',
-    description: '辉瑞过来的新客户，推进合作深化',
-    targetAmount: 30, client: '脉亿链', action: '项目推进',
-    expectedResult: '成交', risk: '项目延迟', status: 'in_progress',
-    priority: '必成', date: '2026-07-01', week: 1,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
+    id: 'task_nj_w2d5', owner: '杨景妮', level: 'daily', period: '2026-08-14',
+    title: '周度检视+出差复盘 | 8/14周五',
+    description: '出差签约进度复盘，本周检视',
+    targetAmount: 0, client: '全部', action: '检视',
+    expectedResult: '周结', risk: '',
+    status: 'pending', priority: '重要', date: '2026-08-14', week: 2,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
   });
 
-  // ============ 杨景妮(Nina)的数据 ============
   tasks.push({
-    id: 'task_nina_annual', owner: '杨景妮', level: 'annual', period: '2026',
-    title: '年度业绩目标968万（上半年完成128万，完成率13%）',
-    description: '上半年业绩严重滞后，9家新增客户，1家AB类客户',
-    targetAmount: 968, client: '', action: '', expectedResult: '', risk: '',
-    status: 'in_progress', priority: '核心', date: '2026', week: 0,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_nina_q3', owner: '杨景妮', level: 'quarterly', period: '2026-Q3',
-    title: 'Q3目标：420万（月均140万）',
-    description: '首战必胜，7月100万起步',
-    targetAmount: 420, client: '', action: '', expectedResult: '', risk: '',
-    status: 'in_progress', priority: '核心', date: '2026-Q3', week: 0,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_nina_jul', owner: '杨景妮', level: 'monthly', period: '2026-07',
-    title: '七月目标：100万 | 发现→推进→成交→收尾',
-    description: '必成客户保底45万+冲刺45万+补位10万=100万闭环',
-    targetAmount: 100, client: '', action: '', expectedResult: '', risk: '',
-    status: 'in_progress', priority: '核心', date: '2026-07', week: 0,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
+    id: 'task_nj_w3', owner: '杨景妮', level: 'weekly', period: '2026-W3',
+    title: '第3周目标：信达/山科大单谈判 | 8/17周一-8/21周五',
+    description: '信达生物大单谈判（leader陪访≥2次）、山科工具紧急推动、展会获客、丢单复盘',
+    targetAmount: 30, client: '信达生物、山科工具', action: '大单谈判',
+    expectedResult: '大单突破', risk: '大单落空',
+    status: 'in_progress', priority: '必成', date: '2026-08-17', week: 3,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
   });
 
-  // Nina - 第1周 (发现期)
   tasks.push({
-    id: 'task_nina_w1', owner: '杨景妮', level: 'weekly', period: '2026-W1',
-    title: '第1周目标：15万 | 7/1周三-7/3周五 | 发现期：Pain挖掘+Up-front Contract',
-    description: '电话80个，外出3家，50万+见面2家，新增联系人8个，报价5万',
-    targetAmount: 15, client: '西普拉、信达生物', action: '痛点挖掘+设定Contract',
-    expectedResult: '筛选+痛点确认', risk: '客户响应低',
-    status: 'in_progress', priority: '核心', date: '2026-07-01', week: 1,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_nina_w1d1', owner: '杨景妮', level: 'daily', period: '2026-07-01',
-    title: '西普拉续单谈判 | 7/1周三 | 目标25万',
-    description: '7月5日前完成报价确认，需经理陪访+报价支持',
-    targetAmount: 25, client: '西普拉', action: '续单谈判',
-    expectedResult: '报价确认', risk: '客户犹豫', status: 'pending',
-    priority: '必成', date: '2026-07-01', week: 1,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_nina_w1d2', owner: '杨景妮', level: 'daily', period: '2026-07-02',
-    title: '信达生物新项目推进 | 7/2周四 | 目标20万',
-    description: '7月10日前提交方案，需项目支持+资源协同',
-    targetAmount: 20, client: '信达生物', action: '方案提交',
-    expectedResult: '方案确认', risk: '需求变化', status: 'pending',
-    priority: '必成', date: '2026-07-02', week: 1,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_nina_w1d3', owner: '杨景妮', level: 'daily', period: '2026-07-03',
-    title: '每日5个客户语音触达 | 7/3周五 | 新增联系人8个',
-    description: '大量筛选+痛点挖掘+设定Up-front Contract',
-    targetAmount: 5, client: '多客户', action: '语音触达+筛选',
-    expectedResult: '8个新联系人', risk: '触达效率低', status: 'pending',
-    priority: '核心', date: '2026-07-03', week: 1,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
+    id: 'task_nj_w3d1', owner: '杨景妮', level: 'daily', period: '2026-08-17',
+    title: '信达生物大单谈判 | 8/17周一 | leader协同',
+    description: '信达大单谈判，leader协同陪访',
+    targetAmount: 15, client: '信达生物', action: '谈判/陪访',
+    expectedResult: '大单进展', risk: '客户决策慢',
+    status: 'pending', priority: '必成', date: '2026-08-17', week: 3,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
   });
 
-  // Nina - 第2周 (推进期)
   tasks.push({
-    id: 'task_nina_w2', owner: '杨景妮', level: 'weekly', period: '2026-W2',
-    title: '第2周目标：25万 | 7/6周一-7/10周五 | 推进期：Budget确认+决策人突破',
-    description: '电话50个，外出6家，50万+见面3家，新增5个联系人，报价15万',
-    targetAmount: 25, client: '心诺普医疗、凯诺医药', action: '预算确认+决策人突破',
-    expectedResult: '反向销售推进', risk: '预算不足',
-    status: 'pending', priority: '冲刺', date: '2026-07-06', week: 2,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_nina_w2d1', owner: '杨景妮', level: 'daily', period: '2026-07-06',
-    title: '西普拉报价收尾 | 7/6周一 | 目标5万',
-    description: '西普拉报价本周收尾确认，推动决策',
-    targetAmount: 5, client: '西普拉', action: '报价收尾',
-    expectedResult: '决策确认', risk: '老板未回', status: 'pending',
-    priority: '必成', date: '2026-07-06', week: 2,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_nina_w2d2', owner: '杨景妮', level: 'daily', period: '2026-07-07',
-    title: '心诺普医疗需求确认 | 7/7周二 | 目标15万',
-    description: '7月15日前完成需求对接，需客户判断+报价支持',
-    targetAmount: 15, client: '心诺普医疗', action: '需求对接',
-    expectedResult: '需求确认', risk: '需求模糊', status: 'pending',
-    priority: '冲刺', date: '2026-07-07', week: 2,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_nina_w2d3', owner: '杨景妮', level: 'daily', period: '2026-07-08',
-    title: '凯诺医药复购激活 | 7/8周三 | 目标12万',
-    description: '7月8日前完成复购触达，需陪访支持',
-    targetAmount: 12, client: '凯诺医药', action: '复购激活',
-    expectedResult: '触达成功', risk: '客户失联', status: 'pending',
-    priority: '冲刺', date: '2026-07-08', week: 2,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_nina_w2d4', owner: '杨景妮', level: 'daily', period: '2026-07-09',
-    title: '电话触达50个+筛选 | 7/9周四 | 新增5个联系人',
-    description: '大量电话触达，筛选高意向客户',
-    targetAmount: 3, client: '多客户', action: '电话触达+筛选',
-    expectedResult: '5个有效联系人', risk: '触达率低', status: 'pending',
-    priority: '核心', date: '2026-07-09', week: 2,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_nina_w2d5', owner: '杨景妮', level: 'daily', period: '2026-07-10',
-    title: '信达生物方案收尾 | 7/10周五 | 目标5万',
-    description: '信达生物方案10日前提交，本周收尾',
-    targetAmount: 5, client: '信达生物', action: '方案收尾',
-    expectedResult: '方案提交', risk: '延期', status: 'pending',
-    priority: '必成', date: '2026-07-10', week: 2,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
+    id: 'task_nj_w3d2', owner: '杨景妮', level: 'daily', period: '2026-08-18',
+    title: '山科工具紧急推动 | 8/18周二 | 完成率17.32%',
+    description: '山科完成率严重落后，若8月无大单年度目标失守',
+    targetAmount: 10, client: '山科工具', action: '谈判',
+    expectedResult: '大单进展', risk: '竞品介入',
+    status: 'pending', priority: '必成', date: '2026-08-18', week: 3,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
   });
 
-  // Nina - 第3周 (成交期)
   tasks.push({
-    id: 'task_nina_w3', owner: '杨景妮', level: 'weekly', period: '2026-W3',
-    title: '第3周目标：40万 | 7/13周一-7/17周五 | 成交期：大单突破+饭局攻坚',
-    description: '电话40个，外出7家，50万+见面2家，饭局2顿，报价20万',
-    targetAmount: 40, client: '西普拉、信达生物', action: '大单突破+饭局攻坚',
-    expectedResult: '集中成交', risk: '大单落空',
-    status: 'pending', priority: '冲刺', date: '2026-07-13', week: 3,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_nina_w3d1', owner: '杨景妮', level: 'daily', period: '2026-07-13',
-    title: '大单冲刺启动+客户拜访 | 7/13周一 | 目标10万',
-    description: '集中拜访西普拉+信达生物，启动成交攻坚',
-    targetAmount: 10, client: '西普拉、信达生物', action: '拜访攻坚',
-    expectedResult: '推进确认', risk: '客户不在', status: 'pending',
-    priority: '冲刺', date: '2026-07-13', week: 3,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_nina_w3d2', owner: '杨景妮', level: 'daily', period: '2026-07-14',
-    title: '西普拉大单突破 | 7/14周二 | 目标25万',
-    description: '集中成交期，饭局攻坚推进签约',
-    targetAmount: 25, client: '西普拉', action: '攻坚签约',
-    expectedResult: '签约', risk: '决策延迟', status: 'pending',
-    priority: '冲刺', date: '2026-07-14', week: 3,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_nina_w3d3', owner: '杨景妮', level: 'daily', period: '2026-07-15',
-    title: '和泽医药初次报价 | 7/15周三 | 目标10万',
-    description: '7月12日前发出首份报价',
-    targetAmount: 10, client: '和泽医药', action: '报价发出',
-    expectedResult: '报价完成', risk: '报价延迟', status: 'pending',
-    priority: '冲刺', date: '2026-07-15', week: 3,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_nina_w3d4', owner: '杨景妮', level: 'daily', period: '2026-07-16',
-    title: '信达生物方案专家背靠背 | 7/16周四 | 目标5万',
-    description: '信达生物方案深度对接，技术专家背靠背',
-    targetAmount: 5, client: '信达生物', action: '专家对接',
-    expectedResult: '方案确认', risk: '技术不匹配', status: 'pending',
-    priority: '冲刺', date: '2026-07-16', week: 3,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_nina_w3d5', owner: '杨景妮', level: 'daily', period: '2026-07-17',
-    title: '成交复盘+新线索跟进 | 7/17周五 | 拓新5个联系人',
-    description: '复盘本周成交情况，整理新客户线索',
-    targetAmount: 0, client: '多客户', action: '复盘+线索',
-    expectedResult: '线索池更新', risk: '成交不足', status: 'pending',
-    priority: '核心', date: '2026-07-17', week: 3,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
+    id: 'task_nj_w3d3', owner: '杨景妮', level: 'daily', period: '2026-08-19',
+    title: '零业绩客户激活 | 8/19周三 | 塔吉瑞/风和/楚天',
+    description: '零业绩客户专项拜访，推送样品与试用服务',
+    targetAmount: 0, client: '塔吉瑞、风和、楚天', action: '激活/拜访',
+    expectedResult: '激活1-2家', risk: '',
+    status: 'pending', priority: '重要', date: '2026-08-19', week: 3,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
   });
 
-  // Nina - 第4周 (收尾期)
   tasks.push({
-    id: 'task_nina_w4', owner: '杨景妮', level: 'weekly', period: '2026-W4',
-    title: '第4周目标：20万 | 7/20周一-7/24周五 | 收尾期：合同闭环+下月铺垫',
-    description: '电话30个，外出4家，饭局1顿，报价10万',
-    targetAmount: 20, client: '欧陆医药等', action: '合同收尾+下月铺垫',
-    expectedResult: '合同闭环', risk: '合同延迟',
-    status: 'pending', priority: '核心', date: '2026-07-20', week: 4,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_nina_w4d1', owner: '杨景妮', level: 'daily', period: '2026-07-20',
-    title: '本周重点梳理+合同推进 | 7/20周一 | 目标5万',
-    description: '梳理本周合同收尾重点，推动关键合同签订',
-    targetAmount: 5, client: '多客户', action: '合同推进',
-    expectedResult: '合同推进', risk: '签约延迟', status: 'pending',
-    priority: '核心', date: '2026-07-20', week: 4,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_nina_w4d2', owner: '杨景妮', level: 'daily', period: '2026-07-21',
-    title: '欧陆医药方案确认 | 7/21周二 | 目标8万',
-    description: '7月18日前确认合作意向，需项目支持',
-    targetAmount: 8, client: '欧陆医药', action: '方案沟通',
-    expectedResult: '意向确认', risk: '意向模糊', status: 'pending',
-    priority: '冲刺', date: '2026-07-21', week: 4,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_nina_w4d3', owner: '杨景妮', level: 'daily', period: '2026-07-22',
-    title: '和泽医药报价跟进 | 7/22周三 | 目标2万',
-    description: '和泽医药报价后续跟进，确认客户反馈',
-    targetAmount: 2, client: '和泽医药', action: '报价跟进',
-    expectedResult: '反馈确认', risk: '反馈延迟', status: 'pending',
-    priority: '冲刺', date: '2026-07-22', week: 4,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_nina_w4d4', owner: '杨景妮', level: 'daily', period: '2026-07-23',
-    title: '8月客户池铺垫 | 7/23周四 | 拓新10个联系人',
-    description: '为8月提前储备客户资源，新增有效联系人',
-    targetAmount: 0, client: '多客户', action: '客户池铺垫',
-    expectedResult: '10个有效联系人', risk: '线索质量', status: 'pending',
-    priority: '补位', date: '2026-07-23', week: 4,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_nina_w4d5', owner: '杨景妮', level: 'daily', period: '2026-07-24',
-    title: '赛禾/麦科奥特补位激活 | 7/24周五 | 目标5万',
-    description: '补位客户随时激活，资源协同',
-    targetAmount: 5, client: '赛禾医疗、麦科奥特', action: '线索激活',
-    expectedResult: '激活成交', risk: '客户失联', status: 'pending',
-    priority: '补位', date: '2026-07-24', week: 4,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
+    id: 'task_nj_w3d4', owner: '杨景妮', level: 'daily', period: '2026-08-20',
+    title: '展会获客+电话 | 8/20周四 | 展会+12通',
+    description: '延续参展节奏，绑定线索目标',
+    targetAmount: 0, client: '展会客户', action: '展会/电话',
+    expectedResult: '线索≥4条', risk: '',
+    status: 'pending', priority: '重要', date: '2026-08-20', week: 3,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
   });
 
-  // Nina - 第5周 (月度收尾+8月铺垫)
   tasks.push({
-    id: 'task_nina_w5', owner: '杨景妮', level: 'weekly', period: '2026-W5',
-    title: '第5周：月度收尾+8月铺垫 | 7/27周一-7/31周五',
-    description: '缺口补位、合同收尾、8月客户池铺垫',
-    targetAmount: 5, client: '补位客户+新线索', action: '收尾+铺垫',
-    expectedResult: '月度目标达成', risk: '缺口未补',
-    status: 'pending', priority: '核心', date: '2026-07-27', week: 5,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_nina_w5d1', owner: '杨景妮', level: 'daily', period: '2026-07-27',
-    title: '月度复盘+缺口梳理 | 7/27周一',
-    description: '复盘7月目标缺口，梳理补位方向',
-    targetAmount: 1, client: '多客户', action: '复盘+梳理',
-    expectedResult: '缺口明确', risk: '缺口过大',
-    status: 'pending', priority: '核心', date: '2026-07-27', week: 5,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_nina_w5d2', owner: '杨景妮', level: 'daily', period: '2026-07-28',
-    title: '合同收尾+回款确认 | 7/28周二',
-    description: '本月所有合同收尾，确认回款进度',
-    targetAmount: 2, client: '多客户', action: '合同收尾',
-    expectedResult: '回款确认', risk: '回款延迟',
-    status: 'pending', priority: '核心', date: '2026-07-28', week: 5,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_nina_w5d3', owner: '杨景妮', level: 'daily', period: '2026-07-29',
-    title: '补位客户突击跟进 | 7/29周三',
-    description: '针对缺口客户集中突击，争取补单',
-    targetAmount: 2, client: '补位客户', action: '突击跟进',
-    expectedResult: '补单确认', risk: '客户不配合',
-    status: 'pending', priority: '冲刺', date: '2026-07-29', week: 5,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_nina_w5d4', owner: '杨景妮', level: 'daily', period: '2026-07-30',
-    title: '8月客户池梳理+拜访预约 | 7/30周四',
-    description: '整理8月目标客户清单，预约下月拜访',
-    targetAmount: 0, client: '多客户', action: '客户池+预约',
-    expectedResult: '8月计划明确', risk: '预约困难',
-    status: 'pending', priority: '核心', date: '2026-07-30', week: 5,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_nina_w5d5', owner: '杨景妮', level: 'daily', period: '2026-07-31',
-    title: '月度总结+8月kickoff准备 | 7/31周五',
-    description: '完整复盘7月，准备8月目标分解与启动',
-    targetAmount: 0, client: '综合', action: '总结+准备',
-    expectedResult: '8月计划落地', risk: '准备不足',
-    status: 'pending', priority: '核心', date: '2026-07-31', week: 5,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
+    id: 'task_nj_w3d5', owner: '杨景妮', level: 'daily', period: '2026-08-21',
+    title: '周度丢单复盘 | 8/21周五 | 9万丢单复盘',
+    description: '丢单9万逐单复盘（价格/交期/竞品），输出报价策略优化清单',
+    targetAmount: 0, client: '全部', action: '复盘',
+    expectedResult: '优化清单', risk: '',
+    status: 'pending', priority: '重要', date: '2026-08-21', week: 3,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
   });
 
-  // Nina - 核心客户池
   tasks.push({
-    id: 'task_nina_client_xpl', owner: '杨景妮', level: 'weekly', period: '2026-07',
-    title: '西普拉 | 必成客户 | 25万',
-    description: '续单谈判，7月5日前完成报价确认，需经理陪访+报价支持',
-    targetAmount: 25, client: '西普拉', action: '续单谈判',
-    expectedResult: '成交', risk: '客户犹豫', status: 'in_progress',
-    priority: '必成', date: '2026-07-01', week: 1,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_nina_client_xd', owner: '杨景妮', level: 'weekly', period: '2026-07',
-    title: '信达生物 | 必成客户 | 20万',
-    description: '新项目推进，7月10日前提交方案，需项目支持+资源协同',
-    targetAmount: 20, client: '信达生物', action: '方案推进',
-    expectedResult: '方案确认', risk: '项目变化', status: 'in_progress',
-    priority: '必成', date: '2026-07-01', week: 1,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
+    id: 'task_nj_w4', owner: '杨景妮', level: 'weekly', period: '2026-W4',
+    title: '第4周目标：签约冲刺+回款核销 | 8/24周一-8/28周五',
+    description: '179万待签商机签约冲刺、出差②按需大单谈判、回款50万核销',
+    targetAmount: 28, client: '和泽、深圳、信达', action: '签约/回款',
+    expectedResult: '签约≥28万', risk: '签约延迟',
+    status: 'in_progress', priority: '必成', date: '2026-08-24', week: 4,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
   });
 
-  // ============ 薛琳(Shelly)的数据 ============
+  tasks.push({
+    id: 'task_nj_w4d1', owner: '杨景妮', level: 'daily', period: '2026-08-24',
+    title: '179万待签分级转化 | 8/24周一 | 签约冲刺',
+    description: '179万待签商机签约冲刺，报价后3天回访100%覆盖',
+    targetAmount: 10, client: '全部待签', action: '签约/回访',
+    expectedResult: '签约≥10万', risk: '',
+    status: 'pending', priority: '必成', date: '2026-08-24', week: 4,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_nj_w4d2', owner: '杨景妮', level: 'daily', period: '2026-08-25',
+    title: '出差②按需：A级大单 | 8/25周二 | 大单谈判',
+    description: '按需出差推进A级大单，出差绑定签约目标',
+    targetAmount: 10, client: 'A级客户', action: '出差/谈判',
+    expectedResult: '大单推进', risk: '出差变数',
+    status: 'pending', priority: '必成', date: '2026-08-25', week: 4,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_nj_w4d3', owner: '杨景妮', level: 'daily', period: '2026-08-26',
+    title: '回款核销 | 8/26周三 | 确保50万到账',
+    description: '回款核销，确保50万到账，加速开票',
+    targetAmount: 0, client: '信达等', action: '催收/核销',
+    expectedResult: '回款50万', risk: '客户拖延',
+    status: 'pending', priority: '必成', date: '2026-08-26', week: 4,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_nj_w4d4', owner: '杨景妮', level: 'daily', period: '2026-08-27',
+    title: '签约冲刺+电话 | 8/27周四 | 12通',
+    description: '电话12通，签约冲刺',
+    targetAmount: 8, client: '全部', action: '签约/电话',
+    expectedResult: '签约≥8万', risk: '',
+    status: 'pending', priority: '重要', date: '2026-08-27', week: 4,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_nj_w4d5', owner: '杨景妮', level: 'daily', period: '2026-08-28',
+    title: '月度复盘准备 | 8/28周五 | 对照108万/50万',
+    description: '8.31对照108万/50万复盘准备，沉淀可复制打法',
+    targetAmount: 0, client: '全部', action: '复盘',
+    expectedResult: '复盘报告', risk: '',
+    status: 'pending', priority: '重要', date: '2026-08-28', week: 4,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_nj_w5', owner: '杨景妮', level: 'weekly', period: '2026-W5',
+    title: '第5周：月度复盘 | 8/31周一',
+    description: '对照108万/50万复盘，输出9月改进项',
+    targetAmount: 0, client: '', action: '复盘',
+    expectedResult: '改进项', risk: '',
+    status: 'in_progress', priority: '常规', date: '2026-08-31', week: 5,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_nj_w5d1', owner: '杨景妮', level: 'daily', period: '2026-08-31',
+    title: '月度复盘 | 8/31周一 | 8月总结',
+    description: '8月业绩/回款/过程指标复盘，输出9月改进项',
+    targetAmount: 0, client: '全部', action: '复盘',
+    expectedResult: '改进项', risk: '',
+    status: 'pending', priority: '常规', date: '2026-08-31', week: 5,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  // ============ 薛琳的数据 ============
   tasks.push({
     id: 'task_sl_annual', owner: '薛琳', level: 'annual', period: '2026',
-    title: '年度业绩目标820万（上半年完成94万，完成率11.5%）',
-    description: '14家新客户但单客产出0.54万，客户质量偏低。下半年缺口726万',
-    targetAmount: 820, client: '', action: '', expectedResult: '', risk: '',
+    title: '年度业绩目标 · 老客深耕+新客开拓',
+    description: '年度目标以老客户基石+新客户开拓双轮驱动',
+    targetAmount: 0, client: '', action: '',
+    expectedResult: '', risk: '',
     status: 'in_progress', priority: '核心', date: '2026', week: 0,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
   });
+
   tasks.push({
     id: 'task_sl_q3', owner: '薛琳', level: 'quarterly', period: '2026-Q3',
-    title: 'Q3目标：363万（月均121万）',
-    description: '七月启动首月锚定80万底线，快速拉动节奏',
-    targetAmount: 363, client: '', action: '', expectedResult: '', risk: '',
+    title: 'Q3目标：业绩180万',
+    description: '7月起逐步提升，8月68万为Q3核心',
+    targetAmount: 180, client: '', action: '',
+    expectedResult: '', risk: '',
     status: 'in_progress', priority: '核心', date: '2026-Q3', week: 0,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_sl_jul', owner: '薛琳', level: 'monthly', period: '2026-07',
-    title: '七月目标：121万 | 精准客户分层破局',
-    description: '必成20万(爱科百发)+冲刺20万(科伦/药明康德)+冲刺20万(智享/森松)+补位20万(维健/兆科)',
-    targetAmount: 121, client: '', action: '', expectedResult: '', risk: '',
-    status: 'in_progress', priority: '核心', date: '2026-07', week: 0,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
   });
 
-  // 薛琳 - 第1周
+  tasks.push({
+    id: 'task_sl_aug', owner: '薛琳', level: 'monthly', period: '2026-08',
+    title: '八月目标：总营收68万（老客48万+新客20万）| 回款20万 | 拜访20家',
+    description: '北京12家+苏州5家双线攻坚，大单≥10万×2，5家新客成交',
+    targetAmount: 68, client: '', action: '',
+    expectedResult: '', risk: '',
+    status: 'in_progress', priority: '核心', date: '2026-08', week: 0,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
   tasks.push({
     id: 'task_sl_w1', owner: '薛琳', level: 'weekly', period: '2026-W1',
-    title: '第1周目标：20万 | 7/1周三-7/3周五 | 爱科百发、香港维健',
-    description: '稳固合作关系，深挖潜在需求，争取增量订单',
-    targetAmount: 20, client: '爱科百发、香港维健', action: '稳固+深挖',
-    expectedResult: '签订新合同', risk: '推进遇阻启动备选',
-    status: 'in_progress', priority: '必成', date: '2026-07-01', week: 1,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_sl_w1d1', owner: '薛琳', level: 'daily', period: '2026-07-01',
-    title: '爱科百发新领域方案 | 7/1周三 | 目标20万',
-    description: '7月10日前提交新领域方案，需技术团队深度支持',
-    targetAmount: 20, client: '爱科百发', action: '方案提交',
-    expectedResult: '方案确认', risk: '技术支持不足', status: 'pending',
-    priority: '必成', date: '2026-07-01', week: 1,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_sl_w1d2', owner: '薛琳', level: 'daily', period: '2026-07-02',
-    title: '智享生物深度拜访准备 | 7/2周四 | 目标15万',
-    description: '7月15前完成深度拜访，申请经理协同陪访',
-    targetAmount: 15, client: '智享生物', action: '拜访准备',
-    expectedResult: '拜访安排确认', risk: '客户无时间', status: 'pending',
-    priority: '冲刺', date: '2026-07-02', week: 1,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_sl_w1d3', owner: '薛琳', level: 'daily', period: '2026-07-03',
-    title: '香港维健合作升级推进 | 7/3周五 | 目标5万',
-    description: '接触注册部核心负责人，提供整体解决方案',
-    targetAmount: 5, client: '香港维健', action: '合作升级',
-    expectedResult: '负责人接触', risk: '层级不够', status: 'pending',
-    priority: '补位', date: '2026-07-03', week: 1,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
+    title: '第1周目标：锁定存量+展会交流 | 8/3周一-8/7周五',
+    description: '易贸交流接触新老客户，锁定存量客户PO',
+    targetAmount: 10, client: '兆科眼科、爱科百发', action: '展会/锁定',
+    expectedResult: '存量锁定', risk: '客户预算',
+    status: 'in_progress', priority: '必成', date: '2026-08-03', week: 1,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
   });
 
-  // 薛琳 - 第2周
+  tasks.push({
+    id: 'task_sl_w1d1', owner: '薛琳', level: 'daily', period: '2026-08-03',
+    title: '易贸交流活动 | 8/3周一 | 接触新老客户',
+    description: '参加易贸交流活动，接触新老客户寻求合作机会',
+    targetAmount: 0, client: '新老客户', action: '展会交流',
+    expectedResult: '合作机会', risk: '',
+    status: 'pending', priority: '必成', date: '2026-08-03', week: 1,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_sl_w1d2', owner: '薛琳', level: 'daily', period: '2026-08-04',
+    title: '锁定兆科眼科12万 | 8/4周二 | 确保交付质量',
+    description: '兆科眼科12万确保交付质量，锁定PO',
+    targetAmount: 12, client: '兆科眼科', action: '锁定PO',
+    expectedResult: 'PO确认', risk: '',
+    status: 'pending', priority: '必成', date: '2026-08-04', week: 1,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_sl_w1d3', owner: '薛琳', level: 'daily', period: '2026-08-05',
+    title: '爱科百发5万+森松3万 | 8/5周三 | 跟进在研管线',
+    description: '爱科百发生物5万跟进在研管线进展，森松制药3万设备出口翻译',
+    targetAmount: 8, client: '爱科百发、森松', action: '跟进',
+    expectedResult: '需求确认', risk: '',
+    status: 'pending', priority: '重要', date: '2026-08-05', week: 1,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_sl_w1d4', owner: '薛琳', level: 'daily', period: '2026-08-06',
+    title: '维健2万+智享5万 | 8/6周四 | 医学注册+CDMO',
+    description: '维健医药2万医学注册资料，智享生物5万CDMO技术文档',
+    targetAmount: 7, client: '维健医药、智享生物', action: '跟进',
+    expectedResult: '需求确认', risk: '',
+    status: 'pending', priority: '重要', date: '2026-08-06', week: 1,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_sl_w1d5', owner: '薛琳', level: 'daily', period: '2026-08-07',
+    title: '新客线索摸排 | 8/7周五 | 奥朗+博远',
+    description: '奥朗生物10万海外临床申报资料破冰，博远医药4万仿制药注册',
+    targetAmount: 0, client: '奥朗生物、博远医药', action: '破冰/摸排',
+    expectedResult: '线索2条', risk: '',
+    status: 'pending', priority: '重要', date: '2026-08-07', week: 1,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
   tasks.push({
     id: 'task_sl_w2', owner: '薛琳', level: 'weekly', period: '2026-W2',
-    title: '第2周目标：20万 | 7/6周一-7/10周五 | 科伦、药明康德',
-    description: '尝试新渠道建立接触，针对性提交定制化方案',
-    targetAmount: 20, client: '科伦、药明康德', action: '新渠道+定制方案',
-    expectedResult: '建立关键决策人联系', risk: '关键人对接困难',
-    status: 'pending', priority: '冲刺', date: '2026-07-06', week: 2,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_sl_w2d1', owner: '薛琳', level: 'daily', period: '2026-07-06',
-    title: '爱科百发方案推进 | 7/6周一 | 目标5万',
-    description: '爱科百发方案继续推进，本周内方案初稿完成',
-    targetAmount: 5, client: '爱科百发', action: '方案推进',
-    expectedResult: '方案初稿', risk: '技术支持', status: 'pending',
-    priority: '必成', date: '2026-07-06', week: 2,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_sl_w2d2', owner: '薛琳', level: 'daily', period: '2026-07-07',
-    title: '科伦药业决策链突破 | 7/7周二 | 目标10万',
-    description: '7月20前利用公司资源寻找新联系人，打通关键人脉',
-    targetAmount: 10, client: '科伦药业', action: '决策链突破',
-    expectedResult: '关键人建立', risk: '接触不到决策层', status: 'pending',
-    priority: '冲刺', date: '2026-07-07', week: 2,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_sl_w2d3', owner: '薛琳', level: 'daily', period: '2026-07-08',
-    title: '药明康德新渠道接触 | 7/8周三 | 目标10万',
-    description: 'A类大客户零产出破局，多渠道触达核心负责人',
-    targetAmount: 10, client: '药明康德', action: '新渠道接触',
-    expectedResult: '首次有效接触', risk: '供应商壁垒', status: 'pending',
-    priority: '冲刺', date: '2026-07-08', week: 2,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_sl_w2d4', owner: '薛琳', level: 'daily', period: '2026-07-09',
-    title: '新客户线索开发 | 7/9周四 | 拓新10个联系人',
-    description: '开拓新客户渠道，新增10个有效联系人',
-    targetAmount: 3, client: '多客户', action: '线索开发',
-    expectedResult: '10个有效联系人', risk: '线索质量低', status: 'pending',
-    priority: '补位', date: '2026-07-09', week: 2,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_sl_w2d5', owner: '薛琳', level: 'daily', period: '2026-07-10',
-    title: '定制化方案整合提交 | 7/10周五 | 目标2万',
-    description: '整合本周方案进度，提交科伦+药明康德定制方案',
-    targetAmount: 2, client: '科伦、药明康德', action: '方案提交',
-    expectedResult: '方案发出', risk: '延期', status: 'pending',
-    priority: '冲刺', date: '2026-07-10', week: 2,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
+    title: '第2周目标：苏州挖掘5家+IND线索2条 | 8/10周一-8/14周五',
+    description: '拜访5家苏州Biotech客户，推广GMP/GCP翻译，拿2条IND申报线索',
+    targetAmount: 15, client: '苏州Biotech客户', action: '出差/拜访',
+    expectedResult: '5家+2条线索', risk: '新客开发难',
+    status: 'in_progress', priority: '必成', date: '2026-08-10', week: 2,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
   });
 
-  // 薛琳 - 第3周
+  tasks.push({
+    id: 'task_sl_w2d1', owner: '薛琳', level: 'daily', period: '2026-08-10',
+    title: '苏州出差：Biotech拜访 | 8/10周一 | 2家',
+    description: '聚焦苏州Biotech创新药企，推广GMP/GCP体系翻译',
+    targetAmount: 0, client: '苏州Biotech', action: '出差/拜访',
+    expectedResult: '拜访2家', risk: '',
+    status: 'pending', priority: '必成', date: '2026-08-10', week: 2,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_sl_w2d2', owner: '薛琳', level: 'daily', period: '2026-08-11',
+    title: '苏州出差：IND线索挖掘 | 8/11周二 | 2家',
+    description: '推动老客户项目，拿到IND申报翻译线索',
+    targetAmount: 0, client: '苏州客户', action: '拜访/线索',
+    expectedResult: 'IND线索1条', risk: '',
+    status: 'pending', priority: '必成', date: '2026-08-11', week: 2,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_sl_w2d3', owner: '薛琳', level: 'daily', period: '2026-08-12',
+    title: '苏州出差：拜访+线索 | 8/12周三 | 1家',
+    description: '苏州区域拜访，IND线索推进',
+    targetAmount: 0, client: '苏州客户', action: '拜访',
+    expectedResult: 'IND线索1条', risk: '',
+    status: 'pending', priority: '重要', date: '2026-08-12', week: 2,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_sl_w2d4', owner: '薛琳', level: 'daily', period: '2026-08-13',
+    title: '凯复/睿健跟进 | 8/13周四 | 2+2万',
+    description: '凯复生物2万+睿健医药2万，细胞与基因治疗专题',
+    targetAmount: 4, client: '凯复生物、睿健医药', action: '跟进',
+    expectedResult: '需求确认', risk: '',
+    status: 'pending', priority: '重要', date: '2026-08-13', week: 2,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_sl_w2d5', owner: '薛琳', level: 'daily', period: '2026-08-14',
+    title: '协同开发客户确认 | 8/14周五 | 迅达/开利2+2万',
+    description: '迅达电梯/开利2+2万，工业制造类生物医药配套',
+    targetAmount: 4, client: '迅达电梯、开利', action: '确认需求',
+    expectedResult: '需求确认', risk: '',
+    status: 'pending', priority: '重要', date: '2026-08-14', week: 2,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
   tasks.push({
     id: 'task_sl_w3', owner: '薛琳', level: 'weekly', period: '2026-W3',
-    title: '第3周目标：20万 | 7/13周一-7/17周五 | 智享生物、森松制药',
-    description: '首次深度现场拜访，专业展示产品优势',
-    targetAmount: 20, client: '智享生物、森松制药', action: '深度拜访+专业展示',
-    expectedResult: '初步合作意向', risk: '意向模糊需调整策略',
-    status: 'pending', priority: '冲刺', date: '2026-07-13', week: 3,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_sl_w3d1', owner: '薛琳', level: 'daily', period: '2026-07-13',
-    title: '智享生物拜访策略制定 | 7/13周一 | 目标5万',
-    description: '制定智享生物深度拜访策略，协调经理时间',
-    targetAmount: 5, client: '智享生物', action: '策略制定',
-    expectedResult: '拜访策略确认', risk: '经理时间冲突', status: 'pending',
-    priority: '冲刺', date: '2026-07-13', week: 3,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_sl_w3d2', owner: '薛琳', level: 'daily', period: '2026-07-14',
-    title: '智享生物深度拜访 | 7/14周二 | 目标15万',
-    description: '经理协同陪访，展示公司实力背书',
-    targetAmount: 15, client: '智享生物', action: '经理陪访',
-    expectedResult: '信任建立', risk: '客户不配合', status: 'pending',
-    priority: '冲刺', date: '2026-07-14', week: 3,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_sl_w3d3', owner: '薛琳', level: 'daily', period: '2026-07-15',
-    title: '森松制药需求引导 | 7/15周三 | 目标10万',
-    description: '7月25前提供行业对标资料，明确项目规划与痛点',
-    targetAmount: 10, client: '森松制药', action: '需求引导',
-    expectedResult: '需求明确', risk: '方向不明确', status: 'pending',
-    priority: '冲刺', date: '2026-07-15', week: 3,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_sl_w3d4', owner: '薛琳', level: 'daily', period: '2026-07-16',
-    title: '科伦药业报价跟进 | 7/16周四 | 目标5万',
-    description: '科伦药业初步接触后报价推进',
-    targetAmount: 5, client: '科伦药业', action: '报价跟进',
-    expectedResult: '报价发出', risk: '信息不全', status: 'pending',
-    priority: '冲刺', date: '2026-07-16', week: 3,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_sl_w3d5', owner: '薛琳', level: 'daily', period: '2026-07-17',
-    title: '拜访复盘+新线索整理 | 7/17周五 | 拓新5个联系人',
-    description: '复盘本周拜访成果，整理新客户线索',
-    targetAmount: 0, client: '多客户', action: '复盘+线索',
-    expectedResult: '线索池更新', risk: '进展不足', status: 'pending',
-    priority: '核心', date: '2026-07-17', week: 3,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
+    title: '第3周目标：北京攻坚12家+大单≥10万×2 | 8/17周一-8/21周五',
+    description: '北京12家拜访（B类60%），主攻大型药企总部及临床CRO，完成2个超10万大单',
+    targetAmount: 25, client: '北京大型药企、CRO', action: '出差/大单',
+    expectedResult: '大单≥10万×2', risk: '大单延迟',
+    status: 'in_progress', priority: '必成', date: '2026-08-17', week: 3,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
   });
 
-  // 薛琳 - 第4周
+  tasks.push({
+    id: 'task_sl_w3d1', owner: '薛琳', level: 'daily', period: '2026-08-17',
+    title: '北京攻坚：药企总部 | 8/17周一 | 3家',
+    description: '主攻大型药企总部，B类客户拜访',
+    targetAmount: 0, client: '北京药企', action: '拜访',
+    expectedResult: '拜访3家', risk: '',
+    status: 'pending', priority: '必成', date: '2026-08-17', week: 3,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_sl_w3d2', owner: '薛琳', level: 'daily', period: '2026-08-18',
+    title: '北京攻坚：临床CRO | 8/18周二 | 3家',
+    description: '临床CRO客户重点突破',
+    targetAmount: 0, client: '北京CRO', action: '拜访',
+    expectedResult: '拜访3家', risk: '',
+    status: 'pending', priority: '必成', date: '2026-08-18', week: 3,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_sl_w3d3', owner: '薛琳', level: 'daily', period: '2026-08-19',
+    title: '北京攻坚：老客大单 | 8/19周三 | ≥10万',
+    description: '推动老客户大单合同签署',
+    targetAmount: 10, client: '老客户', action: '大单签约',
+    expectedResult: '大单≥10万', risk: '合同条款',
+    status: 'pending', priority: '必成', date: '2026-08-19', week: 3,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_sl_w3d4', owner: '薛琳', level: 'daily', period: '2026-08-20',
+    title: '北京攻坚：新客大单 | 8/20周四 | ≥10万',
+    description: '推动新客户大单签约',
+    targetAmount: 10, client: '奥朗生物', action: '大单签约',
+    expectedResult: '大单≥10万', risk: '首单难',
+    status: 'pending', priority: '必成', date: '2026-08-20', week: 3,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_sl_w3d5', owner: '薛琳', level: 'daily', period: '2026-08-21',
+    title: '北京攻坚收尾 | 8/21周五 | 3家',
+    description: '北京区域最后3家拜访，周度复盘',
+    targetAmount: 0, client: '北京客户', action: '拜访/复盘',
+    expectedResult: '拜访3家', risk: '',
+    status: 'pending', priority: '重要', date: '2026-08-21', week: 3,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
   tasks.push({
     id: 'task_sl_w4', owner: '薛琳', level: 'weekly', period: '2026-W4',
-    title: '第4周目标：20万 | 7/20周一-7/24周五 | 新线索转化+月度收尾',
-    description: '集中跟进新线索，筛选高意向客户精准触达',
-    targetAmount: 20, client: '新线索客户', action: '线索转化+收尾',
-    expectedResult: '至少2个新客户签约', risk: '转化不足加大开发',
-    status: 'pending', priority: '核心', date: '2026-07-20', week: 4,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_sl_w4d1', owner: '薛琳', level: 'daily', period: '2026-07-20',
-    title: '本周重点梳理+线索筛选 | 7/20周一 | 目标5万',
-    description: '梳理本周收尾重点，筛选高意向线索',
-    targetAmount: 5, client: '多客户', action: '线索筛选',
-    expectedResult: '重点明确', risk: '线索不足', status: 'pending',
-    priority: '核心', date: '2026-07-20', week: 4,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_sl_w4d2', owner: '薛琳', level: 'daily', period: '2026-07-21',
-    title: '香港维健注册部对接 | 7/21周二 | 目标5万',
-    description: '7月30前接触注册部核心负责人，推动系统化合作',
-    targetAmount: 5, client: '香港维健', action: '注册部对接',
-    expectedResult: '系统化合作意向', risk: '层级提升困难', status: 'pending',
-    priority: '补位', date: '2026-07-21', week: 4,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_sl_w4d3', owner: '薛琳', level: 'daily', period: '2026-07-22',
-    title: '药明康德深度跟进 | 7/22周三 | 目标5万',
-    description: '药明康德初步接触后深度跟进，提交行业对标',
-    targetAmount: 5, client: '药明康德', action: '深度跟进',
-    expectedResult: '意向推进', risk: '供应商壁垒', status: 'pending',
-    priority: '冲刺', date: '2026-07-22', week: 4,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_sl_w4d4', owner: '薛琳', level: 'daily', period: '2026-07-23',
-    title: '森松制药方案推进 | 7/23周四 | 目标3万',
-    description: '森松制药需求明确后推进方案',
-    targetAmount: 3, client: '森松制药', action: '方案推进',
-    expectedResult: '方案提交', risk: '需求变化', status: 'pending',
-    priority: '冲刺', date: '2026-07-23', week: 4,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_sl_w4d5', owner: '薛琳', level: 'daily', period: '2026-07-24',
-    title: '兆科眼科信任建立 | 7/24周五 | 目标2万',
-    description: '7月31前多频次沟通+案例分享，建立初步信任',
-    targetAmount: 2, client: '兆科眼科', action: '信任建立',
-    expectedResult: '初步信任', risk: '沟通频次不足', status: 'pending',
-    priority: '补位', date: '2026-07-24', week: 4,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
+    title: '第4周目标：冲刺新客20万+回款20万 | 8/24周一-8/28周五',
+    description: '5家新客成交冲刺，紧盯20万回款到账，复盘5家新客成交',
+    targetAmount: 18, client: '奥朗、博远、新客', action: '冲刺/回款',
+    expectedResult: '新客≥20万+回款20万', risk: '成交延迟',
+    status: 'in_progress', priority: '必成', date: '2026-08-24', week: 4,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
   });
 
-  // 薛琳 - 第5周 (月度收尾+8月铺垫)
+  tasks.push({
+    id: 'task_sl_w4d1', owner: '薛琳', level: 'daily', period: '2026-08-24',
+    title: '新客成交冲刺 | 8/24周一 | 奥朗10万',
+    description: '奥朗生物10万首单落地冲刺',
+    targetAmount: 10, client: '奥朗生物', action: '签约',
+    expectedResult: '首单落地', risk: '客户犹豫',
+    status: 'pending', priority: '必成', date: '2026-08-24', week: 4,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_sl_w4d2', owner: '薛琳', level: 'daily', period: '2026-08-25',
+    title: '新客成交冲刺 | 8/25周二 | 博远4万+其他6万',
+    description: '博远医药4万+其他新客6万签约',
+    targetAmount: 10, client: '博远医药、其他新客', action: '签约',
+    expectedResult: '签约10万', risk: '',
+    status: 'pending', priority: '必成', date: '2026-08-25', week: 4,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_sl_w4d3', owner: '薛琳', level: 'daily', period: '2026-08-26',
+    title: '回款紧盯 | 8/26周三 | 20万到账',
+    description: '紧盯20万回款到账确认',
+    targetAmount: 0, client: '全部', action: '催收',
+    expectedResult: '回款20万', risk: '到账延迟',
+    status: 'pending', priority: '必成', date: '2026-08-26', week: 4,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_sl_w4d4', owner: '薛琳', level: 'daily', period: '2026-08-27',
+    title: '机动拜访补位 | 8/27周四 | 3家',
+    description: '机动区域3家拜访补位',
+    targetAmount: 0, client: '机动客户', action: '拜访',
+    expectedResult: '拜访3家', risk: '',
+    status: 'pending', priority: '重要', date: '2026-08-27', week: 4,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_sl_w4d5', owner: '薛琳', level: 'daily', period: '2026-08-28',
+    title: '月度复盘 | 8/28周五 | 5家新客复盘',
+    description: '复盘5家新客成交情况，68万总营收完成情况',
+    targetAmount: 0, client: '全部', action: '复盘',
+    expectedResult: '复盘报告', risk: '',
+    status: 'pending', priority: '重要', date: '2026-08-28', week: 4,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
   tasks.push({
     id: 'task_sl_w5', owner: '薛琳', level: 'weekly', period: '2026-W5',
-    title: '第5周：月度收尾+8月铺垫 | 7/27周一-7/31周五',
-    description: '缺口补位、合同收尾、8月客户池铺垫',
-    targetAmount: 5, client: '补位客户+新线索', action: '收尾+铺垫',
-    expectedResult: '月度目标达成', risk: '缺口未补',
-    status: 'pending', priority: '核心', date: '2026-07-27', week: 5,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_sl_w5d1', owner: '薛琳', level: 'daily', period: '2026-07-27',
-    title: '月度复盘+缺口梳理 | 7/27周一',
-    description: '复盘7月目标缺口，梳理补位方向',
-    targetAmount: 1, client: '多客户', action: '复盘+梳理',
-    expectedResult: '缺口明确', risk: '缺口过大',
-    status: 'pending', priority: '核心', date: '2026-07-27', week: 5,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_sl_w5d2', owner: '薛琳', level: 'daily', period: '2026-07-28',
-    title: '合同收尾+回款确认 | 7/28周二',
-    description: '本月所有合同收尾，确认回款进度',
-    targetAmount: 2, client: '多客户', action: '合同收尾',
-    expectedResult: '回款确认', risk: '回款延迟',
-    status: 'pending', priority: '核心', date: '2026-07-28', week: 5,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_sl_w5d3', owner: '薛琳', level: 'daily', period: '2026-07-29',
-    title: '补位客户突击跟进 | 7/29周三',
-    description: '针对缺口客户集中突击，争取补单',
-    targetAmount: 2, client: '补位客户', action: '突击跟进',
-    expectedResult: '补单确认', risk: '客户不配合',
-    status: 'pending', priority: '冲刺', date: '2026-07-29', week: 5,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_sl_w5d4', owner: '薛琳', level: 'daily', period: '2026-07-30',
-    title: '8月客户池梳理+拜访预约 | 7/30周四',
-    description: '整理8月目标客户清单，预约下月拜访',
-    targetAmount: 0, client: '多客户', action: '客户池+预约',
-    expectedResult: '8月计划明确', risk: '预约困难',
-    status: 'pending', priority: '核心', date: '2026-07-30', week: 5,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_sl_w5d5', owner: '薛琳', level: 'daily', period: '2026-07-31',
-    title: '月度总结+8月kickoff准备 | 7/31周五',
-    description: '完整复盘7月，准备8月目标分解与启动',
-    targetAmount: 0, client: '综合', action: '总结+准备',
-    expectedResult: '8月计划落地', risk: '准备不足',
-    status: 'pending', priority: '核心', date: '2026-07-31', week: 5,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
+    title: '第5周：月度数据复盘 | 8/31周一',
+    description: '68万总营收复盘，老客48万+新客20万达成分析',
+    targetAmount: 0, client: '', action: '复盘',
+    expectedResult: '改进项', risk: '',
+    status: 'in_progress', priority: '常规', date: '2026-08-31', week: 5,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
   });
 
-  // 薛琳 - 核心客户池
   tasks.push({
-    id: 'task_sl_client_akbf', owner: '薛琳', level: 'weekly', period: '2026-07',
-    title: '爱科百发 | 必成客户 | 20万',
-    description: '合作稳定，7月10前提交新领域方案，需技术团队深度支持',
-    targetAmount: 20, client: '爱科百发', action: '新领域方案',
-    expectedResult: '成交', risk: '新需求挖掘不足', status: 'in_progress',
-    priority: '必成', date: '2026-07-01', week: 1,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
+    id: 'task_sl_w5d1', owner: '薛琳', level: 'daily', period: '2026-08-31',
+    title: '月度复盘 | 8/31周一 | 8月总结',
+    description: '老客48万+新客20万达成分析，输出9月改进项',
+    targetAmount: 0, client: '全部', action: '复盘',
+    expectedResult: '改进项', risk: '',
+    status: 'pending', priority: '常规', date: '2026-08-31', week: 5,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
   });
+
+  // ============ 过健的数据 ============
   tasks.push({
-    id: 'task_sl_client_zxsj', owner: '薛琳', level: 'weekly', period: '2026-07',
-    title: '智享生物 | 冲刺客户 | 15万',
-    description: '初步接触，7月15前完成深度拜访，申请经理协同陪访',
-    targetAmount: 15, client: '智享生物', action: '深度拜访',
-    expectedResult: '信任建立', risk: '信任不够', status: 'pending',
-    priority: '冲刺', date: '2026-07-06', week: 2,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
+    id: 'task_gj_annual', owner: '过健', level: 'annual', period: '2026',
+    title: '年度业绩目标450万（上半年完成107万）',
+    description: '上半年完成率24%，下半年需完成343万',
+    targetAmount: 450, client: '', action: '',
+    expectedResult: '', risk: '',
+    status: 'in_progress', priority: '核心', date: '2026', week: 0,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_gj_q3', owner: '过健', level: 'quarterly', period: '2026-Q3',
+    title: 'Q3目标：完成220万',
+    description: '7月已完成13万，8月80万起步冲刺',
+    targetAmount: 220, client: '', action: '',
+    expectedResult: '', risk: '',
+    status: 'in_progress', priority: '核心', date: '2026-Q3', week: 0,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_gj_aug', owner: '过健', level: 'monthly', period: '2026-08',
+    title: '八月目标：业绩80万 | 外出22家 | 新客成交3家',
+    description: '较7月实际增长97.7%，三生20万领衔，欧康10万+伯汇10万+其他40万',
+    targetAmount: 80, client: '', action: '',
+    expectedResult: '', risk: '',
+    status: 'in_progress', priority: '核心', date: '2026-08', week: 0,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_gj_w1', owner: '过健', level: 'weekly', period: '2026-W1',
+    title: '第1周目标：客户分级+高价值商机启动 | 8/3周一-8/7周五',
+    description: '完成客户分级表+回款预警表，启动高价值商机，拜访5家A类',
+    targetAmount: 10, client: '欧康维视、三生制药', action: '分级/拜访',
+    expectedResult: '三表建立', risk: '数据不全',
+    status: 'in_progress', priority: '必成', date: '2026-08-03', week: 1,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_gj_w1d1', owner: '过健', level: 'daily', period: '2026-08-03',
+    title: '客户分级跟踪表 | 8/3周一 | 全客户分级',
+    description: '完成全客户分级跟踪表，建立商机漏斗模型',
+    targetAmount: 0, client: '全部', action: '分级/建模',
+    expectedResult: '三表建立', risk: '',
+    status: 'pending', priority: '必成', date: '2026-08-03', week: 1,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_gj_w1d2', owner: '过健', level: 'daily', period: '2026-08-04',
+    title: '回款预警表+商机排序 | 8/4周二 | 15条商机打分',
+    description: '建立月度回款监控表，15条商机打分排序',
+    targetAmount: 0, client: '全部', action: '预警/排序',
+    expectedResult: '预警表+排序', risk: '',
+    status: 'pending', priority: '必成', date: '2026-08-04', week: 1,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_gj_w1d3', owner: '过健', level: 'daily', period: '2026-08-05',
+    title: '拜访欧康维视 | 8/5周三 | A类客户',
+    description: '欧康维视A类客户拜访，10万商机推进',
+    targetAmount: 10, client: '欧康维视', action: '拜访',
+    expectedResult: '10万推进', risk: '',
+    status: 'pending', priority: '必成', date: '2026-08-05', week: 1,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_gj_w1d4', owner: '过健', level: 'daily', period: '2026-08-06',
+    title: '拜访三生制药 | 8/6周四 | A类客户',
+    description: '三生制药A类客户拜访，20万商机推进',
+    targetAmount: 20, client: '三生制药', action: '拜访',
+    expectedResult: '20万推进', risk: '',
+    status: 'pending', priority: '必成', date: '2026-08-06', week: 1,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_gj_w1d5', owner: '过健', level: 'daily', period: '2026-08-07',
+    title: '拜访广生/特宝 | 8/7周五 | A类客户',
+    description: '广生、特宝A类客户拜访',
+    targetAmount: 0, client: '广生、特宝', action: '拜访',
+    expectedResult: '需求确认', risk: '',
+    status: 'pending', priority: '重要', date: '2026-08-07', week: 1,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_gj_w2', owner: '过健', level: 'weekly', period: '2026-W2',
+    title: '第2周目标：新客开发+展会获客 | 8/10周一-8/14周五',
+    description: '新客户开发启动，参加医药行业展会，拜访5家含2家新客，提交报价方案',
+    targetAmount: 15, client: '特宝、美诺华、安科', action: '新客/展会',
+    expectedResult: '2家新客+报价', risk: '新客开发难',
+    status: 'in_progress', priority: '必成', date: '2026-08-10', week: 2,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_gj_w2d1', owner: '过健', level: 'daily', period: '2026-08-10',
+    title: '新客开发启动 | 8/10周一 | 特宝+美诺华',
+    description: '特宝、美诺华研究院新客首触',
+    targetAmount: 0, client: '特宝、美诺华研究院', action: '新客开发',
+    expectedResult: '首触完成', risk: '',
+    status: 'pending', priority: '必成', date: '2026-08-10', week: 2,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_gj_w2d2', owner: '过健', level: 'daily', period: '2026-08-11',
+    title: '参加医药行业展会 | 8/11周二 | 获客',
+    description: '参加医药行业展会获取线索',
+    targetAmount: 0, client: '展会客户', action: '展会获客',
+    expectedResult: '线索≥3条', risk: '',
+    status: 'pending', priority: '必成', date: '2026-08-11', week: 2,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_gj_w2d3', owner: '过健', level: 'daily', period: '2026-08-12',
+    title: '安科新客+报价方案 | 8/12周三 | 报价',
+    description: '安科新客首触，提交报价方案给潜在客户',
+    targetAmount: 0, client: '安科', action: '新客/报价',
+    expectedResult: '报价提交', risk: '',
+    status: 'pending', priority: '必成', date: '2026-08-12', week: 2,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_gj_w2d4', owner: '过健', level: 'daily', period: '2026-08-13',
+    title: '欧康10万推进 | 8/13周四 | 报价跟进',
+    description: '欧康维视10万商机跟进，伯汇10万推进',
+    targetAmount: 10, client: '欧康维视、伯汇', action: '报价跟进',
+    expectedResult: '推进确认', risk: '',
+    status: 'pending', priority: '重要', date: '2026-08-13', week: 2,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_gj_w2d5', owner: '过健', level: 'daily', period: '2026-08-14',
+    title: '周度检视+CRM更新 | 8/14周五 | 周结',
+    description: '本周检视，CRM客户跟进记录更新，周一例会准备',
+    targetAmount: 0, client: '全部', action: '检视',
+    expectedResult: '周结', risk: '',
+    status: 'pending', priority: '重要', date: '2026-08-14', week: 2,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_gj_w3', owner: '过健', level: 'weekly', period: '2026-W3',
+    title: '第3周目标：三生深度回访+NDA/BD谈判 | 8/17周一-8/21周五',
+    description: '客户深度拜访周，三生制药深度回访推动20万，NDA/BD项目谈判',
+    targetAmount: 20, client: '三生制药', action: '深度拜访/谈判',
+    expectedResult: '三生20万', risk: '谈判变数',
+    status: 'in_progress', priority: '必成', date: '2026-08-17', week: 3,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_gj_w3d1', owner: '过健', level: 'daily', period: '2026-08-17',
+    title: '三生制药深度回访 | 8/17周一 | 20万推进',
+    description: '三生制药深度回访，推动20万签约',
+    targetAmount: 20, client: '三生制药', action: '深度回访',
+    expectedResult: '20万推进', risk: '',
+    status: 'pending', priority: '必成', date: '2026-08-17', week: 3,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_gj_w3d2', owner: '过健', level: 'daily', period: '2026-08-18',
+    title: 'NDA/BD项目谈判 | 8/18周二 | 大单',
+    description: 'NDA/BD潜在大单项目谈判',
+    targetAmount: 0, client: 'NDA/BD客户', action: '谈判',
+    expectedResult: '大单进展', risk: '',
+    status: 'pending', priority: '必成', date: '2026-08-18', week: 3,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_gj_w3d3', owner: '过健', level: 'daily', period: '2026-08-19',
+    title: 'AB类1+N服务 | 8/19周三 | 2家',
+    description: 'AB类客户"1+N"服务策略推进，拜访2家',
+    targetAmount: 0, client: 'AB类客户', action: '拜访',
+    expectedResult: '拜访2家', risk: '',
+    status: 'pending', priority: '重要', date: '2026-08-19', week: 3,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_gj_w3d4', owner: '过健', level: 'daily', period: '2026-08-20',
+    title: '深度拜访 | 8/20周四 | 2家',
+    description: '客户深度拜访2家',
+    targetAmount: 0, client: 'A类客户', action: '拜访',
+    expectedResult: '拜访2家', risk: '',
+    status: 'pending', priority: '重要', date: '2026-08-20', week: 3,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_gj_w3d5', owner: '过健', level: 'daily', period: '2026-08-21',
+    title: '周度检视 | 8/21周五 | 周结',
+    description: '本周检视，商机状态更新',
+    targetAmount: 0, client: '全部', action: '检视',
+    expectedResult: '周结', risk: '',
+    status: 'pending', priority: '重要', date: '2026-08-21', week: 3,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_gj_w4', owner: '过健', level: 'weekly', period: '2026-W4',
+    title: '第4周目标：月度冲刺80万+签约 | 8/24周一-8/28周五',
+    description: '推进欧康维视10万合同，三生20万签约，伯汇10万，其他40万冲刺',
+    targetAmount: 35, client: '欧康维视、三生、伯汇', action: '冲刺/签约',
+    expectedResult: '签约35万+', risk: '签约延迟',
+    status: 'in_progress', priority: '必成', date: '2026-08-24', week: 4,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_gj_w4d1', owner: '过健', level: 'daily', period: '2026-08-24',
+    title: '推进欧康维视合同 | 8/24周一 | 10万',
+    description: '推进欧康维视10万合同签署',
+    targetAmount: 10, client: '欧康维视', action: '签约',
+    expectedResult: '签约10万', risk: '合同条款',
+    status: 'pending', priority: '必成', date: '2026-08-24', week: 4,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_gj_w4d2', owner: '过健', level: 'daily', period: '2026-08-25',
+    title: '三生20万签约 | 8/25周二 | 签约',
+    description: '三生制药20万签约落地',
+    targetAmount: 20, client: '三生制药', action: '签约',
+    expectedResult: '签约20万', risk: '客户犹豫',
+    status: 'pending', priority: '必成', date: '2026-08-25', week: 4,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_gj_w4d3', owner: '过健', level: 'daily', period: '2026-08-26',
+    title: '伯汇10万推进 | 8/26周三 | 签约',
+    description: '伯汇10万推进签约',
+    targetAmount: 10, client: '伯汇', action: '签约',
+    expectedResult: '签约10万', risk: '',
+    status: 'pending', priority: '必成', date: '2026-08-26', week: 4,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_gj_w4d4', owner: '过健', level: 'daily', period: '2026-08-27',
+    title: '其他新增冲刺 | 8/27周四 | 40万',
+    description: '其他新增40万冲刺，新客成交3家目标',
+    targetAmount: 0, client: '新客', action: '冲刺',
+    expectedResult: '新客成交', risk: '',
+    status: 'pending', priority: '重要', date: '2026-08-27', week: 4,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_gj_w4d5', owner: '过健', level: 'daily', period: '2026-08-28',
+    title: '月度数据复盘 | 8/28周五 | 80万复盘',
+    description: '80万目标完成情况复盘，商机转化率分析',
+    targetAmount: 0, client: '全部', action: '复盘',
+    expectedResult: '复盘报告', risk: '',
+    status: 'pending', priority: '重要', date: '2026-08-28', week: 4,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_gj_w5', owner: '过健', level: 'weekly', period: '2026-W5',
+    title: '第5周：月度数据复盘 | 8/31周一',
+    description: '80万目标完成情况复盘，新客成交3家达成分析',
+    targetAmount: 0, client: '', action: '复盘',
+    expectedResult: '改进项', risk: '',
+    status: 'in_progress', priority: '常规', date: '2026-08-31', week: 5,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_gj_w5d1', owner: '过健', level: 'daily', period: '2026-08-31',
+    title: '月度复盘 | 8/31周一 | 8月总结',
+    description: '80万完成复盘，商机转化率分析，输出9月改进项',
+    targetAmount: 0, client: '全部', action: '复盘',
+    expectedResult: '改进项', risk: '',
+    status: 'pending', priority: '常规', date: '2026-08-31', week: 5,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  // ============ 刘童的数据 ============
+  tasks.push({
+    id: 'task_lt_annual', owner: '刘童', level: 'annual', period: '2026',
+    title: '年度业绩目标 · 脉亿链大客+横向开拓',
+    description: '年度业绩已323万，年度达标率32%，老客不丢弃新客不放弃',
+    targetAmount: 0, client: '', action: '',
+    expectedResult: '', risk: '',
+    status: 'in_progress', priority: '核心', date: '2026', week: 0,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_lt_q3', owner: '刘童', level: 'quarterly', period: '2026-Q3',
+    title: 'Q3目标：业绩300万',
+    description: '7月已完成30万，8月100万↑冲刺',
+    targetAmount: 300, client: '', action: '',
+    expectedResult: '', risk: '',
+    status: 'in_progress', priority: '核心', date: '2026-Q3', week: 0,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_lt_aug', owner: '刘童', level: 'monthly', period: '2026-08',
+    title: '八月目标：业绩100万↑ | 回款100万 | 外出20家 | 100万线索2条',
+    description: '脉亿链50万+康联达20万+东阳光20万回款；业绩100万↑（新客30万+老客55万）',
+    targetAmount: 100, client: '', action: '',
+    expectedResult: '', risk: '',
+    status: 'in_progress', priority: '核心', date: '2026-08', week: 0,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_lt_w1', owner: '刘童', level: 'weekly', period: '2026-W1',
+    title: '第1周目标：康联达回款推进+脉亿链维护 | 8/3周一-8/7周五',
+    description: '康联达20万回款（8.15前），脉亿链交付维护+开票50万，外出5家AB50%+',
+    targetAmount: 20, client: '康联达、脉亿链', action: '回款/维护',
+    expectedResult: '回款推进+开票50万', risk: '回款延迟',
+    status: 'in_progress', priority: '必成', date: '2026-08-03', week: 1,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_lt_w1d1', owner: '刘童', level: 'daily', period: '2026-08-03',
+    title: '康联达20万回款推进 | 8/3周一 | 8.15前到账',
+    description: '康联达回款20万，持续跟进催收确保8月15日前到账',
+    targetAmount: 20, client: '康联达', action: '催收',
+    expectedResult: '回款推进', risk: '客户拖延',
+    status: 'pending', priority: '必成', date: '2026-08-03', week: 1,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_lt_w1d2', owner: '刘童', level: 'daily', period: '2026-08-04',
+    title: '脉亿链交付维护 | 8/4周二 | 稳定交付',
+    description: '持续稳定交付翻译件给脉亿链，展会送水维护对接人',
+    targetAmount: 0, client: '脉亿链', action: '交付/维护',
+    expectedResult: '交付稳定', risk: '',
+    status: 'pending', priority: '必成', date: '2026-08-04', week: 1,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_lt_w1d3', owner: '刘童', level: 'daily', period: '2026-08-05',
+    title: '脉亿链开票50万 | 8/5周三 | 开票',
+    description: '脉亿链马上开票50万推进',
+    targetAmount: 50, client: '脉亿链', action: '开票',
+    expectedResult: '开票50万', risk: '流程延迟',
+    status: 'pending', priority: '必成', date: '2026-08-05', week: 1,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_lt_w1d4', owner: '刘童', level: 'daily', period: '2026-08-06',
+    title: '外出拜访+AB客户 | 8/6周四 | 2家AB',
+    description: '外出拜访，2+个AB客户，B类新增人1个',
+    targetAmount: 0, client: 'AB类客户', action: '拜访',
+    expectedResult: '2AB+1新增人', risk: '',
+    status: 'pending', priority: '重要', date: '2026-08-06', week: 1,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_lt_w1d5', owner: '刘童', level: 'daily', period: '2026-08-07',
+    title: '医疗+专利开发 | 8/7周五 | 加大开发',
+    description: '加大医疗客户开发，继续加大专利翻译开发',
+    targetAmount: 0, client: '医疗/专利客户', action: '开发',
+    expectedResult: '线索≥3条', risk: '',
+    status: 'pending', priority: '重要', date: '2026-08-07', week: 1,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_lt_w2', owner: '刘童', level: 'weekly', period: '2026-W2',
+    title: '第2周目标：康联达20万到账+业绩签约 | 8/10周一-8/14周五',
+    description: '康联达20万8.15前到账，康联达10万+甘李5万+BLA5万业绩签约，外出5家',
+    targetAmount: 20, client: '康联达、甘李', action: '回款/签约',
+    expectedResult: '回款20万+签约20万', risk: '到账延迟',
+    status: 'in_progress', priority: '必成', date: '2026-08-10', week: 2,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_lt_w2d1', owner: '刘童', level: 'daily', period: '2026-08-10',
+    title: '康联达到账跟进 | 8/10周一 | 20万',
+    description: '确保康联达20万8月15日前到账，跟进到账状态',
+    targetAmount: 20, client: '康联达', action: '催收',
+    expectedResult: '到账确认', risk: '到账延迟',
+    status: 'pending', priority: '必成', date: '2026-08-10', week: 2,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_lt_w2d2', owner: '刘童', level: 'daily', period: '2026-08-11',
+    title: '康联达10万签约 | 8/11周二 | 业绩',
+    description: '康联达10万业绩签约推进',
+    targetAmount: 10, client: '康联达', action: '签约',
+    expectedResult: '签约10万', risk: '',
+    status: 'pending', priority: '必成', date: '2026-08-11', week: 2,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_lt_w2d3', owner: '刘童', level: 'daily', period: '2026-08-12',
+    title: '甘李5万+BLA5万 | 8/12周三 | 业绩',
+    description: '甘李5万业绩推进，BLA 5万业绩推进',
+    targetAmount: 10, client: '甘李、BLA', action: '签约',
+    expectedResult: '签约10万', risk: '',
+    status: 'pending', priority: '必成', date: '2026-08-12', week: 2,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_lt_w2d4', owner: '刘童', level: 'daily', period: '2026-08-13',
+    title: '大客户横向开拓 | 8/13周四 | 辉瑞发力',
+    description: '已合作大客户横向开拓（辉瑞为主），部门横向拓展',
+    targetAmount: 0, client: '辉瑞等大客户', action: '横向开拓',
+    expectedResult: '线索≥2条', risk: '',
+    status: 'pending', priority: '重要', date: '2026-08-13', week: 2,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_lt_w2d5', owner: '刘童', level: 'daily', period: '2026-08-14',
+    title: '外出5家+AB客户 | 8/14周五 | 5家+2AB',
+    description: '外出5家拜访，2+个AB客户，跟进50个/周',
+    targetAmount: 0, client: 'AB类客户', action: '拜访',
+    expectedResult: '5家+2AB', risk: '',
+    status: 'pending', priority: '重要', date: '2026-08-14', week: 2,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_lt_w3', owner: '刘童', level: 'weekly', period: '2026-W3',
+    title: '第3周目标：脉亿链20万+北京新客10万+百万线索2条 | 8/17周一-8/21周五',
+    description: '脉亿链20万+北京新客10万+广州2万签约，100万线索2条突破',
+    targetAmount: 32, client: '脉亿链、北京新客', action: '签约/线索',
+    expectedResult: '签约32万+2条百万线索', risk: '签约延迟',
+    status: 'in_progress', priority: '必成', date: '2026-08-17', week: 3,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_lt_w3d1', owner: '刘童', level: 'daily', period: '2026-08-17',
+    title: '脉亿链20万签约 | 8/17周一 | 业绩',
+    description: '脉亿链20万业绩签约',
+    targetAmount: 20, client: '脉亿链', action: '签约',
+    expectedResult: '签约20万', risk: '',
+    status: 'pending', priority: '必成', date: '2026-08-17', week: 3,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_lt_w3d2', owner: '刘童', level: 'daily', period: '2026-08-18',
+    title: '北京新客10万签约 | 8/18周二 | 350万字',
+    description: '北京新客户10万签约（350万字项目）',
+    targetAmount: 10, client: '北京新客', action: '签约',
+    expectedResult: '签约10万', risk: '合同条款',
+    status: 'pending', priority: '必成', date: '2026-08-18', week: 3,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_lt_w3d3', owner: '刘童', level: 'daily', period: '2026-08-19',
+    title: '广州新客2万+百万线索 | 8/19周三 | 签约+线索',
+    description: '广州新客户2万签约，100万线索突破',
+    targetAmount: 2, client: '广州新客', action: '签约/线索',
+    expectedResult: '签约2万+线索1条', risk: '',
+    status: 'pending', priority: '必成', date: '2026-08-19', week: 3,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_lt_w3d4', owner: '刘童', level: 'daily', period: '2026-08-20',
+    title: '百万线索突破 | 8/20周四 | 强生/礼来/GSK',
+    description: '强生、礼来、GSK、默沙东、阿斯利康重点触达，100万线索2条',
+    targetAmount: 0, client: '强生、礼来、GSK等', action: '线索开发',
+    expectedResult: '线索1条', risk: '',
+    status: 'pending', priority: '必成', date: '2026-08-20', week: 3,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_lt_w3d5', owner: '刘童', level: 'daily', period: '2026-08-21',
+    title: '甘李满盘复活+外出 | 8/21周五 | 5家+2AB',
+    description: '甘李100人左右满盘复活策略，外出5家AB50%+',
+    targetAmount: 0, client: '甘李、AB类', action: '拜访/复活',
+    expectedResult: '5家+2AB', risk: '',
+    status: 'pending', priority: '重要', date: '2026-08-21', week: 3,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_lt_w4', owner: '刘童', level: 'weekly', period: '2026-W4',
+    title: '第4周目标：脉亿链50万+东阳光20万到账+业绩冲刺 | 8/24周一-8/28周五',
+    description: '脉亿链50万+东阳光20万8.31前到账，百联达1万+剩余业绩冲刺100万↑',
+    targetAmount: 28, client: '脉亿链、东阳光', action: '回款/冲刺',
+    expectedResult: '回款70万+业绩100万↑', risk: '到账延迟',
+    status: 'in_progress', priority: '必成', date: '2026-08-24', week: 4,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_lt_w4d1', owner: '刘童', level: 'daily', period: '2026-08-24',
+    title: '脉亿链50万到账推进 | 8/24周一 | 8.31前',
+    description: '脉亿链50万回款8月31日前到账推进',
+    targetAmount: 50, client: '脉亿链', action: '催收',
+    expectedResult: '到账推进', risk: '到账延迟',
+    status: 'pending', priority: '必成', date: '2026-08-24', week: 4,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_lt_w4d2', owner: '刘童', level: 'daily', period: '2026-08-25',
+    title: '东阳光20万到账推进 | 8/25周二 | 8.31前',
+    description: '东阳光20万回款8月31日前到账推进',
+    targetAmount: 20, client: '东阳光', action: '催收',
+    expectedResult: '到账推进', risk: '到账延迟',
+    status: 'pending', priority: '必成', date: '2026-08-25', week: 4,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_lt_w4d3', owner: '刘童', level: 'daily', period: '2026-08-26',
+    title: '百联达1万签约 | 8/26周三 | 业绩',
+    description: '百联达1万签约，剩余业绩缺口冲刺',
+    targetAmount: 1, client: '百联达', action: '签约',
+    expectedResult: '签约1万', risk: '',
+    status: 'pending', priority: '必成', date: '2026-08-26', week: 4,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_lt_w4d4', owner: '刘童', level: 'daily', period: '2026-08-27',
+    title: '新客30万冲刺 | 8/27周四 | 不放弃新客',
+    description: '新客户30万业绩冲刺，不放弃任何一个新客户',
+    targetAmount: 0, client: '新客', action: '冲刺',
+    expectedResult: '新客30万', risk: '',
+    status: 'pending', priority: '重要', date: '2026-08-27', week: 4,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_lt_w4d5', owner: '刘童', level: 'daily', period: '2026-08-28',
+    title: '业绩100万↑冲刺 | 8/28周五 | 总冲刺',
+    description: '剩余业绩缺口冲刺，确保100万↑达成',
+    targetAmount: 0, client: '全部', action: '冲刺',
+    expectedResult: '100万↑', risk: '',
+    status: 'pending', priority: '必成', date: '2026-08-28', week: 4,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_lt_w5', owner: '刘童', level: 'weekly', period: '2026-W5',
+    title: '第5周：回款到账确认+月度复盘 | 8/31周一',
+    description: '脉亿链50万+东阳光20万到账最终确认，月度复盘',
+    targetAmount: 0, client: '', action: '确认/复盘',
+    expectedResult: '回款确认', risk: '',
+    status: 'in_progress', priority: '常规', date: '2026-08-31', week: 5,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_lt_w5d1', owner: '刘童', level: 'daily', period: '2026-08-31',
+    title: '回款到账确认+月度复盘 | 8/31周一 | 8月总结',
+    description: '脉亿链50万+东阳光20万到账确认，100万业绩复盘',
+    targetAmount: 0, client: '全部', action: '确认/复盘',
+    expectedResult: '改进项', risk: '',
+    status: 'pending', priority: '常规', date: '2026-08-31', week: 5,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
   });
 
   // ============ 陆华的数据 ============
   tasks.push({
     id: 'task_lh_annual', owner: '陆华', level: 'annual', period: '2026',
-    title: '年度业绩目标642万（上半年完成202万，完成率31%）',
-    description: '9家新增客户，1个B类以上客户，老客户复购160万',
-    targetAmount: 642, client: '', action: '', expectedResult: '', risk: '',
+    title: '年度业绩目标 · 四大客户定点突破',
+    description: '年度完成率21.8%，四大客户惠升/正大天晴/济煜/信达定点突破',
+    targetAmount: 0, client: '', action: '',
+    expectedResult: '', risk: '',
     status: 'in_progress', priority: '核心', date: '2026', week: 0,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
   });
+
   tasks.push({
     id: 'task_lh_q3', owner: '陆华', level: 'quarterly', period: '2026-Q3',
-    title: 'Q3目标：543万（月均107万）',
-    description: '深耕客群、主动破局',
-    targetAmount: 543, client: '', action: '', expectedResult: '', risk: '',
+    title: 'Q3目标：业绩250万',
+    description: '7月已完成32.8万，8月冲刺108万',
+    targetAmount: 250, client: '', action: '',
+    expectedResult: '', risk: '',
     status: 'in_progress', priority: '核心', date: '2026-Q3', week: 0,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lh_jul', owner: '陆华', level: 'monthly', period: '2026-07',
-    title: '七月目标：107万 | 深耕客群主动破局',
-    description: '已报价10万+老客户复购70万+新客户首单10万+大客户突破10万+展会线索10万',
-    targetAmount: 107, client: '', action: '', expectedResult: '', risk: '',
-    status: 'in_progress', priority: '核心', date: '2026-07', week: 0,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
   });
 
-  // 陆华 - 第1周
+  tasks.push({
+    id: 'task_lh_aug', owner: '陆华', level: 'monthly', period: '2026-08',
+    title: '八月目标：业绩108万 | 回款50万 | 外出20家 | 出差1次',
+    description: '四大客户定点突破+真因追赶+机制修补（丢单真因分析/回款专项/关键人地图）',
+    targetAmount: 108, client: '', action: '',
+    expectedResult: '', risk: '',
+    status: 'in_progress', priority: '核心', date: '2026-08', week: 0,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
   tasks.push({
     id: 'task_lh_w1', owner: '陆华', level: 'weekly', period: '2026-W1',
-    title: '第1周目标：20万 | 7/1周三-7/3周五 | 正大、荃信',
-    description: '报价/见面/复购/关键人突破。补位：新客户',
-    targetAmount: 20, client: '正大、荃信', action: '报价/见面/复购',
-    expectedResult: '成交/报价', risk: '补位新客户',
-    status: 'in_progress', priority: '核心', date: '2026-07-01', week: 1,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lh_w1d1', owner: '陆华', level: 'daily', period: '2026-07-01',
-    title: '正大报价推进 | 7/1周三 | 目标10万',
-    description: '正大天晴报价跟进，沟通10人',
-    targetAmount: 10, client: '正大天晴', action: '报价推进+沟通',
-    expectedResult: '报价确认', risk: '关键人未接触', status: 'pending',
-    priority: '核心', date: '2026-07-01', week: 1,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lh_w1d2', owner: '陆华', level: 'daily', period: '2026-07-02',
-    title: '荃信复购推进 | 7/2周四 | 目标10万',
-    description: '荃信生物老客户复购推进，新增2个联系人',
-    targetAmount: 10, client: '荃信生物', action: '复购推进+拓新',
-    expectedResult: '复购确认', risk: '需求变化', status: 'pending',
-    priority: '核心', date: '2026-07-02', week: 1,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lh_w1d3', owner: '陆华', level: 'daily', period: '2026-07-03',
-    title: '新增联系人+报价线索 | 7/3周五 | 目标2万',
-    description: '每日新增2人，找2万线索',
-    targetAmount: 2, client: '多客户', action: '拓新+线索',
-    expectedResult: '2个新联系人+2万线索', risk: '新增人不足',
-    status: 'pending', priority: '核心', date: '2026-07-03', week: 1,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
+    title: '第1周目标：正大/顺欣/康龙/再明拜访+商机50万 | 8/3周一-8/7周五',
+    description: '正大天晴关键人对接，康龙再明需求挖掘，电话60通+新增人8+商机50万',
+    targetAmount: 10, client: '正大天晴、正大顺欣、康龙、再明', action: '拜访/商机',
+    expectedResult: '商机50万', risk: '大单不确定',
+    status: 'in_progress', priority: '必成', date: '2026-08-03', week: 1,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
   });
 
-  // 陆华 - 第2周
+  tasks.push({
+    id: 'task_lh_w1d1', owner: '陆华', level: 'daily', period: '2026-08-03',
+    title: '正大天晴关键人对接 | 8/3周一 | 锁定采购节点',
+    description: '正大天晴关键人对接，锁定采购节点',
+    targetAmount: 0, client: '正大天晴', action: '拜访/关键人',
+    expectedResult: '采购节点锁定', risk: '关键人卡点',
+    status: 'pending', priority: '必成', date: '2026-08-03', week: 1,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_lh_w1d2', owner: '陆华', level: 'daily', period: '2026-08-04',
+    title: '正大顺欣签约后维护 | 8/4周二 | 维护',
+    description: '正大顺欣跟进签约后维护',
+    targetAmount: 0, client: '正大顺欣', action: '维护',
+    expectedResult: '维护完成', risk: '',
+    status: 'pending', priority: '必成', date: '2026-08-04', week: 1,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_lh_w1d3', owner: '陆华', level: 'daily', period: '2026-08-05',
+    title: '康龙+再明需求挖掘 | 8/5周三 | 2家',
+    description: '康龙、再明需求挖掘，新客首触',
+    targetAmount: 0, client: '康龙、再明', action: '拜访/挖掘',
+    expectedResult: '需求确认', risk: '',
+    status: 'pending', priority: '必成', date: '2026-08-05', week: 1,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_lh_w1d4', owner: '陆华', level: 'daily', period: '2026-08-06',
+    title: '真因追赶清单 | 8/6周四 | 年度完成率不合格客户',
+    description: '筛出年度完成率不合格客户，形成真因分析清单',
+    targetAmount: 0, client: '不合格客户', action: '真因分析',
+    expectedResult: '清单输出', risk: '',
+    status: 'pending', priority: '重要', date: '2026-08-06', week: 1,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_lh_w1d5', owner: '陆华', level: 'daily', period: '2026-08-07',
+    title: '电话60通+新增人8 | 8/7周五 | 过程指标',
+    description: '电话60通/周，新增人8个/周，商机50万推进',
+    targetAmount: 0, client: '全部', action: '电话/商机',
+    expectedResult: '60通+8新增人', risk: '',
+    status: 'pending', priority: '重要', date: '2026-08-07', week: 1,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
   tasks.push({
     id: 'task_lh_w2', owner: '陆华', level: 'weekly', period: '2026-W2',
-    title: '第2周目标：30万 | 7/6周一-7/10周五 | 连云港正大、新客户',
-    description: '报价/见面/复购/关键人。补位：南京正大',
-    targetAmount: 30, client: '连云港正大、新客户', action: '报价/见面/关键人',
-    expectedResult: '成交/报价', risk: '补位南京正大',
-    status: 'pending', priority: '核心', date: '2026-07-06', week: 2,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lh_w2d1', owner: '陆华', level: 'daily', period: '2026-07-06',
-    title: '正大天晴报价收尾 | 7/6周一 | 目标5万',
-    description: '正大天晴报价本周收尾确认',
-    targetAmount: 5, client: '正大天晴', action: '报价收尾',
-    expectedResult: '报价确认', risk: '决策延迟', status: 'pending',
-    priority: '核心', date: '2026-07-06', week: 2,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lh_w2d2', owner: '陆华', level: 'daily', period: '2026-07-07',
-    title: '连云港正大见面拜访 | 7/7周二 | 目标15万',
-    description: '连云港正大天晴见面推进关键人',
-    targetAmount: 15, client: '连云港正大', action: '见面拜访',
-    expectedResult: '约访成功', risk: '关键人不在', status: 'pending',
-    priority: '核心', date: '2026-07-07', week: 2,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lh_w2d3', owner: '陆华', level: 'daily', period: '2026-07-08',
-    title: '新客户开发 | 7/8周三 | 目标10万',
-    description: '开发5家潜力新客户，新增联系人推进',
-    targetAmount: 10, client: '新客户', action: '新客户开发',
-    expectedResult: '首单成交', risk: '开发不足', status: 'pending',
-    priority: '冲刺', date: '2026-07-08', week: 2,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lh_w2d4', owner: '陆华', level: 'daily', period: '2026-07-09',
-    title: '荃信复购深度推进 | 7/9周四 | 目标5万',
-    description: '荃信生物老客户复购深度推进，新增联系人',
-    targetAmount: 5, client: '荃信生物', action: '复购推进+拓新',
-    expectedResult: '复购确认', risk: '需求变化', status: 'pending',
-    priority: '冲刺', date: '2026-07-09', week: 2,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lh_w2d5', owner: '陆华', level: 'daily', period: '2026-07-10',
-    title: '南京正大补位+新线索 | 7/10周五 | 目标5万',
-    description: '南京正大补位推进，新增联系人+报价线索',
-    targetAmount: 5, client: '南京正大', action: '补位+线索',
-    expectedResult: '报价线索', risk: '新增不足', status: 'pending',
-    priority: '补位', date: '2026-07-10', week: 2,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
+    title: '第2周目标：惠升/济煜/金赛突破+商机100万 | 8/10周一-8/14周五',
+    description: '惠升订单放量，济煜需求深挖，金赛关键人对接，商机100万（最高周）',
+    targetAmount: 30, client: '惠升、济煜、金赛', action: '拜访/突破',
+    expectedResult: '商机100万', risk: '大单不确定',
+    status: 'in_progress', priority: '必成', date: '2026-08-10', week: 2,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
   });
 
-  // 陆华 - 第3周
+  tasks.push({
+    id: 'task_lh_w2d1', owner: '陆华', level: 'daily', period: '2026-08-10',
+    title: '惠升订单放量 | 8/10周一 | 高频接触',
+    description: '惠升高频接触，推动规模合作转订单',
+    targetAmount: 15, client: '惠升', action: '拜访/推动',
+    expectedResult: '订单推进', risk: '转化慢',
+    status: 'pending', priority: '必成', date: '2026-08-10', week: 2,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_lh_w2d2', owner: '陆华', level: 'daily', period: '2026-08-11',
+    title: '济煜需求深挖 | 8/11周二 | 扩大合作面',
+    description: '济煜挖掘增量需求，扩大合作面',
+    targetAmount: 0, client: '济煜', action: '拜访/挖掘',
+    expectedResult: '需求确认', risk: '',
+    status: 'pending', priority: '必成', date: '2026-08-11', week: 2,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_lh_w2d3', owner: '陆华', level: 'daily', period: '2026-08-12',
+    title: '金赛关键人对接 | 8/12周三 | 关键人',
+    description: '金赛关键人对接，新客开发',
+    targetAmount: 0, client: '金赛', action: '拜访/关键人',
+    expectedResult: '关键人对接', risk: '',
+    status: 'pending', priority: '必成', date: '2026-08-12', week: 2,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_lh_w2d4', owner: '陆华', level: 'daily', period: '2026-08-13',
+    title: '回款专项：清理25年未到款 | 8/13周四 | 催收',
+    description: '清理25年未到款项，加速80万未开票开票',
+    targetAmount: 0, client: '信达等', action: '催收/开票',
+    expectedResult: '回款推进', risk: '',
+    status: 'pending', priority: '重要', date: '2026-08-13', week: 2,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_lh_w2d5', owner: '陆华', level: 'daily', period: '2026-08-14',
+    title: '商机100万推进+周检视 | 8/14周五 | 检视',
+    description: '商机100万推进，电话60通+新增人8，周度检视',
+    targetAmount: 0, client: '全部', action: '商机/检视',
+    expectedResult: '100万推进', risk: '',
+    status: 'pending', priority: '重要', date: '2026-08-14', week: 2,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
   tasks.push({
     id: 'task_lh_w3', owner: '陆华', level: 'weekly', period: '2026-W3',
-    title: '第3周目标：20万 | 7/13周一-7/17周五 | 金赛、映恩、B类线上视频',
-    description: '见面/关键人突破。补位：先为达、合源',
-    targetAmount: 20, client: '金赛、映恩', action: '见面/关键人',
-    expectedResult: '成交/报价', risk: '补位先为达/合源',
-    status: 'pending', priority: '冲刺', date: '2026-07-13', week: 3,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lh_w3d1', owner: '陆华', level: 'daily', period: '2026-07-13',
-    title: '本周重点梳理+B类线上推进 | 7/13周一 | 目标5万',
-    description: '梳理本周关键人突破重点，启动B类客户线上沟通',
-    targetAmount: 5, client: 'B类客户', action: '线上推进',
-    expectedResult: '沟通确认', risk: '响应低', status: 'pending',
-    priority: '冲刺', date: '2026-07-13', week: 3,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lh_w3d2', owner: '陆华', level: 'daily', period: '2026-07-14',
-    title: '金赛关键人突破 | 7/14周二 | 目标10万',
-    description: '金赛药业见面推进关键人关系',
-    targetAmount: 10, client: '金赛', action: '关键人突破',
-    expectedResult: '约访成功', risk: '关键人未约', status: 'pending',
-    priority: '冲刺', date: '2026-07-14', week: 3,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lh_w3d3', owner: '陆华', level: 'daily', period: '2026-07-15',
-    title: '映恩新客户报价 | 7/15周三 | 目标5万',
-    description: '映恩生物新客户开发，初次报价推进',
-    targetAmount: 5, client: '映恩', action: '报价推进',
-    expectedResult: '报价发出', risk: '需求不明', status: 'pending',
-    priority: '冲刺', date: '2026-07-15', week: 3,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lh_w3d4', owner: '陆华', level: 'daily', period: '2026-07-16',
-    title: '先为达+合源补位推进 | 7/16周四 | 目标5万',
-    description: '先为达、合源补位客户推进报价',
-    targetAmount: 5, client: '先为达、合源', action: '补位推进',
-    expectedResult: '报价完成', risk: '客户不配合', status: 'pending',
-    priority: '补位', date: '2026-07-16', week: 3,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lh_w3d5', owner: '陆华', level: 'daily', period: '2026-07-17',
-    title: '成交复盘+下周计划 | 7/17周五 | 拓新2个联系人',
-    description: '复盘本周推进成果，制定下周关键人策略',
-    targetAmount: 0, client: '多客户', action: '复盘+计划',
-    expectedResult: '下周明确', risk: '进展不足', status: 'pending',
-    priority: '核心', date: '2026-07-17', week: 3,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
+    title: '第3周目标：现代/再明/正大/信达+关键人地图 | 8/17周一-8/21周五',
+    description: '现代制药需求推进，正大天晴大单推进，信达关系深化，大客户关键人地图补足',
+    targetAmount: 30, client: '现代、正大天晴、信达', action: '拜访/深化',
+    expectedResult: '商机50万+地图', risk: '大单不确定',
+    status: 'in_progress', priority: '必成', date: '2026-08-17', week: 3,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
   });
 
-  // 陆华 - 第4周
+  tasks.push({
+    id: 'task_lh_w3d1', owner: '陆华', level: 'daily', period: '2026-08-17',
+    title: '现代制药需求推进 | 8/17周一 | 拜访',
+    description: '现代制药需求推进',
+    targetAmount: 0, client: '现代制药', action: '拜访',
+    expectedResult: '需求推进', risk: '',
+    status: 'pending', priority: '必成', date: '2026-08-17', week: 3,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_lh_w3d2', owner: '陆华', level: 'daily', period: '2026-08-18',
+    title: '再明医药深度跟进 | 8/18周二 | 拜访',
+    description: '再明医药深度跟进',
+    targetAmount: 0, client: '再明医药', action: '拜访',
+    expectedResult: '跟进完成', risk: '',
+    status: 'pending', priority: '必成', date: '2026-08-18', week: 3,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_lh_w3d3', owner: '陆华', level: 'daily', period: '2026-08-19',
+    title: '正大天晴大单推进 | 8/19周三 | 大单',
+    description: '正大天晴大单推进，关键人对接',
+    targetAmount: 15, client: '正大天晴', action: '大单推进',
+    expectedResult: '大单进展', risk: '谈判变数',
+    status: 'pending', priority: '必成', date: '2026-08-19', week: 3,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_lh_w3d4', owner: '陆华', level: 'daily', period: '2026-08-20',
+    title: '信达关系深化 | 8/20周四 | 高层协同',
+    description: '信达生物关系深化，延续高层协同推进订单',
+    targetAmount: 0, client: '信达', action: '深化/协同',
+    expectedResult: '订单推进', risk: '',
+    status: 'pending', priority: '必成', date: '2026-08-20', week: 3,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_lh_w3d5', owner: '陆华', level: 'daily', period: '2026-08-21',
+    title: '沉默客户预警+关键人地图 | 8/21周五 | 机制运行',
+    description: '沉默客户预警机制运行，大客户关键人地图补足',
+    targetAmount: 0, client: '全部', action: '预警/地图',
+    expectedResult: '地图补足', risk: '',
+    status: 'pending', priority: '重要', date: '2026-08-21', week: 3,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
   tasks.push({
     id: 'task_lh_w4', owner: '陆华', level: 'weekly', period: '2026-W4',
-    title: '第4周目标：37万 | 7/20周一-7/24周五 | 上海A/B客户',
-    description: '报价/见面/复购/关键人。补位：惠升',
-    targetAmount: 37, client: '上海AB客户', action: '报价/见面/复购',
-    expectedResult: '成交/报价/约访', risk: '补位惠升',
-    status: 'pending', priority: '核心', date: '2026-07-20', week: 4,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lh_w4d1', owner: '陆华', level: 'daily', period: '2026-07-20',
-    title: '上海AB客户联系启动 | 7/20周一 | 目标10万',
-    description: '启动上海区域A/B类客户联系推进',
-    targetAmount: 10, client: '上海AB客户', action: '联系启动',
-    expectedResult: '线索确认', risk: '客户不在沪', status: 'pending',
-    priority: '核心', date: '2026-07-20', week: 4,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lh_w4d2', owner: '陆华', level: 'daily', period: '2026-07-21',
-    title: '上海AB客户集中拜访 | 7/21周二 | 目标20万',
-    description: '上海区域A/B类客户集中见面推进',
-    targetAmount: 20, client: '上海AB客户', action: '集中拜访',
-    expectedResult: '多家约访成功', risk: '客户不在沪', status: 'pending',
-    priority: '核心', date: '2026-07-21', week: 4,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lh_w4d3', owner: '陆华', level: 'daily', period: '2026-07-22',
-    title: '金赛+映恩报价跟进 | 7/22周三 | 目标5万',
-    description: '金赛、映恩报价后续跟进，推动成交',
-    targetAmount: 5, client: '金赛、映恩', action: '报价跟进',
-    expectedResult: '报价确认', risk: '决策延迟', status: 'pending',
-    priority: '冲刺', date: '2026-07-22', week: 4,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lh_w4d4', owner: '陆华', level: 'daily', period: '2026-07-23',
-    title: '连港正大复购推进 | 7/23周四 | 目标5万',
-    description: '连云港正大复购深度推进，确认订单',
-    targetAmount: 5, client: '连云港正大', action: '复购推进',
-    expectedResult: '订单确认', risk: '客户犹豫', status: 'pending',
-    priority: '冲刺', date: '2026-07-23', week: 4,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lh_w4d5', owner: '陆华', level: 'daily', period: '2026-07-24',
-    title: '惠升补位+月度收尾 | 7/24周五 | 目标5万',
-    description: '惠升补位推进，月度收尾复盘',
-    targetAmount: 5, client: '惠升', action: '补位+收尾',
-    expectedResult: '月目标达成', risk: '缺口未补', status: 'pending',
-    priority: '补位', date: '2026-07-24', week: 4,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
+    title: '第4周目标：出远差+签约冲刺108万+回款50万 | 8/24周一-8/28周五',
+    description: '出远差拜访远程客户，四大客户签约冲刺，158万在途资金盘活，回款50万核销',
+    targetAmount: 38, client: '惠升、正大天晴、济煜、信达', action: '出差/签约/回款',
+    expectedResult: '签约冲刺+回款50万', risk: '签约延迟',
+    status: 'in_progress', priority: '必成', date: '2026-08-24', week: 4,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
   });
 
-  // 陆华 - 第5周 (月度收尾+8月铺垫)
+  tasks.push({
+    id: 'task_lh_w4d1', owner: '陆华', level: 'daily', period: '2026-08-24',
+    title: '出远差：远程客户拜访 | 8/24周一 | 出差',
+    description: '出远差拜访远程客户，电话60通+新增人8',
+    targetAmount: 0, client: '远程客户', action: '出差/拜访',
+    expectedResult: '拜访3家', risk: '',
+    status: 'pending', priority: '必成', date: '2026-08-24', week: 4,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_lh_w4d2', owner: '陆华', level: 'daily', period: '2026-08-25',
+    title: '四大客户签约冲刺 | 8/25周二 | 签约',
+    description: '惠升/正大天晴/济煜/信达四大客户大单落地冲刺',
+    targetAmount: 20, client: '四大客户', action: '签约',
+    expectedResult: '签约20万', risk: '签约变数',
+    status: 'pending', priority: '必成', date: '2026-08-25', week: 4,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_lh_w4d3', owner: '陆华', level: 'daily', period: '2026-08-26',
+    title: '158万在途资金盘活 | 8/26周三 | 催收',
+    description: '158万在途资金盘活（未开票80万+未到账78万）',
+    targetAmount: 0, client: '全部', action: '催收',
+    expectedResult: '在途盘活', risk: '',
+    status: 'pending', priority: '必成', date: '2026-08-26', week: 4,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_lh_w4d4', owner: '陆华', level: 'daily', period: '2026-08-27',
+    title: '签约冲刺+商机50万 | 8/27周四 | 签约',
+    description: '签约冲刺，商机50万推进',
+    targetAmount: 18, client: '全部', action: '签约/商机',
+    expectedResult: '签约18万', risk: '',
+    status: 'pending', priority: '重要', date: '2026-08-27', week: 4,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
+  tasks.push({
+    id: 'task_lh_w4d5', owner: '陆华', level: 'daily', period: '2026-08-28',
+    title: '回款50万核销 | 8/28周五 | 核销',
+    description: '回款50万目标核销，25年未到款清理进展确认',
+    targetAmount: 0, client: '全部', action: '核销',
+    expectedResult: '回款50万', risk: '',
+    status: 'pending', priority: '必成', date: '2026-08-28', week: 4,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
+  });
+
   tasks.push({
     id: 'task_lh_w5', owner: '陆华', level: 'weekly', period: '2026-W5',
-    title: '第5周：月度收尾+8月铺垫 | 7/27周一-7/31周五',
-    description: '缺口补位、合同收尾、8月客户池铺垫',
-    targetAmount: 5, client: '补位客户+新线索', action: '收尾+铺垫',
-    expectedResult: '月度目标达成', risk: '缺口未补',
-    status: 'pending', priority: '核心', date: '2026-07-27', week: 5,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lh_w5d1', owner: '陆华', level: 'daily', period: '2026-07-27',
-    title: '月度复盘+缺口梳理 | 7/27周一',
-    description: '复盘7月目标缺口，梳理补位方向',
-    targetAmount: 1, client: '多客户', action: '复盘+梳理',
-    expectedResult: '缺口明确', risk: '缺口过大',
-    status: 'pending', priority: '核心', date: '2026-07-27', week: 5,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lh_w5d2', owner: '陆华', level: 'daily', period: '2026-07-28',
-    title: '合同收尾+回款确认 | 7/28周二',
-    description: '本月所有合同收尾，确认回款进度',
-    targetAmount: 2, client: '多客户', action: '合同收尾',
-    expectedResult: '回款确认', risk: '回款延迟',
-    status: 'pending', priority: '核心', date: '2026-07-28', week: 5,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lh_w5d3', owner: '陆华', level: 'daily', period: '2026-07-29',
-    title: '上海AB客户补位突击 | 7/29周三',
-    description: '上海AB客户补位突击跟进，争取补单',
-    targetAmount: 2, client: '上海AB客户', action: '突击跟进',
-    expectedResult: '补单确认', risk: '客户不配合',
-    status: 'pending', priority: '冲刺', date: '2026-07-29', week: 5,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lh_w5d4', owner: '陆华', level: 'daily', period: '2026-07-30',
-    title: '8月客户池梳理+拜访预约 | 7/30周四',
-    description: '整理8月目标客户清单，预约下月拜访',
-    targetAmount: 0, client: '多客户', action: '客户池+预约',
-    expectedResult: '8月计划明确', risk: '预约困难',
-    status: 'pending', priority: '核心', date: '2026-07-30', week: 5,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
-  });
-  tasks.push({
-    id: 'task_lh_w5d5', owner: '陆华', level: 'daily', period: '2026-07-31',
-    title: '月度总结+8月kickoff准备 | 7/31周五',
-    description: '完整复盘7月，准备8月目标分解与启动',
-    targetAmount: 0, client: '综合', action: '总结+准备',
-    expectedResult: '8月计划落地', risk: '准备不足',
-    status: 'pending', priority: '核心', date: '2026-07-31', week: 5,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
+    title: '第5周：月度复盘+完成率校准 | 8/31周一',
+    description: '月底对账，完成率纳入9月计划校准',
+    targetAmount: 0, client: '', action: '复盘',
+    expectedResult: '改进项', risk: '',
+    status: 'in_progress', priority: '常规', date: '2026-08-31', week: 5,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
   });
 
-  // 陆华 - 核心客户池
   tasks.push({
-    id: 'task_lh_client_zd', owner: '陆华', level: 'weekly', period: '2026-07',
-    title: '正大天晴 | B类核心 | 20万',
-    description: '老客户大项目推进，关键人突破',
-    targetAmount: 20, client: '正大天晴', action: '报价/见面/关键人',
-    expectedResult: '成交', risk: '关键人卡点', status: 'in_progress',
-    priority: '必成', date: '2026-07-01', week: 1,
-    createdAt: '2026-07-01T00:00:00Z', updatedAt: '2026-07-01T00:00:00Z'
+    id: 'task_lh_w5d1', owner: '陆华', level: 'daily', period: '2026-08-31',
+    title: '月度复盘 | 8/31周一 | 8月总结',
+    description: '108万/50万复盘，沉淀打法，输出9月改进项',
+    targetAmount: 0, client: '全部', action: '复盘',
+    expectedResult: '改进项', risk: '',
+    status: 'pending', priority: '常规', date: '2026-08-31', week: 5,
+    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
   });
 
   return {
     users: USERS,
     tasks,
     meta: {
-      version: '1.0',
+      version: '2.0',
       lastUpdated: new Date().toISOString(),
-      julyCalendar: july2026,
+      augustCalendar: august2026,
     }
   };
 }
