@@ -32,24 +32,13 @@ function generateAugustSeedData() {
   // ============ 杨景妮的数据 ============
   tasks.push({
     id: 'task_nj_annual', owner: '杨景妮', level: 'annual', period: '2026',
-    title: '年度业绩目标968万（上半年完成128万，完成率13%）',
-    description: '上半年业绩严重滞后，9家新增客户，1家AB类客户',
+    title: '年度目标968万 | Q3目标420万',
+    description: '上半年业绩严重滞后，9家新增客户，1家AB类客户。Q3目标420万：首战必胜，7月100万起步，8月冲刺108万',
     targetAmount: 968, client: '', action: '',
     expectedResult: '', risk: '',
     status: 'in_progress', priority: '核心', date: '2026', week: 0,
     createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
   });
-
-  tasks.push({
-    id: 'task_nj_q3', owner: '杨景妮', level: 'quarterly', period: '2026-Q3',
-    title: 'Q3目标：420万（月均140万）',
-    description: '首战必胜，7月100万起步，8月冲刺108万',
-    targetAmount: 420, client: '', action: '',
-    expectedResult: '', risk: '',
-    status: 'in_progress', priority: '核心', date: '2026-Q3', week: 0,
-    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
-  });
-
   tasks.push({
     id: 'task_nj_aug', owner: '杨景妮', level: 'monthly', period: '2026-08',
     title: '八月目标：业绩108万 | 回款50万 | 外出20家 | 出差2次',
@@ -323,24 +312,13 @@ function generateAugustSeedData() {
   // ============ 薛琳的数据 ============
   tasks.push({
     id: 'task_sl_annual', owner: '薛琳', level: 'annual', period: '2026',
-    title: '年度业绩目标820万（上半年完成94万，完成率11.5%）',
-    description: '14家新客户但单客产出0.54万，客户质量偏低。下半年缺口726万',
+    title: '年度目标820万 | Q3目标363万',
+    description: '14家新客户但单客产出0.54万，客户质量偏低，下半年缺口726万。Q3目标363万：七月启动首月锚定80万底线，8月68万冲刺',
     targetAmount: 820, client: '', action: '',
     expectedResult: '', risk: '',
     status: 'in_progress', priority: '核心', date: '2026', week: 0,
     createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
   });
-
-  tasks.push({
-    id: 'task_sl_q3', owner: '薛琳', level: 'quarterly', period: '2026-Q3',
-    title: 'Q3目标：363万（月均121万）',
-    description: '七月启动首月锚定80万底线，快速拉动节奏，8月68万冲刺',
-    targetAmount: 363, client: '', action: '',
-    expectedResult: '', risk: '',
-    status: 'in_progress', priority: '核心', date: '2026-Q3', week: 0,
-    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
-  });
-
   tasks.push({
     id: 'task_sl_aug', owner: '薛琳', level: 'monthly', period: '2026-08',
     title: '八月目标：总营收68万（老客48万+新客20万）| 回款20万 | 拜访20家',
@@ -614,24 +592,13 @@ function generateAugustSeedData() {
   // ============ 过健的数据 ============
   tasks.push({
     id: 'task_gj_annual', owner: '过健', level: 'annual', period: '2026',
-    title: '年度业绩目标450万（上半年完成107万）',
-    description: '上半年完成率24%，下半年需完成343万',
+    title: '年度目标450万 | Q3目标440万',
+    description: '上半年完成率24%，下半年需完成343万。Q3目标440万：7月已完成13万，8月80万起步冲刺',
     targetAmount: 450, client: '', action: '',
     expectedResult: '', risk: '',
     status: 'in_progress', priority: '核心', date: '2026', week: 0,
     createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
   });
-
-  tasks.push({
-    id: 'task_gj_q3', owner: '过健', level: 'quarterly', period: '2026-Q3',
-    title: 'Q3目标：完成440万',
-    description: '7月已完成13万，8月80万起步冲刺',
-    targetAmount: 440, client: '', action: '',
-    expectedResult: '', risk: '',
-    status: 'in_progress', priority: '核心', date: '2026-Q3', week: 0,
-    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
-  });
-
   tasks.push({
     id: 'task_gj_aug', owner: '过健', level: 'monthly', period: '2026-08',
     title: '八月目标：业绩80万 | 外出22家 | 新客成交3家',
@@ -905,24 +872,13 @@ function generateAugustSeedData() {
   // ============ 刘童的数据 ============
   tasks.push({
     id: 'task_lt_annual', owner: '刘童', level: 'annual', period: '2026',
-    title: '年度业绩目标（上半年完成290万）',
-    description: '上半年4-6月业绩205万，新客户13家，KPI达成100%',
+    title: '年度目标700万 | Q3目标300万',
+    description: '上半年4-6月业绩205万，新客户13家，KPI达成100%。Q3目标300万：7月已完成30万，8月100万冲刺',
     targetAmount: 700, client: '', action: '',
     expectedResult: '', risk: '',
     status: 'in_progress', priority: '核心', date: '2026', week: 0,
     createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
   });
-
-  tasks.push({
-    id: 'task_lt_q3', owner: '刘童', level: 'quarterly', period: '2026-Q3',
-    title: 'Q3目标：300万',
-    description: '7月已完成30万，8月100万冲刺',
-    targetAmount: 300, client: '', action: '',
-    expectedResult: '', risk: '',
-    status: 'in_progress', priority: '核心', date: '2026-Q3', week: 0,
-    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
-  });
-
   tasks.push({
     id: 'task_lt_aug', owner: '刘童', level: 'monthly', period: '2026-08',
     title: '八月目标：业绩100万↑ | 回款100万 | 外出20家 | 100万线索2条',
@@ -1196,24 +1152,13 @@ function generateAugustSeedData() {
   // ============ 陆华的数据 ============
   tasks.push({
     id: 'task_lh_annual', owner: '陆华', level: 'annual', period: '2026',
-    title: '年度业绩目标642万（上半年完成202万，完成率31%）',
-    description: '9家新增客户，1个B类以上客户，老客户复购160万',
+    title: '年度目标642万 | Q3目标543万',
+    description: '9家新增客户，1个B类以上客户，老客户复购160万。Q3目标543万：深耕客群、主动破局，7月已完成32.8万，8月冲刺108万',
     targetAmount: 642, client: '', action: '',
     expectedResult: '', risk: '',
     status: 'in_progress', priority: '核心', date: '2026', week: 0,
     createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
   });
-
-  tasks.push({
-    id: 'task_lh_q3', owner: '陆华', level: 'quarterly', period: '2026-Q3',
-    title: 'Q3目标：543万（月均107万）',
-    description: '深耕客群、主动破局，7月已完成32.8万，8月冲刺108万',
-    targetAmount: 543, client: '', action: '',
-    expectedResult: '', risk: '',
-    status: 'in_progress', priority: '核心', date: '2026-Q3', week: 0,
-    createdAt: '2026-08-01T00:00:00Z', updatedAt: '2026-08-01T00:00:00Z'
-  });
-
   tasks.push({
     id: 'task_lh_aug', owner: '陆华', level: 'monthly', period: '2026-08',
     title: '八月目标：业绩108万 | 回款50万 | 外出20家 | 出差1次',
