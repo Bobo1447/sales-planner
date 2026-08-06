@@ -1,4 +1,4 @@
-// ===== 全局状态 =====
+// ===== 全局状态（8月）=====
 let currentUser = null;
 let allTasks = [];
 let currentLevel = 'weekly';
@@ -31,42 +31,46 @@ let currentDay = null;
 let currentPriority = 'all';
 let socket = null;
 
-// ===== 2026年7月日历映射 =====
-const julyCalendar = {
+// ===== 2026年8月日历映射 =====
+const augustCalendar = {
   weekdays: {
-    1:'周三',2:'周四',3:'周五',4:'周六',5:'周日',
-    6:'周一',7:'周二',8:'周三',9:'周四',10:'周五',
-    11:'周六',12:'周日',13:'周一',14:'周二',15:'周三',
-    16:'周四',17:'周五',18:'周六',19:'周日',20:'周一',
-    21:'周二',22:'周三',23:'周四',24:'周五',25:'周六',
-    26:'周日',27:'周一',28:'周二',29:'周三',30:'周四',31:'周五'
+    1:'周六',2:'周日',
+    3:'周一',4:'周二',5:'周三',6:'周四',7:'周五',
+    8:'周六',9:'周日',
+    10:'周一',11:'周二',12:'周三',13:'周四',14:'周五',
+    15:'周六',16:'周日',
+    17:'周一',18:'周二',19:'周三',20:'周四',21:'周五',
+    22:'周六',23:'周日',
+    24:'周一',25:'周二',26:'周三',27:'周四',28:'周五',
+    29:'周六',30:'周日',
+    31:'周一'
   },
   // 周次映射: day -> week number (对齐真实日历)
   weekMap: {
-    1:1,2:1,3:1,
-    6:2,7:2,8:2,9:2,10:2,
-    13:3,14:3,15:3,16:3,17:3,
-    20:4,21:4,22:4,23:4,24:4,
-    27:5,28:5,29:5,30:5,31:5
+    3:1,4:1,5:1,6:1,7:1,
+    10:2,11:2,12:2,13:2,14:2,
+    17:3,18:3,19:3,20:3,21:3,
+    24:4,25:4,26:4,27:4,28:4,
+    31:5
   },
   // 周日期范围（仅工作日）
   weekWorkdays: {
-    1: [1,2,3],           // 7/1(周三)-7/3(周五)
-    2: [6,7,8,9,10],      // 7/6(周一)-7/10(周五)
-    3: [13,14,15,16,17],  // 7/13(周一)-7/17(周五)
-    4: [20,21,22,23,24],  // 7/20(周一)-7/24(周五)
-    5: [27,28,29,30,31]   // 7/27(周一)-7/31(周五)
+    1: [3,4,5,6,7],       // 8/3(周一)-8/7(周五)
+    2: [10,11,12,13,14],  // 8/10(周一)-8/14(周五)
+    3: [17,18,19,20,21],  // 8/17(周一)-8/21(周五)
+    4: [24,25,26,27,28],  // 8/24(周一)-8/28(周五)
+    5: [31]               // 8/31(周一)
   },
   // 周标签（含星期信息）
   weekLabels: {
-    1: '7/1周三-7/3周五',
-    2: '7/6周一-7/10周五',
-    3: '7/13周一-7/17周五',
-    4: '7/20周一-7/24周五',
-    5: '7/27周一-7/31周五'
+    1: '8/3周一-8/7周五',
+    2: '8/10周一-8/14周五',
+    3: '8/17周一-8/21周五',
+    4: '8/24周一-8/28周五',
+    5: '8/31周一'
   },
-  isWeekend: (d) => d===4||d===5||d===11||d===12||d===18||d===19||d===25||d===26,
-  isWorkday: (d) => !julyCalendar.isWeekend(d)
+  isWeekend: (d) => d===1||d===2||d===8||d===9||d===15||d===16||d===22||d===23||d===29||d===30,
+  isWorkday: (d) => !augustCalendar.isWeekend(d)
 };
 
 // ===== 初始化 =====
@@ -78,24 +82,24 @@ function setupSocketIO() {
   socket = io();
   socket.on('connect', () => {
     updateSyncStatus('已连接');
-    socket.emit('request_sync');
+    socket.emit('request_august_sync');
   });
-  socket.on('full_sync', (data) => {
+  socket.on('august_full_sync', (data) => {
     if (data && data.tasks) {
       allTasks = data.tasks;
       if (currentUser) renderCurrentView();
     }
   });
-  socket.on('task_created', (task) => {
+  socket.on('august_task_created', (task) => {
     allTasks.push(task);
     if (currentUser) renderCurrentView();
   });
-  socket.on('task_updated', (task) => {
+  socket.on('august_task_updated', (task) => {
     const idx = allTasks.findIndex(t => t.id === task.id);
     if (idx !== -1) allTasks[idx] = task;
     if (currentUser) renderCurrentView();
   });
-  socket.on('task_deleted', ({id}) => {
+  socket.on('august_task_deleted', ({id}) => {
     allTasks = allTasks.filter(t => t.id !== id);
     if (currentUser) renderCurrentView();
   });
@@ -114,7 +118,7 @@ function handleLogin() {
   if (!identity) { showLoginError('请选择身份'); return; }
   if (!password) { showLoginError('请输入密码'); return; }
 
-  fetch('/api/login', {
+  fetch('/api/august/login', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({identity, password})
@@ -123,7 +127,7 @@ function handleLogin() {
   .then(res => {
     if (res.success) {
       currentUser = res.user;
-      sessionStorage.setItem('salesPlannerUser', JSON.stringify(currentUser));
+      sessionStorage.setItem('salesPlannerAugustUser', JSON.stringify(currentUser));
       showMainApp();
     } else {
       showLoginError(res.message);
@@ -149,50 +153,39 @@ function showMainApp() {
   // 销售只看自己
   if (currentUser.role === 'sales') {
     currentPerson = currentUser.name;
-    // 隐藏人员筛选中的他人按钮
     document.querySelectorAll('.person-btn').forEach(btn => {
       if (btn.dataset.person !== currentUser.name) btn.style.display = 'none';
       else btn.classList.add('active');
     });
-    // 隐藏管理员筛选下拉
     document.getElementById('adminPersonFilter').style.display = 'none';
-    // 侧栏标题改为当前用户名
     document.querySelector('#personFilters').previousElementSibling.textContent = '当前用户';
-    // 默认设为周计划
     currentLevel = 'weekly';
   } else {
-    // 管理员模式：显示筛选下拉和增强侧栏
     currentPerson = 'all';
-    // 显示管理员筛选下拉
     document.getElementById('adminPersonFilter').style.display = 'flex';
-    // 增强侧栏按钮样式
     const personFilters = document.getElementById('personFilters');
     personFilters.classList.add('admin-mode');
     document.querySelectorAll('.person-btn').forEach(btn => {
       btn.classList.add('admin-btn');
       if (btn.dataset.person === 'all') btn.classList.add('active');
     });
-    // 侧栏标题改为"按销售筛选"
     document.querySelector('#personFilters').previousElementSibling.textContent = '按销售筛选';
   }
 
-  // 加载数据
   refreshData();
-  // 默认切换到周计划
   switchLevel('weekly');
 }
 
 function handleLogout() {
   currentUser = null;
-  sessionStorage.removeItem('salesPlannerUser');
+  sessionStorage.removeItem('salesPlannerAugustUser');
   document.getElementById('mainApp').style.display = 'none';
   document.getElementById('loginPage').style.display = 'flex';
   document.getElementById('loginPassword').value = '';
 }
 
-// 检查session恢复
 function checkSession() {
-  const saved = sessionStorage.getItem('salesPlannerUser');
+  const saved = sessionStorage.getItem('salesPlannerAugustUser');
   if (saved) {
     currentUser = JSON.parse(saved);
     showMainApp();
@@ -201,7 +194,7 @@ function checkSession() {
 
 // ===== 数据加载 =====
 function refreshData() {
-  fetch('/api/data')
+  fetch('/api/august/data')
   .then(r => r.json())
   .then(res => {
     if (res.success) {
@@ -221,15 +214,13 @@ function switchLevel(level) {
     tab.classList.toggle('active', tab.dataset.level === level);
   });
 
-  // 显示/隐藏周选择器
   document.getElementById('weekSelector').style.display =
     (level === 'weekly' || level === 'daily') ? 'block' : 'none';
   document.getElementById('daySelector').style.display =
     level === 'daily' ? 'block' : 'none';
 
-  // 更新面包屑
   const breadcrumb = document.getElementById('levelBreadcrumb');
-  const labels = {annual:'年度目标', quarterly:'Q3季度', monthly:'七月月度', weekly:'第'+currentWeek+'周计划', daily:'日计划'};
+  const labels = {annual:'年度目标', quarterly:'Q3季度', monthly:'八月月度', weekly:'第'+currentWeek+'周计划', daily:'日计划'};
   breadcrumb.textContent = '› ' + labels[level];
 
   if (level === 'daily') {
@@ -245,7 +236,6 @@ function filterPerson(person) {
   document.querySelectorAll('.person-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.person === person);
   });
-  // 同步管理员下拉
   const select = document.getElementById('adminPersonSelect');
   if (select) select.value = person;
   renderCurrentView();
@@ -255,7 +245,6 @@ function filterPerson(person) {
 // ===== 管理员下拉筛选 =====
 function adminFilterPerson(value) {
   currentPerson = value;
-  // 同步侧栏按钮
   document.querySelectorAll('.person-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.person === value);
   });
@@ -280,12 +269,12 @@ function filterWeek(week) {
 // ===== 日期按钮 =====
 function renderDayButtons() {
   const container = document.getElementById('dayButtons');
-  const days = julyCalendar.weekWorkdays[currentWeek] || [];
+  const days = augustCalendar.weekWorkdays[currentWeek] || [];
   container.innerHTML = '';
   days.forEach(d => {
     const btn = document.createElement('button');
     btn.className = `day-btn ${currentDay === d ? 'active' : ''}`;
-    btn.innerHTML = `${d}日<small>${julyCalendar.weekdays[d]}</small>`;
+    btn.innerHTML = `${d}日<small>${augustCalendar.weekdays[d]}</small>`;
     btn.onclick = () => selectDay(d);
     container.appendChild(btn);
   });
@@ -329,15 +318,15 @@ function renderCurrentView() {
       renderQuarterlyView(tasks, cardsEl);
       break;
     case 'monthly':
-      titleEl.textContent = '七月月度计划';
+      titleEl.textContent = '八月月度计划';
       renderMonthlyView(tasks, cardsEl);
       break;
     case 'weekly':
-      titleEl.textContent = `第${currentWeek}周计划 (7月${getWeekRange(currentWeek)})`;
+      titleEl.textContent = `第${currentWeek}周计划 (8月${getWeekRange(currentWeek)})`;
       renderWeeklyView(tasks, cardsEl);
       break;
     case 'daily':
-      titleEl.textContent = `7月${currentDay}日计划 (${julyCalendar.weekdays[currentDay]})`;
+      titleEl.textContent = `8月${currentDay}日计划 (${augustCalendar.weekdays[currentDay]})`;
       renderDailyView(tasks, cardsEl);
       break;
   }
@@ -347,25 +336,20 @@ function renderCurrentView() {
 
 function getFilteredTasks() {
   return allTasks.filter(t => {
-    // 人员筛选
     if (currentPerson !== 'all' && t.owner !== currentPerson) return false;
-    // 级别筛选
     if (t.level !== currentLevel) return false;
-    // 周次筛选（周和日级别）
     if ((currentLevel === 'weekly' || currentLevel === 'daily') && t.week !== currentWeek && t.week !== 0) return false;
-    // 日期筛选
     if (currentLevel === 'daily') {
       const dayNum = parseInt(t.date?.split('-')?.[2]);
       if (dayNum !== currentDay) return false;
     }
-    // 优先级筛选
     if (currentPriority !== 'all' && t.priority !== currentPriority) return false;
     return true;
   });
 }
 
 function getWeekRange(w) {
-  return julyCalendar.weekLabels[w] || '';
+  return augustCalendar.weekLabels[w] || '';
 }
 
 // ===== 年度视图 =====
@@ -418,10 +402,10 @@ function renderMonthlyView(tasks, container) {
     const card = document.createElement('div');
     card.className = 'summary-card';
     card.innerHTML = `
-      <h3>${person} · 七月计划</h3>
+      <h3>${person} · 八月计划</h3>
       <div class="summary-grid">
         <div class="summary-stat">
-          <div class="label">七月目标</div>
+          <div class="label">八月目标</div>
           <div class="value red">${target}万</div>
         </div>
         <div class="summary-stat">
@@ -433,8 +417,8 @@ function renderMonthlyView(tasks, container) {
           <div class="value blue">${progress}%</div>
         </div>
         <div class="summary-stat">
-          <div class="label">B类客户目标</div>
-          <div class="value">${getMonthlyMeta(person, 'bTarget')}</div>
+          <div class="label">外出拜访</div>
+          <div class="value">${getMonthlyMeta(person, 'visit')}</div>
         </div>
       </div>
       <div class="progress-bar"><div class="progress-fill" style="width:${progress}%"></div></div>
@@ -466,11 +450,11 @@ function renderMonthlyView(tasks, container) {
     container.appendChild(wCard);
 
     // 核心客户池
-    const clientTasks = personTasks.filter(t => t.level === 'weekly' && t.period === '2026-07' && t.priority);
+    const clientTasks = personTasks.filter(t => t.level === 'weekly' && t.period === '2026-08' && t.priority);
     if (clientTasks.length) {
       const cCard = document.createElement('div');
       cCard.className = 'summary-card';
-      cCard.innerHTML = `<h3>${person} · 七月核心客户池</h3>`;
+      cCard.innerHTML = `<h3>${person} · 八月核心客户池</h3>`;
       const cGrid = document.createElement('div');
       cGrid.className = 'task-cards grid-view';
       clientTasks.forEach(ct => cGrid.appendChild(createTaskCard(ct)));
@@ -495,11 +479,11 @@ function renderMonthlyView(tasks, container) {
 
 function getMonthlyMeta(person, key) {
   const meta = {
-    '陆华': { bTarget: '3个', newTarget: '10家' },
-    '过健': { bTarget: '4个', newTarget: '8家' },
-    '刘童': { bTarget: '2个', newTarget: '6家' },
-    '杨景妮': { bTarget: '6家', newTarget: '30家' },
-    '薛琳': { bTarget: '8家', newTarget: '30家' },
+    '陆华': { visit: '20家', newTarget: '10家' },
+    '过健': { visit: '22家', newTarget: '3家' },
+    '刘童': { visit: '20家', newTarget: '6家' },
+    '杨景妮': { visit: '20家', newTarget: '30条' },
+    '薛琳': { visit: '20家', newTarget: '5家' },
   };
   return meta[person]?.[key] || '-';
 }
@@ -512,7 +496,6 @@ function renderWeeklyView(tasks, container) {
   }
   container.className = 'task-cards grid-view';
   container.innerHTML = '';
-  // 按优先级排序: 必成 > 冲刺 > 核心 > 补位
   const sorted = [...tasks].sort((a,b) => {
     const order = {'必成':0, '冲刺':1, '核心':2, '补位':3};
     return (order[a.priority]||2) - (order[b.priority]||2);
@@ -597,7 +580,7 @@ function renderStats() {
 
   panel.innerHTML = `
     <div class="stat-item">
-      <div class="stat-label">七月目标</div>
+      <div class="stat-label">八月目标</div>
       <div class="stat-value" style="color:var(--red)">${totalTarget}万</div>
       <div class="stat-bar"><div class="stat-fill" style="width:${progress}%;background:var(--accent)"></div></div>
     </div>
@@ -640,7 +623,6 @@ function openDetailModal(task) {
     <div class="detail-field"><div class="detail-label">日期</div><div class="detail-value">${task.date || '无'}</div></div>
     <div class="detail-field"><div class="detail-label">更新时间</div><div class="detail-value">${task.updatedAt ? new Date(task.updatedAt).toLocaleString('zh-CN') : '无'}</div></div>
   `;
-  // 存当前任务供编辑
   window._currentDetailTask = task;
 }
 
@@ -660,7 +642,6 @@ function openAddModal() {
   document.getElementById('modalTitle').textContent = '新增任务';
   document.getElementById('deleteBtn').style.display = 'none';
   document.getElementById('editTaskId').value = '';
-  // 默认值
   document.getElementById('editLevel').value = currentLevel;
   document.getElementById('editWeek').value = currentWeek;
   document.getElementById('editPriority').value = '必成';
@@ -668,15 +649,15 @@ function openAddModal() {
   if (currentUser.role === 'sales') {
     document.getElementById('editOwner').value = currentUser.name;
   }
-  // 根据级别设置默认周期
-  const periodDefaults = {annual:'2026', quarterly:'2026-Q3', monthly:'2026-07', weekly:'2026-W28', daily:'2026-07-01'};
+  // 8月默认周期
+  const periodDefaults = {annual:'2026', quarterly:'2026-Q3', monthly:'2026-08', weekly:'2026-W1', daily:'2026-08-03'};
   document.getElementById('editPeriod').value = periodDefaults[currentLevel] || '';
   if (currentLevel === 'daily' && currentDay) {
-    document.getElementById('editDate').value = `2026-07-${currentDay.toString().padStart(2,'0')}`;
-    document.getElementById('editPeriod').value = `2026-07-${currentDay.toString().padStart(2,'0')}`;
+    document.getElementById('editDate').value = `2026-08-${currentDay.toString().padStart(2,'0')}`;
+    document.getElementById('editPeriod').value = `2026-08-${currentDay.toString().padStart(2,'0')}`;
   }
   if (currentLevel === 'weekly') {
-    document.getElementById('editDate').value = `2026-07-${getWeekStartDate(currentWeek)}`;
+    document.getElementById('editDate').value = `2026-08-${getWeekStartDate(currentWeek)}`;
   }
 }
 
@@ -707,8 +688,8 @@ function closeModal() {
 }
 
 function getWeekStartDate(w) {
-  const starts = {1:'01', 2:'06', 3:'13', 4:'20'};
-  return starts[w] || '01';
+  const starts = {1:'03', 2:'10', 3:'17', 4:'24', 5:'31'};
+  return starts[w] || '03';
 }
 
 // ===== 保存任务 =====
@@ -735,8 +716,7 @@ function saveTask() {
   if (!data.owner) { alert('请选择所属人'); return; }
 
   if (taskId) {
-    // 编辑
-    fetch(`/api/tasks/${taskId}`, {
+    fetch(`/api/august/tasks/${taskId}`, {
       method: 'PUT',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(data)
@@ -745,8 +725,7 @@ function saveTask() {
       else { alert(res.message); }
     });
   } else {
-    // 新增
-    fetch('/api/tasks', {
+    fetch('/api/august/tasks', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(data)
@@ -763,7 +742,7 @@ function deleteTask() {
   if (!taskId) return;
   if (!confirm('确定删除此任务？此操作不可恢复。')) return;
 
-  fetch(`/api/tasks/${taskId}`, { method: 'DELETE' })
+  fetch(`/api/august/tasks/${taskId}`, { method: 'DELETE' })
   .then(r => r.json()).then(res => {
     if (res.success) { closeModal(); }
     else { alert(res.message); }

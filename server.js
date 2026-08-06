@@ -4,6 +4,7 @@ const { Server } = require('socket.io');
 const path = require('path');
 const crypto = require('crypto');
 const { generateSeedData, USERS } = require('./seed-data');
+const { generateAugustSeedData } = require('./seed-data-august');
 
 const app = express();
 const server = http.createServer(app);
@@ -28,6 +29,14 @@ let lastInitError = null;
 // 内存数据（所有模式共用）
 let memoryTasks = [];
 let memoryInitialized = false;
+
+// 8月数据存储（独立于7月）
+let augustMemoryTasks = [];
+let augustMemoryInitialized = false;
+let augustGithubDataSha = null;
+let augustSaveTimer = null;
+let augustHasUnsavedChanges = false;
+const GITHUB_AUGUST_DATA_PATH = 'server-data-august.json';
 
 // GitHub 持久化状态
 let githubDataSha = null;
@@ -85,6 +94,72 @@ async function githubWriteFile(data) {
   const result = await res.json();
   githubDataSha = result.content.sha;
   console.log(`✅ 数据已保存到 GitHub (SHA: ${githubDataSha.slice(0, 8)}...)`);
+}
+
+// ============ 8月 GitHub API 操作 ============
+async function githubReadAugustFile() {
+  const url = `${GITHUB_API}/repos/${GITHUB_REPO}/contents/${GITHUB_AUGUST_DATA_PATH}`;
+  const res = await fetch(url, {
+    headers: {
+      'Authorization': `Bearer ${GITHUB_TOKEN}`,
+      'Accept': 'application/vnd.github+json',
+      'X-GitHub-Api-Version': '2022-11-28'
+    }
+  });
+  if (res.status === 404) return null;
+  if (!res.ok) throw new Error(`GitHub read august failed: ${res.status}`);
+  const data = await res.json();
+  augustGithubDataSha = data.sha;
+  const content = Buffer.from(data.content, 'base64').toString('utf-8');
+  return JSON.parse(content);
+}
+
+async function githubWriteAugustFile(data) {
+  const url = `${GITHUB_API}/repos/${GITHUB_REPO}/contents/${GITHUB_AUGUST_DATA_PATH}`;
+  const content = Buffer.from(JSON.stringify(data, null, 2)).toString('base64');
+  const body = {
+    message: `auto-save august: ${new Date().toISOString()}`,
+    content,
+  };
+  if (augustGithubDataSha) body.sha = augustGithubDataSha;
+  const res = await fetch(url, {
+    method: 'PUT',
+    headers: {
+      'Authorization': `Bearer ${GITHUB_TOKEN}`,
+      'Accept': 'application/vnd.github+json',
+      'X-GitHub-Api-Version': '2022-11-28',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(body)
+  });
+  if (res.status === 409) {
+    await githubReadAugustFile();
+    throw new Error('August SHA conflict, will retry');
+  }
+  if (!res.ok) {
+    const errText = await res.text();
+    throw new Error(`GitHub write august failed: ${res.status} ${errText}`);
+  }
+  const result = await res.json();
+  augustGithubDataSha = result.content.sha;
+  console.log(`✅ 8月数据已保存到 GitHub (SHA: ${augustGithubDataSha.slice(0, 8)}...)`);
+}
+
+function scheduleAugustGithubSave() {
+  if (!useGitHub) return;
+  augustHasUnsavedChanges = true;
+  if (augustSaveTimer) return;
+  augustSaveTimer = setTimeout(async () => {
+    augustSaveTimer = null;
+    if (!augustHasUnsavedChanges) return;
+    augustHasUnsavedChanges = false;
+    try {
+      await githubWriteAugustFile({ tasks: augustMemoryTasks, savedAt: new Date().toISOString() });
+    } catch (err) {
+      console.error('GitHub 8月保存失败:', err.message);
+      augustHasUnsavedChanges = true;
+    }
+  }, 3000);
 }
 
 function scheduleGithubSave() {
@@ -181,6 +256,38 @@ function initMemoryStore() {
   memoryTasks = [...seedData.tasks];
   memoryInitialized = true;
   console.log(`✅ 内存存储初始化完成，共 ${memoryTasks.length} 条种子任务`);
+}
+
+// ============ 8月数据初始化 ============
+async function initAugustDatabase() {
+  if (GITHUB_TOKEN) {
+    try {
+      console.log('🔗 正在从 GitHub 加载8月数据...');
+      const data = await githubReadAugustFile();
+      if (data && data.tasks && Array.isArray(data.tasks)) {
+        augustMemoryTasks = data.tasks;
+        console.log(`✅ 从 GitHub 加载 ${augustMemoryTasks.length} 条8月任务`);
+      } else {
+        console.log('GitHub 上无8月数据，初始化种子数据...');
+        const seedData = generateAugustSeedData();
+        augustMemoryTasks = [...seedData.tasks];
+        await githubWriteAugustFile({ tasks: augustMemoryTasks, savedAt: new Date().toISOString() });
+      }
+      augustMemoryInitialized = true;
+      console.log('✅ 8月 GitHub 持久化模式启动');
+    } catch (err) {
+      console.error('❌ 8月 GitHub 加载失败:', err.message);
+      const seedData = generateAugustSeedData();
+      augustMemoryTasks = [...seedData.tasks];
+      augustMemoryInitialized = true;
+      console.log('⚠️ 8月切换到内存存储模式');
+    }
+  } else {
+    const seedData = generateAugustSeedData();
+    augustMemoryTasks = [...seedData.tasks];
+    augustMemoryInitialized = true;
+    console.log(`✅ 8月内存存储初始化完成，共 ${augustMemoryTasks.length} 条种子任务`);
+  }
 }
 
 // ============ 中间件 ============
@@ -304,6 +411,81 @@ app.get('/api/sync-status', (req, res) => {
   });
 });
 
+// ============ 8月 API ============
+app.post('/api/august/login', (req, res) => {
+  const { identity, password } = req.body;
+  const user = USERS[identity];
+  if (!user || user.password !== password) {
+    return res.json({ success: false, message: '密码错误或身份不存在' });
+  }
+  const token = crypto.randomBytes(16).toString('hex');
+  res.json({ success: true, user: { token, identity, role: user.role, name: user.name || identity } });
+});
+
+app.get('/api/august/data', async (req, res) => {
+  try {
+    res.json({ success: true, data: { tasks: augustMemoryTasks } });
+  } catch (err) {
+    res.json({ success: false, message: '8月数据加载失败' });
+  }
+});
+
+app.post('/api/august/tasks', async (req, res) => {
+  try {
+    const task = req.body;
+    const id = 'aug_task_' + Date.now() + '_' + crypto.randomBytes(4).toString('hex');
+    const now = new Date().toISOString();
+    const newTask = { ...task, id, createdAt: now, updatedAt: now };
+    augustMemoryTasks.push(newTask);
+    io.emit('august_task_created', newTask);
+    res.json({ success: true, task: newTask });
+    if (useGitHub) scheduleAugustGithubSave();
+  } catch (err) {
+    res.json({ success: false, message: '创建8月任务失败' });
+  }
+});
+
+app.put('/api/august/tasks/:id', async (req, res) => {
+  try {
+    const taskId = req.params.id;
+    const updates = req.body;
+    updates.updatedAt = new Date().toISOString();
+    const idx = augustMemoryTasks.findIndex(t => t.id === taskId);
+    if (idx === -1) return res.json({ success: false, message: '8月任务不存在' });
+    augustMemoryTasks[idx] = { ...augustMemoryTasks[idx], ...updates };
+    io.emit('august_task_updated', augustMemoryTasks[idx]);
+    res.json({ success: true, task: augustMemoryTasks[idx] });
+    if (useGitHub) scheduleAugustGithubSave();
+  } catch (err) {
+    res.json({ success: false, message: '更新8月任务失败' });
+  }
+});
+
+app.delete('/api/august/tasks/:id', async (req, res) => {
+  try {
+    const taskId = req.params.id;
+    const idx = augustMemoryTasks.findIndex(t => t.id === taskId);
+    if (idx === -1) return res.json({ success: false, message: '8月任务不存在' });
+    augustMemoryTasks.splice(idx, 1);
+    io.emit('august_task_deleted', { id: taskId });
+    res.json({ success: true });
+    if (useGitHub) scheduleAugustGithubSave();
+  } catch (err) {
+    res.json({ success: false, message: '删除8月任务失败' });
+  }
+});
+
+app.get('/api/august/sync-status', (req, res) => {
+  res.json({
+    mode: useGitHub ? 'github' : 'memory',
+    persistent: useGitHub,
+    taskCount: augustMemoryTasks.length,
+    message: useGitHub
+      ? '8月数据持久化到 GitHub 仓库，重启自动恢复'
+      : '8月内存存储模式，重启后恢复为种子数据'
+  });
+});
+
 // ============ WebSocket 实时同步 ============
 io.on('connection', (socket) => {
   console.log('客户端连接:', socket.id);
@@ -322,14 +504,20 @@ io.on('connection', (socket) => {
       console.error('全量同步失败:', err.message);
     }
   });
+  socket.on('request_august_sync', () => {
+    socket.emit('august_full_sync', { tasks: augustMemoryTasks });
+  });
 });
 
 // ============ 启动服务 ============
-initDatabase().then(() => {
+initDatabase().then(async () => {
+  await initAugustDatabase();
   server.listen(PORT, () => {
     console.log(`🚀 销售工作计划拆解器服务已启动，端口: ${PORT}`);
     const modeStr = useMongoDB ? 'MongoDB持久化' : (useGitHub ? 'GitHub持久化' : '内存存储');
-    console.log(`📦 存储模式: ${modeStr}`);
+    console.log(`📦 7月存储模式: ${modeStr}`);
+    console.log(`📦 8月存储模式: ${useGitHub ? 'GitHub持久化' : '内存存储'}`);
+    console.log(`📊 7月任务数: ${memoryTasks.length} | 8月任务数: ${augustMemoryTasks.length}`);
   });
 });
 
@@ -340,13 +528,26 @@ process.on('SIGTERM', async () => {
     clearTimeout(saveTimer);
     saveTimer = null;
   }
+  if (augustSaveTimer) {
+    clearTimeout(augustSaveTimer);
+    augustSaveTimer = null;
+  }
   if (useGitHub && hasUnsavedChanges) {
     try {
       hasUnsavedChanges = false;
       await githubWriteFile({ tasks: memoryTasks, savedAt: new Date().toISOString() });
-      console.log('✅ 关闭前数据已保存到 GitHub');
+      console.log('✅ 关闭前7月数据已保存到 GitHub');
     } catch (err) {
-      console.error('关闭前保存失败:', err.message);
+      console.error('关闭前7月保存失败:', err.message);
+    }
+  }
+  if (useGitHub && augustHasUnsavedChanges) {
+    try {
+      augustHasUnsavedChanges = false;
+      await githubWriteAugustFile({ tasks: augustMemoryTasks, savedAt: new Date().toISOString() });
+      console.log('✅ 关闭前8月数据已保存到 GitHub');
+    } catch (err) {
+      console.error('关闭前8月保存失败:', err.message);
     }
   }
   if (useMongoDB && mongoose) {

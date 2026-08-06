@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>销售工作计划拆解器 | BrightWay Sales</title>
+<title>销售工作计划拆解器 - 8月 | BrightWay Sales</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
 </head>
@@ -14,7 +14,7 @@
   <div class="login-container">
     <div class="login-logo">
       <div class="logo-icon">⚡</div>
-      <h1>销售工作计划拆解器</h1>
+      <h1>销售工作计划拆解器 · 8月</h1>
       <p class="login-subtitle">年度 → 季度 → 月 → 周 → 日 · 五级层层拆解</p>
     </div>
     <div class="login-form">
@@ -38,6 +38,7 @@
       <div id="loginError" class="login-error" style="display:none"></div>
       <div class="login-tips">
         <p>首次登录密码提示：身份名+2026（如：luhua2026 / admin2026）</p>
+        <p><a href="/" style="color:#1890ff;font-size:13px;text-decoration:none">← 返回7月计划</a></p>
       </div>
     </div>
   </div>
@@ -51,13 +52,13 @@
     <div class="top-left">
       <button class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()">☰</button>
       <div class="app-logo">⚡</div>
-      <span class="app-title">销售工作计划拆解器</span>
+      <span class="app-title">销售工作计划拆解器 · 8月</span>
       <span class="level-nav" id="levelBreadcrumb"></span>
     </div>
     <div class="top-right">
       <span class="user-badge" id="userBadge"></span>
       <span class="sync-status" id="syncStatus">🔄 已同步</span>
-      <a href="/august.html" style="color:#1890ff;font-size:13px;text-decoration:none;border:1px solid #1890ff;padding:4px 12px;border-radius:6px;white-space:nowrap;">📅 8月任务分解器 →</a>
+      <a href="/" style="color:#1890ff;font-size:13px;text-decoration:none;border:1px solid #1890ff;padding:4px 12px;border-radius:6px;white-space:nowrap">← 7月计划</a>
       <button class="btn-logout" onclick="handleLogout()">退出</button>
     </div>
   </header>
@@ -107,11 +108,11 @@
       <div class="sidebar-section" id="weekSelector" style="display:none">
         <h3 class="sidebar-title">周次选择</h3>
         <div class="week-buttons" id="weekButtons">
-          <button class="week-btn active" data-week="1" onclick="filterWeek(1)">第1周<br><small>7/1周三-7/3周五</small></button>
-          <button class="week-btn" data-week="2" onclick="filterWeek(2)">第2周<br><small>7/6周一-7/10周五</small></button>
-          <button class="week-btn" data-week="3" onclick="filterWeek(3)">第3周<br><small>7/13周一-7/17周五</small></button>
-          <button class="week-btn" data-week="4" onclick="filterWeek(4)">第4周<br><small>7/20周一-7/24周五</small></button>
-          <button class="week-btn" data-week="5" onclick="filterWeek(5)">第5周<br><small>7/27周一-7/31周五</small></button>
+          <button class="week-btn active" data-week="1" onclick="filterWeek(1)">第1周<br><small>8/3周一-8/7周五</small></button>
+          <button class="week-btn" data-week="2" onclick="filterWeek(2)">第2周<br><small>8/10周一-8/14周五</small></button>
+          <button class="week-btn" data-week="3" onclick="filterWeek(3)">第3周<br><small>8/17周一-8/21周五</small></button>
+          <button class="week-btn" data-week="4" onclick="filterWeek(4)">第4周<br><small>8/24周一-8/28周五</small></button>
+          <button class="week-btn" data-week="5" onclick="filterWeek(5)">第5周<br><small>8/31周一</small></button>
         </div>
       </div>
 
@@ -141,7 +142,7 @@
     <main class="main-content">
       <div class="content-header">
         <div class="content-header-left">
-          <h2 id="contentTitle">七月周计划</h2>
+          <h2 id="contentTitle">八月周计划</h2>
           <div class="admin-person-filter" id="adminPersonFilter" style="display:none">
             <label class="filter-label">👤 查看人员</label>
             <select id="adminPersonSelect" onchange="adminFilterPerson(this.value)">
@@ -200,7 +201,7 @@
       <div class="form-row">
         <div class="form-group">
           <label>周期标识</label>
-          <input type="text" id="editPeriod" placeholder="如 2026-W28 或 2026-07-01">
+          <input type="text" id="editPeriod" placeholder="如 2026-W1 或 2026-08-03">
         </div>
         <div class="form-group">
           <label>周次(1-5)</label>
@@ -290,6 +291,6 @@
 </div>
 
 <script src="/socket.io/socket.io.js"></script>
-<script src="/app.js"></script>
+<script src="/august-app.js"></script>
 </body>
 </html>
