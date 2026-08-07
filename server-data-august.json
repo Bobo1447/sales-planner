@@ -2292,12 +2292,12 @@
       "action": "拜访/关键人",
       "expectedResult": "采购节点锁定",
       "risk": "关键人卡点",
-      "status": "pending",
+      "status": "completed",
       "priority": "必成",
       "date": "2026-08-03",
       "week": 1,
       "createdAt": "2026-08-01T00:00:00Z",
-      "updatedAt": "2026-08-01T00:00:00Z"
+      "updatedAt": "2026-08-07T01:40:15.636Z"
     },
     {
       "id": "task_lh_w1d2",
@@ -2756,5 +2756,5 @@
       "updatedAt": "2026-08-01T00:00:00Z"
     }
   ],
-  "savedAt": "2026-08-06T11:49:48.088Z"
+  "savedAt": "2026-08-07T01:40:18.640Z"
 }
