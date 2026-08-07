@@ -2547,25 +2547,6 @@
       "updatedAt": "2026-07-01T00:00:00Z"
     },
     {
-      "id": "task_lh_w2",
-      "owner": "陆华",
-      "level": "weekly",
-      "period": "2026-W2",
-      "title": "第2周目标：30万 | 7/6周一-7/10周五 | 连云港正大、新客户",
-      "description": "报价/见面/复购/关键人。补位：南京正大",
-      "targetAmount": 30,
-      "client": "连云港正大、新客户",
-      "action": "报价/见面/关键人",
-      "expectedResult": "成交/报价",
-      "risk": "补位南京正大",
-      "status": "pending",
-      "priority": "核心",
-      "date": "2026-07-06",
-      "week": 2,
-      "createdAt": "2026-07-01T00:00:00Z",
-      "updatedAt": "2026-07-01T00:00:00Z"
-    },
-    {
       "id": "task_lh_w2d1",
       "owner": "陆华",
       "level": "daily",
@@ -3022,5 +3003,5 @@
       "updatedAt": "2026-07-01T00:00:00Z"
     }
   ],
-  "savedAt": "2026-08-06T12:34:12.258Z"
+  "savedAt": "2026-08-07T11:48:01.703Z"
 }
