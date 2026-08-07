@@ -2437,19 +2437,19 @@
       "owner": "陆华",
       "level": "daily",
       "period": "2026-08-12",
-      "title": "金赛关键人对接 | 8/12周三 | 关键人",
-      "description": "金赛关键人对接，新客开发",
-      "targetAmount": 0,
-      "client": "金赛",
+      "title": "深圳出差",
+      "description": "拜访坪山客户大佛、健元、中核、膜拜",
+      "targetAmount": 10,
+      "client": "新客户",
       "action": "拜访/关键人",
       "expectedResult": "关键人对接",
-      "risk": "",
+      "risk": "惠升、济煜、金赛、康龙、现代",
       "status": "pending",
-      "priority": "必成",
+      "priority": "补位",
       "date": "2026-08-12",
       "week": 2,
       "createdAt": "2026-08-01T00:00:00Z",
-      "updatedAt": "2026-08-01T00:00:00Z"
+      "updatedAt": "2026-08-07T11:55:50.285Z"
     },
     {
       "id": "task_lh_w2d4",
@@ -2756,5 +2756,5 @@
       "updatedAt": "2026-08-01T00:00:00Z"
     }
   ],
-  "savedAt": "2026-08-07T11:54:35.880Z"
+  "savedAt": "2026-08-07T11:55:53.288Z"
 }
