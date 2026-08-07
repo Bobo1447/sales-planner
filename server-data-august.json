@@ -2456,19 +2456,19 @@
       "owner": "陆华",
       "level": "daily",
       "period": "2026-08-13",
-      "title": "回款专项：清理25年未到款 | 8/13周四 | 催收",
-      "description": "清理25年未到款项，加速80万未开票开票",
-      "targetAmount": 0,
+      "title": "广州出差",
+      "description": "拜访一品红、拨云、康臣、威尔曼、康威，找50W商机",
+      "targetAmount": 10,
       "client": "信达等",
       "action": "催收/开票",
       "expectedResult": "回款推进",
       "risk": "",
       "status": "pending",
-      "priority": "重要",
+      "priority": "",
       "date": "2026-08-13",
       "week": 2,
       "createdAt": "2026-08-01T00:00:00Z",
-      "updatedAt": "2026-08-01T00:00:00Z"
+      "updatedAt": "2026-08-07T11:56:46.098Z"
     },
     {
       "id": "task_lh_w2d5",
@@ -2756,5 +2756,5 @@
       "updatedAt": "2026-08-01T00:00:00Z"
     }
   ],
-  "savedAt": "2026-08-07T11:55:53.288Z"
+  "savedAt": "2026-08-07T11:56:49.100Z"
 }
