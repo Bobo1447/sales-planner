@@ -803,19 +803,19 @@
       "owner": "薛琳",
       "level": "daily",
       "period": "2026-08-13",
-      "title": "凯复/睿健跟进 | 8/13周四 | 2+2万",
-      "description": "凯复生物2万+睿健医药2万，细胞与基因治疗专题",
+      "title": "南京客户集中拜访4-5家 | 8/13周四 | 2+2万",
+      "description": "目标拜访客户：\n1. 南京首量医疗  2. 南京佗道医疗 3. 南京汉欣医药 4.南京西默 5.南京维立志博医药",
       "targetAmount": 4,
       "client": "凯复生物、睿健医药",
       "action": "跟进",
       "expectedResult": "需求确认",
       "risk": "",
       "status": "pending",
-      "priority": "重要",
+      "priority": "",
       "date": "2026-08-13",
       "week": 2,
       "createdAt": "2026-08-01T00:00:00Z",
-      "updatedAt": "2026-08-01T00:00:00Z"
+      "updatedAt": "2026-08-11T01:51:00.219Z"
     },
     {
       "id": "task_sl_w2d5",
@@ -2756,5 +2756,5 @@
       "updatedAt": "2026-08-01T00:00:00Z"
     }
   ],
-  "savedAt": "2026-08-11T01:49:48.197Z"
+  "savedAt": "2026-08-11T01:51:03.220Z"
 }
