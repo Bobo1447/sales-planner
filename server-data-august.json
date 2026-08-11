@@ -785,18 +785,18 @@
       "level": "daily",
       "period": "2026-08-12",
       "title": "苏州出差：拜访+线索 | 8/12周三 | 1家",
-      "description": "苏州区域拜访，IND线索推进",
+      "description": "南京拜访约访，约访2-3家客户\n目标客户：1. 南京首量医疗 2. 南京佗道医疗 3.南京汉欣医药",
       "targetAmount": 0,
-      "client": "苏州客户",
+      "client": "南京客户",
       "action": "拜访",
-      "expectedResult": "IND线索1条",
+      "expectedResult": "IND线索1条或小语种线索1条",
       "risk": "",
       "status": "pending",
-      "priority": "重要",
+      "priority": "",
       "date": "2026-08-12",
       "week": 2,
       "createdAt": "2026-08-01T00:00:00Z",
-      "updatedAt": "2026-08-01T00:00:00Z"
+      "updatedAt": "2026-08-11T01:47:52.717Z"
     },
     {
       "id": "task_sl_w2d4",
@@ -2756,5 +2756,5 @@
       "updatedAt": "2026-08-01T00:00:00Z"
     }
   ],
-  "savedAt": "2026-08-11T01:46:53.942Z"
+  "savedAt": "2026-08-11T01:47:55.719Z"
 }
