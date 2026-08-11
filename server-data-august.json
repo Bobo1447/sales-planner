@@ -765,10 +765,10 @@
       "owner": "薛琳",
       "level": "daily",
       "period": "2026-08-11",
-      "title": "苏州出差：IND线索挖掘 | 8/11周二 | 2家",
-      "description": "推动老客户项目，拿到IND申报翻译线索",
+      "title": "苏州出差：IND线索挖掘 | 8/11周二 |约访 2家",
+      "description": "推动老客户项目，拿到IND申报翻译线索\n约访本周四南京客户拜访2家约访",
       "targetAmount": 0,
-      "client": "苏州客户",
+      "client": "南京客户",
       "action": "拜访/线索",
       "expectedResult": "IND线索1条",
       "risk": "",
@@ -777,7 +777,7 @@
       "date": "2026-08-11",
       "week": 2,
       "createdAt": "2026-08-01T00:00:00Z",
-      "updatedAt": "2026-08-01T00:00:00Z"
+      "updatedAt": "2026-08-11T01:46:14.198Z"
     },
     {
       "id": "task_sl_w2d3",
@@ -1278,11 +1278,11 @@
       "owner": "过健",
       "level": "weekly",
       "period": "2026-W2",
-      "title": "第2周目标：新客开发+展会获客 | 8/10周一-8/14周五",
-      "description": "新客户开发启动，参加医药行业展会，拜访5家含2家新客，提交报价方案",
-      "targetAmount": 15,
-      "client": "特宝、美诺华、安科",
-      "action": "新客/展会",
+      "title": "第2周目标：新客开发+深圳出差| 8/10周一-8/14周五",
+      "description": "新客户开发启动，深圳出差，拜访12家含6家新客，提交报价方案",
+      "targetAmount": 20,
+      "client": "三生、欧康",
+      "action": "新客/出差",
       "expectedResult": "2家新客+报价",
       "risk": "新客开发难",
       "status": "in_progress",
@@ -1290,7 +1290,7 @@
       "date": "2026-08-10",
       "week": 2,
       "createdAt": "2026-08-01T00:00:00Z",
-      "updatedAt": "2026-08-01T00:00:00Z"
+      "updatedAt": "2026-08-11T01:46:16.274Z"
     },
     {
       "id": "task_gj_w2d1",
@@ -2756,5 +2756,5 @@
       "updatedAt": "2026-08-01T00:00:00Z"
     }
   ],
-  "savedAt": "2026-08-11T01:45:30.945Z"
+  "savedAt": "2026-08-11T01:46:17.199Z"
 }
