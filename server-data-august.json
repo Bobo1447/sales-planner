@@ -233,19 +233,19 @@
       "owner": "杨景妮",
       "level": "daily",
       "period": "2026-08-12",
-      "title": "出差深圳：周边客户拜访 | 8/12周三 | 2家",
-      "description": "深圳区域AB级客户拜访",
+      "title": "出差苏州：项目推进 | 8/12周三 | 2家",
+      "description": "苏州区域AB级客户拜访",
       "targetAmount": 0,
-      "client": "深圳AB级",
+      "client": "苏州AB级",
       "action": "拜访",
       "expectedResult": "拜访2家",
       "risk": "",
       "status": "pending",
-      "priority": "重要",
+      "priority": "",
       "date": "2026-08-12",
       "week": 2,
       "createdAt": "2026-08-01T00:00:00Z",
-      "updatedAt": "2026-08-01T00:00:00Z"
+      "updatedAt": "2026-08-11T02:25:29.965Z"
     },
     {
       "id": "task_nj_w2d4",
@@ -2756,5 +2756,5 @@
       "updatedAt": "2026-08-01T00:00:00Z"
     }
   ],
-  "savedAt": "2026-08-11T02:24:48.418Z"
+  "savedAt": "2026-08-11T02:25:32.968Z"
 }
