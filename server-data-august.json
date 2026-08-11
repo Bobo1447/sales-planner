@@ -746,8 +746,8 @@
       "owner": "薛琳",
       "level": "daily",
       "period": "2026-08-10",
-      "title": "苏州出差：Biotech拜访 | 8/10周一 | 2家",
-      "description": "聚焦苏州Biotech创新药企，推广GMP/GCP体系翻译",
+      "title": "5万块，跟进上周遗留的线索",
+      "description": "哪些线索",
       "targetAmount": 0,
       "client": "苏州Biotech",
       "action": "出差/拜访",
@@ -758,7 +758,7 @@
       "date": "2026-08-10",
       "week": 2,
       "createdAt": "2026-08-01T00:00:00Z",
-      "updatedAt": "2026-08-01T00:00:00Z"
+      "updatedAt": "2026-08-11T01:40:01.265Z"
     },
     {
       "id": "task_sl_w2d2",
@@ -2756,5 +2756,5 @@
       "updatedAt": "2026-08-01T00:00:00Z"
     }
   ],
-  "savedAt": "2026-08-11T01:37:45.041Z"
+  "savedAt": "2026-08-11T01:40:04.267Z"
 }
