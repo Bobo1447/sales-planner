@@ -278,12 +278,12 @@
       "action": "检视",
       "expectedResult": "周结",
       "risk": "",
-      "status": "pending",
+      "status": "completed",
       "priority": "核心",
       "date": "2026-08-14",
       "week": 2,
       "createdAt": "2026-08-01T00:00:00Z",
-      "updatedAt": "2026-08-11T03:12:16.230Z"
+      "updatedAt": "2026-08-15T01:08:09.888Z"
     },
     {
       "id": "task_nj_w3",
@@ -2756,5 +2756,5 @@
       "updatedAt": "2026-08-01T00:00:00Z"
     }
   ],
-  "savedAt": "2026-08-15T01:08:05.335Z"
+  "savedAt": "2026-08-15T01:08:12.890Z"
 }
