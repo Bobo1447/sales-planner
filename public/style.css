@@ -108,6 +108,14 @@ html, body { height: 100%; font-family: var(--font); background: var(--bg-primar
 .month-btn:not(.active):hover {
   background: var(--accent-bg);
 }
+.month-btn-sept {
+  color: #e67e22;
+  font-weight: 600;
+  border-left: 1px solid var(--accent);
+}
+.month-btn-sept:hover {
+  background: rgba(230, 126, 34, 0.12);
+}
 .btn-logout {
   padding: 6px 14px; background: transparent; color: var(--text-secondary);
   border: 1px solid var(--border); border-radius: var(--radius-sm);
