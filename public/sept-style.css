@@ -1,0 +1,119 @@
+/* ===== 9月任务拆解器 - 补充样式（周目标+完成度） ===== */
+
+/* 顶部返回旧版链接 */
+.btn-link-old {
+  font-size: 12px; color: var(--text-muted); text-decoration: none;
+  padding: 6px 12px; border: 1px solid var(--border); border-radius: var(--radius-sm);
+  transition: all 0.2s;
+}
+.btn-link-old:hover { color: var(--accent); border-color: var(--accent-light); }
+
+/* 完成度进度条（卡片内） */
+.card-progress-row {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 10px;
+}
+.card-progress-bar {
+  flex: 1; height: 8px; background: var(--border); border-radius: 4px; overflow: hidden;
+}
+.card-progress-fill {
+  height: 100%; border-radius: 4px; background: var(--accent);
+  transition: width 0.5s ease;
+}
+.card-progress-bar.done .card-progress-fill { background: var(--green); }
+.card-progress-pct {
+  font-size: 12px; font-weight: 700; color: var(--accent); min-width: 34px; text-align: right;
+}
+.card-progress-pct.done { color: var(--green); }
+
+/* 项目标签 */
+.tag-project {
+  background: var(--purple-bg); color: var(--purple);
+  border: 1px solid rgba(139,92,246,0.3);
+}
+
+/* 周目标卡高亮 */
+.task-card.highlight-week {
+  border-color: var(--accent-light);
+  box-shadow: 0 2px 12px rgba(79,70,229,0.12);
+}
+
+/* 周汇总条 */
+.week-summary-strip {
+  display: flex; align-items: center; gap: 16px;
+  background: linear-gradient(135deg, #eef2ff 0%, #f5f3ff 100%);
+  border: 1px solid var(--accent-light);
+  border-radius: var(--radius); padding: 14px 20px; margin-bottom: 20px;
+}
+.wss-left { display: flex; flex-direction: column; gap: 2px; min-width: 170px; }
+.wss-label { font-size: 12px; color: var(--text-secondary); }
+.wss-values { font-size: 14px; }
+.wss-values b { font-size: 16px; }
+.wss-bar {
+  flex: 1; height: 12px; background: rgba(79,70,229,0.15); border-radius: 6px; overflow: hidden;
+}
+.wss-fill {
+  height: 100%; border-radius: 6px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-light));
+  transition: width 0.5s;
+}
+.wss-pct { font-size: 18px; font-weight: 700; color: var(--accent); min-width: 48px; text-align: right; }
+
+/* 月度完成度 */
+.progress-bar.lg { height: 14px; border-radius: 7px; }
+.progress-fill.done { background: var(--green); }
+.month-done-badge {
+  font-size: 12px; font-weight: 500; color: var(--green);
+  background: var(--green-bg); padding: 3px 10px; border-radius: 20px; margin-left: 8px;
+}
+.month-progress-label { font-size: 13px; color: var(--text-secondary); margin-top: 6px; }
+.month-progress-label b { color: var(--accent); font-size: 15px; }
+
+/* 周目标拆解明细 */
+.week-detail-grid {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-top: 12px;
+}
+.week-detail-item {
+  background: var(--bg-primary); border: 1px solid var(--border);
+  border-radius: 8px; padding: 10px 8px; text-align: center;
+}
+.wd-week { font-size: 12px; font-weight: 700; color: var(--text-primary); }
+.wd-target { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+.wd-done { font-size: 12px; font-weight: 600; margin-top: 4px; }
+.mini-bar {
+  height: 6px; background: var(--border); border-radius: 3px; margin-top: 6px; overflow: hidden;
+}
+.mini-fill { height: 100%; border-radius: 3px; transition: width 0.4s; }
+
+/* 周分段显示完成度小字 */
+.week-segment small {
+  display: block; font-size: 10px; font-weight: 400; opacity: 0.9;
+}
+
+/* 详情弹窗完成度 */
+.detail-progress-block { margin-bottom: 16px; }
+.detail-progress-label { font-size: 12px; color: var(--text-muted); font-weight: 500; margin-bottom: 4px; }
+.detail-progress-pct { font-size: 13px; color: var(--accent); margin-top: 6px; font-weight: 600; }
+.detail-progress-pct .done { color: var(--green); }
+
+/* 编辑弹窗完成度滑条 */
+.progress-input-wrap {
+  display: flex; align-items: center; gap: 12px; padding-top: 6px;
+}
+.progress-input-wrap input[type="range"] {
+  flex: 1; accent-color: var(--accent); cursor: pointer;
+}
+.progress-num {
+  font-size: 14px; font-weight: 700; color: var(--accent); min-width: 40px; text-align: right;
+}
+
+/* 响应式：周明细单列 */
+@media (max-width: 768px) {
+  .week-detail-grid { grid-template-columns: repeat(2, 1fr); }
+  .week-summary-strip { flex-wrap: wrap; }
+  .wss-bar { min-width: 120px; }
+}
+
+@media (max-width: 480px) {
+  .week-detail-grid { grid-template-columns: 1fr 1fr; gap: 6px; }
+  .month-done-badge { display: block; margin-left: 0; margin-top: 6px; }
+}

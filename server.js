@@ -5,6 +5,7 @@ const path = require('path');
 const crypto = require('crypto');
 const { generateSeedData, USERS } = require('./seed-data');
 const { generateAugustSeedData } = require('./seed-data-august');
+const { generateSeptemberSeedData } = require('./seed-data-sept');
 
 const app = express();
 const server = http.createServer(app);
@@ -37,6 +38,14 @@ let augustGithubDataSha = null;
 let augustSaveTimer = null;
 let augustHasUnsavedChanges = false;
 const GITHUB_AUGUST_DATA_PATH = 'server-data-august.json';
+
+// 9月数据存储（新版：周目标+完成度）
+let septMemoryTasks = [];
+let septMemoryInitialized = false;
+let septGithubDataSha = null;
+let septSaveTimer = null;
+let septHasUnsavedChanges = false;
+const GITHUB_SEPT_DATA_PATH = 'server-data-sept.json';
 
 // GitHub 持久化状态
 let githubDataSha = null;
@@ -179,6 +188,72 @@ function scheduleGithubSave() {
   }, 3000); // 3秒防抖
 }
 
+// ============ 9月 GitHub API 操作 ============
+async function githubReadSeptFile() {
+  const url = `${GITHUB_API}/repos/${GITHUB_REPO}/contents/${GITHUB_SEPT_DATA_PATH}`;
+  const res = await fetch(url, {
+    headers: {
+      'Authorization': `Bearer ${GITHUB_TOKEN}`,
+      'Accept': 'application/vnd.github+json',
+      'X-GitHub-Api-Version': '2022-11-28'
+    }
+  });
+  if (res.status === 404) return null;
+  if (!res.ok) throw new Error(`GitHub read sept failed: ${res.status}`);
+  const data = await res.json();
+  septGithubDataSha = data.sha;
+  const content = Buffer.from(data.content, 'base64').toString('utf-8');
+  return JSON.parse(content);
+}
+
+async function githubWriteSeptFile(data) {
+  const url = `${GITHUB_API}/repos/${GITHUB_REPO}/contents/${GITHUB_SEPT_DATA_PATH}`;
+  const content = Buffer.from(JSON.stringify(data, null, 2)).toString('base64');
+  const body = {
+    message: `auto-save sept: ${new Date().toISOString()}`,
+    content,
+  };
+  if (septGithubDataSha) body.sha = septGithubDataSha;
+  const res = await fetch(url, {
+    method: 'PUT',
+    headers: {
+      'Authorization': `Bearer ${GITHUB_TOKEN}`,
+      'Accept': 'application/vnd.github+json',
+      'X-GitHub-Api-Version': '2022-11-28',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(body)
+  });
+  if (res.status === 409) {
+    await githubReadSeptFile();
+    throw new Error('Sept SHA conflict, will retry');
+  }
+  if (!res.ok) {
+    const errText = await res.text();
+    throw new Error(`GitHub write sept failed: ${res.status} ${errText}`);
+  }
+  const result = await res.json();
+  septGithubDataSha = result.content.sha;
+  console.log(`✅ 9月数据已保存到 GitHub (SHA: ${septGithubDataSha.slice(0, 8)}...)`);
+}
+
+function scheduleSeptGithubSave() {
+  if (!useGitHub) return;
+  septHasUnsavedChanges = true;
+  if (septSaveTimer) return;
+  septSaveTimer = setTimeout(async () => {
+    septSaveTimer = null;
+    if (!septHasUnsavedChanges) return;
+    septHasUnsavedChanges = false;
+    try {
+      await githubWriteSeptFile({ tasks: septMemoryTasks, savedAt: new Date().toISOString() });
+    } catch (err) {
+      console.error('GitHub 9月保存失败:', err.message);
+      septHasUnsavedChanges = true;
+    }
+  }, 3000);
+}
+
 // ============ 数据库初始化 ============
 async function initDatabase() {
   if (MONGODB_URI) {
@@ -287,6 +362,38 @@ async function initAugustDatabase() {
     augustMemoryTasks = [...seedData.tasks];
     augustMemoryInitialized = true;
     console.log(`✅ 8月内存存储初始化完成，共 ${augustMemoryTasks.length} 条种子任务`);
+  }
+}
+
+// ============ 9月数据初始化 ============
+async function initSeptemberDatabase() {
+  if (GITHUB_TOKEN) {
+    try {
+      console.log('🔗 正在从 GitHub 加载9月数据...');
+      const data = await githubReadSeptFile();
+      if (data && data.tasks && Array.isArray(data.tasks)) {
+        septMemoryTasks = data.tasks;
+        console.log(`✅ 从 GitHub 加载 ${septMemoryTasks.length} 条9月任务`);
+      } else {
+        console.log('GitHub 上无9月数据，初始化种子数据...');
+        const seedData = generateSeptemberSeedData();
+        septMemoryTasks = [...seedData.tasks];
+        await githubWriteSeptFile({ tasks: septMemoryTasks, savedAt: new Date().toISOString() });
+      }
+      septMemoryInitialized = true;
+      console.log('✅ 9月 GitHub 持久化模式启动');
+    } catch (err) {
+      console.error('❌ 9月 GitHub 加载失败:', err.message);
+      const seedData = generateSeptemberSeedData();
+      septMemoryTasks = [...seedData.tasks];
+      septMemoryInitialized = true;
+      console.log('⚠️ 9月切换到内存存储模式');
+    }
+  } else {
+    const seedData = generateSeptemberSeedData();
+    septMemoryTasks = [...seedData.tasks];
+    septMemoryInitialized = true;
+    console.log(`✅ 9月内存存储初始化完成，共 ${septMemoryTasks.length} 条种子任务`);
   }
 }
 
@@ -486,6 +593,85 @@ app.get('/api/august/sync-status', (req, res) => {
   });
 });
 
+// ============ 9月 API（新版：周目标+完成度） ============
+app.post('/api/sept/login', (req, res) => {
+  const { identity, password } = req.body;
+  const user = USERS[identity];
+  if (!user || user.password !== password) {
+    return res.json({ success: false, message: '密码错误或身份不存在' });
+  }
+  const token = crypto.randomBytes(16).toString('hex');
+  res.json({ success: true, user: { token, identity, role: user.role, name: user.name || identity } });
+});
+
+app.get('/api/sept/data', async (req, res) => {
+  try {
+    res.json({ success: true, data: { tasks: septMemoryTasks } });
+  } catch (err) {
+    res.json({ success: false, message: '9月数据加载失败' });
+  }
+});
+
+app.post('/api/sept/tasks', async (req, res) => {
+  try {
+    const task = req.body;
+    const id = 'sept_task_' + Date.now() + '_' + crypto.randomBytes(4).toString('hex');
+    const now = new Date().toISOString();
+    const newTask = { ...task, id, createdAt: now, updatedAt: now };
+    if (newTask.progress === undefined || newTask.progress === null) newTask.progress = 0;
+    septMemoryTasks.push(newTask);
+    io.emit('sept_task_created', newTask);
+    res.json({ success: true, task: newTask });
+    if (useGitHub) scheduleSeptGithubSave();
+  } catch (err) {
+    res.json({ success: false, message: '创建9月任务失败' });
+  }
+});
+
+app.put('/api/sept/tasks/:id', async (req, res) => {
+  try {
+    const taskId = req.params.id;
+    const updates = req.body;
+    updates.updatedAt = new Date().toISOString();
+    if (updates.progress === undefined || updates.progress === null) {
+      // 保留原进度
+    }
+    const idx = septMemoryTasks.findIndex(t => t.id === taskId);
+    if (idx === -1) return res.json({ success: false, message: '9月任务不存在' });
+    septMemoryTasks[idx] = { ...septMemoryTasks[idx], ...updates };
+    io.emit('sept_task_updated', septMemoryTasks[idx]);
+    res.json({ success: true, task: septMemoryTasks[idx] });
+    if (useGitHub) scheduleSeptGithubSave();
+  } catch (err) {
+    res.json({ success: false, message: '更新9月任务失败' });
+  }
+});
+
+app.delete('/api/sept/tasks/:id', async (req, res) => {
+  try {
+    const taskId = req.params.id;
+    const idx = septMemoryTasks.findIndex(t => t.id === taskId);
+    if (idx === -1) return res.json({ success: false, message: '9月任务不存在' });
+    septMemoryTasks.splice(idx, 1);
+    io.emit('sept_task_deleted', { id: taskId });
+    res.json({ success: true });
+    if (useGitHub) scheduleSeptGithubSave();
+  } catch (err) {
+    res.json({ success: false, message: '删除9月任务失败' });
+  }
+});
+
+app.get('/api/sept/sync-status', (req, res) => {
+  res.json({
+    mode: useGitHub ? 'github' : 'memory',
+    persistent: useGitHub,
+    taskCount: septMemoryTasks.length,
+    message: useGitHub
+      ? '9月数据持久化到 GitHub 仓库，重启自动恢复'
+      : '9月内存存储模式，重启后恢复为种子数据'
+  });
+});
+
 // ============ WebSocket 实时同步 ============
 io.on('connection', (socket) => {
   console.log('客户端连接:', socket.id);
@@ -507,17 +693,22 @@ io.on('connection', (socket) => {
   socket.on('request_august_sync', () => {
     socket.emit('august_full_sync', { tasks: augustMemoryTasks });
   });
+  socket.on('request_sept_sync', () => {
+    socket.emit('sept_full_sync', { tasks: septMemoryTasks });
+  });
 });
 
 // ============ 启动服务 ============
 initDatabase().then(async () => {
   await initAugustDatabase();
+  await initSeptemberDatabase();
   server.listen(PORT, () => {
     console.log(`🚀 销售工作计划拆解器服务已启动，端口: ${PORT}`);
     const modeStr = useMongoDB ? 'MongoDB持久化' : (useGitHub ? 'GitHub持久化' : '内存存储');
     console.log(`📦 7月存储模式: ${modeStr}`);
     console.log(`📦 8月存储模式: ${useGitHub ? 'GitHub持久化' : '内存存储'}`);
-    console.log(`📊 7月任务数: ${memoryTasks.length} | 8月任务数: ${augustMemoryTasks.length}`);
+    console.log(`📦 9月存储模式: ${useGitHub ? 'GitHub持久化' : '内存存储'}`);
+    console.log(`📊 7月任务数: ${memoryTasks.length} | 8月任务数: ${augustMemoryTasks.length} | 9月任务数: ${septMemoryTasks.length}`);
   });
 });
 
@@ -531,6 +722,10 @@ process.on('SIGTERM', async () => {
   if (augustSaveTimer) {
     clearTimeout(augustSaveTimer);
     augustSaveTimer = null;
+  }
+  if (septSaveTimer) {
+    clearTimeout(septSaveTimer);
+    septSaveTimer = null;
   }
   if (useGitHub && hasUnsavedChanges) {
     try {
@@ -548,6 +743,15 @@ process.on('SIGTERM', async () => {
       console.log('✅ 关闭前8月数据已保存到 GitHub');
     } catch (err) {
       console.error('关闭前8月保存失败:', err.message);
+    }
+  }
+  if (useGitHub && septHasUnsavedChanges) {
+    try {
+      septHasUnsavedChanges = false;
+      await githubWriteSeptFile({ tasks: septMemoryTasks, savedAt: new Date().toISOString() });
+      console.log('✅ 关闭前9月数据已保存到 GitHub');
+    } catch (err) {
+      console.error('关闭前9月保存失败:', err.message);
     }
   }
   if (useMongoDB && mongoose) {
