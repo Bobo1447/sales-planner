@@ -116,6 +116,9 @@ html, body { height: 100%; font-family: var(--font); background: var(--bg-primar
 .month-btn-sept:hover {
   background: rgba(230, 126, 34, 0.12);
 }
+.month-btn-sept.active {
+  background: #e67e22; color: #fff;
+}
 .btn-logout {
   padding: 6px 14px; background: transparent; color: var(--text-secondary);
   border: 1px solid var(--border); border-radius: var(--radius-sm);

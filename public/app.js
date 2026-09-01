@@ -119,6 +119,8 @@ function getMonthNum() { return currentMonth; }
 function getMonthPeriod() { return currentMonth === 7 ? '2026-07' : '2026-08'; }
 
 function switchMonth(month) {
+  // 若正显示9月分解器，先切回主应用
+  if (typeof hideSept === 'function') hideSept();
   if (month === currentMonth) return;
   currentMonth = month;
   // Update toggle buttons
