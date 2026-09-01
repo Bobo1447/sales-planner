@@ -47,8 +47,8 @@ function generateSeptemberSeedData() {
   // 年度目标（合并年度+冲刺）
   tasks.push({
     id: 'sep_nina_annual', owner: '杨景妮', level: 'annual', period: '2026',
-    title: '年度目标968万 | 9月冲刺80万',
-    description: '截至8月累计156万，剩余缺口812万，达标需月均203万/月。9月KPI：业绩80万·开票30万·报价50万，想冲一冲定150万。手头可追：待开票46.55万 + 在途100.37万 + 商机92万。',
+    title: '年度目标968万 | 9月目标80万',
+    description: '截至8月累计156万，剩余缺口812万，达标需月均203万/月。9月目标：业绩80万·开票30万·报价50万。手头可追：待开票46.55万 + 在途100.37万 + 商机92万。',
     targetAmount: 968, client: '', action: '', expectedResult: '', risk: '',
     status: 'in_progress', priority: '核心', date: '2026', week: 0, progress: 16,
     createdAt: now, updatedAt: now
@@ -61,48 +61,48 @@ function generateSeptemberSeedData() {
     status: 'in_progress', priority: '核心', date: '2026-09', week: 0, progress: 0,
     createdAt: now, updatedAt: now
   });
-  // 5周目标（108万口径：19.6/24.5/24.5/24.5/14.7）
+  // 5周目标（80万口径：14.5/18.2/18.2/18.2/10.9，合计80万与月度目标一致）
   tasks.push({
     id: 'sep_nina_w1', owner: '杨景妮', level: 'weekly', period: '2026-W1',
-    title: '第1周目标：19.6万 | 信达·和元',
+    title: '第1周目标：14.5万 | 信达·和元',
     description: '出海/中美双报资料包报价主攻。本周：外出4家·有效跟进40条·B类联系人4人·新客电话20通。重点转化：杭州/安徽/北京疫苗20万在途、印刷2万+口译3万+校对1.3万待开票确认。',
-    targetAmount: 19.6, client: '信达生物·和元生物', action: '申报资料包报价',
+    targetAmount: 14.5, client: '信达生物·和元生物', action: '申报资料包报价',
     expectedResult: '出海大单报价落地', risk: '大单吃不透·报价无标准价',
     status: 'pending', priority: '必成', date: '2026-09-01', week: 1, progress: 0,
     createdAt: now, updatedAt: now
   });
   tasks.push({
     id: 'sep_nina_w2', owner: '杨景妮', level: 'weekly', period: '2026-W2',
-    title: '第2周目标：24.5万 | 康希诺·塔吉瑞',
+    title: '第2周目标：18.2万 | 康希诺·塔吉瑞',
     description: '疫苗/小分子申报资料推进。本周：外出4家·跟进40条·B类联系人4人·新客电话25通。跟领导跑大客户学打法，请领导在信达/和元牵线。',
-    targetAmount: 24.5, client: '康希诺·深圳塔吉瑞', action: '申报推进+高层牵线',
+    targetAmount: 18.2, client: '康希诺·深圳塔吉瑞', action: '申报推进+高层牵线',
     expectedResult: '双报资料包方案确认', risk: '高层切入难',
     status: 'pending', priority: '必成', date: '2026-09-07', week: 2, progress: 0,
     createdAt: now, updatedAt: now
   });
   tasks.push({
     id: 'sep_nina_w3', owner: '杨景妮', level: 'weekly', period: '2026-W3',
-    title: '第3周目标：24.5万 | 鼎泰·迈安纳',
+    title: '第3周目标：18.2万 | 鼎泰·迈安纳',
     description: '安评/IND申报绑定出单。本周：外出4家·跟进40条·B类联系人4人·新客电话25通。激活沉睡安评CRO，绑定IND申报节奏；和元CGT、鼎泰安评重点转化。',
-    targetAmount: 24.5, client: '江苏鼎泰·迈安纳', action: '安评IND绑定',
+    targetAmount: 18.2, client: '江苏鼎泰·迈安纳', action: '安评IND绑定',
     expectedResult: '安评订单签约', risk: '竞对截流',
     status: 'pending', priority: '冲刺', date: '2026-09-14', week: 3, progress: 0,
     createdAt: now, updatedAt: now
   });
   tasks.push({
     id: 'sep_nina_w4', owner: '杨景妮', level: 'weekly', period: '2026-W4',
-    title: '第4周目标：24.5万 | 西普拉·万晟·华益',
+    title: '第4周目标：18.2万 | 西普拉·万晟·华益',
     description: '仿制药补充/一致性评价资料，收开票。本周：外出4家·跟进40条·B类联系人4人·新客电话25通。唤醒沉睡B级大户（万晟79万两年没动静），报价后3天必回访机制。',
-    targetAmount: 24.5, client: '西普拉·浙江万晟·华益', action: '一致性评价资料+催收',
+    targetAmount: 18.2, client: '西普拉·浙江万晟·华益', action: '一致性评价资料+催收',
     expectedResult: '沉睡大户激活+开票回收', risk: '回款周期长',
     status: 'pending', priority: '冲刺', date: '2026-09-21', week: 4, progress: 0,
     createdAt: now, updatedAt: now
   });
   tasks.push({
     id: 'sep_nina_w5', owner: '杨景妮', level: 'weekly', period: '2026-W5',
-    title: '第5周目标：14.7万 | 安斯泰来·BMS·爱尔康等6家',
+    title: '第5周目标：10.9万 | 安斯泰来·BMS·爱尔康等6家',
     description: '进口注册升温/MNC/器械出海首单突破。本周：外出4家·跟进40条·B类联系人4人·新客电话15通。进口注册资料+医疗器械出海认证文档本地化，月底关单收口。',
-    targetAmount: 14.7, client: '安斯泰来·BMS·爱尔康·安健·奕瑞·善思微', action: '进口注册+器械出海首单',
+    targetAmount: 10.9, client: '安斯泰来·BMS·爱尔康·安健·奕瑞·善思微', action: '进口注册+器械出海首单',
     expectedResult: 'MNC首单突破', risk: '首单决策链长',
     status: 'pending', priority: '补位', date: '2026-09-28', week: 5, progress: 0,
     createdAt: now, updatedAt: now
@@ -362,9 +362,9 @@ function generateSeptemberSeedData() {
   });
   tasks.push({
     id: 'sep_lh_w4', owner: '陆华', level: 'weekly', period: '2026-W4',
-    title: '第4周目标：30万 | 回访出差客户·催款·关单冲刺',
-    description: '商机100万·开票5·外出5·新增人6·电话45。回访近期出差客户·催款20万·冲刺业绩30万。深圳广州持续跟进转化NDA线索，深化一品红合作；leader陪访高层背书攻坚关键决策人。',
-    targetAmount: 30, client: '近期出差客户+深圳广州线索', action: '回访+催款+关单',
+    title: '第4周目标：28万 | 回访出差客户·催款·关单冲刺',
+    description: '商机100万·开票5·外出5·新增人6·电话45。回访近期出差客户·催款20万·冲刺业绩28万。深圳广州持续跟进转化NDA线索，深化一品红合作；leader陪访高层背书攻坚关键决策人。',
+    targetAmount: 28, client: '近期出差客户+深圳广州线索', action: '回访+催款+关单',
     expectedResult: '108万达标·回款50万', risk: '无大订单录入',
     status: 'pending', priority: '冲刺', date: '2026-09-21', week: 4, progress: 0,
     createdAt: now, updatedAt: now
