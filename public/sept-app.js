@@ -1,4 +1,4 @@
-// ===== 9月任务拆解器 - 前端逻辑 =====
+// ===== 9月任务分解器 - 前端逻辑 =====
 // 新版特点：周目标为核心（无日计划）、任务带完成度 progress 字段
 let currentUser = null;
 let allTasks = [];
@@ -388,7 +388,7 @@ function renderMonthlyView(container) {
     });
     const totalW = weekTargetArr.reduce((s,v) => s+v, 0) || 1;
     wCard.innerHTML = `
-      <h4>${person} · 周目标拆解与完成度</h4>
+      <h4>${person} · 周目标分解与完成度</h4>
       <div class="week-progress-bar">
         ${weekTargetArr.map((amt, i) => {
           const p = amt > 0 ? Math.round((weekDone[i] / amt) * 100) : 0;

@@ -1,4 +1,4 @@
-// seed-data-sept.js - 9月任务拆解器种子数据
+// seed-data-sept.js - 9月任务分解器种子数据
 // 新版特点：周目标为核心（无日目标）、每个任务带完成度 progress 字段
 // 2026年9月日历: 9/1=周二
 // W1: 9/1周二-9/4周五(4天) | W2: 9/7周一-9/11周五 | W3: 9/14周一-9/18周五
@@ -139,7 +139,7 @@ function generateSeptemberSeedData() {
   // ===================== 薛琳 (Shelly) =====================
   tasks.push({
     id: 'sep_shelly_annual', owner: '薛琳', level: 'annual', period: '2026',
-    title: '年度目标：追回进度 | 9月68万攻坚',
+    title: '年度目标：追回进度 | 9月目标68万',
     description: '8月完成率25%（17万/68万），9月目标68万+回款25万+外出20家。保底45万在手商机转化（北京新客20万+未签单20万+零散5万）→ 冲刺68万（兆科/科伦博泰/爱科百发追回年度进度）→ 挑战80万（复制北京模式新增2家新客）。',
     targetAmount: 68, client: '', action: '', expectedResult: '', risk: '',
     status: 'in_progress', priority: '核心', date: '2026', week: 0, progress: 25,
@@ -229,7 +229,7 @@ function generateSeptemberSeedData() {
   // ===================== 过健 =====================
   tasks.push({
     id: 'sep_gj_annual', owner: '过健', level: 'annual', period: '2026',
-    title: '年度目标450万 | 9月冲刺150万',
+    title: '年度目标450万 | 9月目标150万',
     description: '8月完成率仅10%（10万/100万），9月核心目标业绩150万（较7月实际增长97.7%）| 外出拜访22家 | 新客户成交3家。支撑：欧康维视10万·伯汇10万·三生20万·其他新增40万。',
     targetAmount: 450, client: '', action: '', expectedResult: '', risk: '',
     status: 'in_progress', priority: '核心', date: '2026', week: 0, progress: 10,
@@ -319,7 +319,7 @@ function generateSeptemberSeedData() {
   // ===================== 陆华 =====================
   tasks.push({
     id: 'sep_lh_annual', owner: '陆华', level: 'annual', period: '2026',
-    title: '年度目标：冲刺关键月 | 9月108万',
+    title: '年度目标：冲刺关键月 | 9月目标108万',
     description: '8月完成率16.9%（18.3万/108万），年度累计23.7%。9月目标：业绩108万·开票50万·回款50万·外出20家。近100万商机池（先为达39万+信达20万丢单复盘+济煜10万+潜在40万）储备充足。',
     targetAmount: 108, client: '', action: '', expectedResult: '', risk: '',
     status: 'in_progress', priority: '核心', date: '2026', week: 0, progress: 17,
@@ -400,7 +400,7 @@ function generateSeptemberSeedData() {
   // ===================== 刘童 (Ace) =====================
   tasks.push({
     id: 'sep_lt_annual', owner: '刘童', level: 'annual', period: '2026',
-    title: '年度目标：100万+ | 去集中化',
+    title: '年度目标：100万+ | 9月目标100万',
     description: '8月完成100%（100万），但甘李一家贡献70.8%风险极高。9月策略"去集中化"：甘李占比70.8%降至30%，甘李30万·脉亿链20万·康联达10万·BLA10万·辉瑞1万·科曼2万·医药/医疗新客户27万=100万。',
     targetAmount: 100, client: '', action: '', expectedResult: '', risk: '',
     status: 'in_progress', priority: '核心', date: '2026', week: 0, progress: 100,

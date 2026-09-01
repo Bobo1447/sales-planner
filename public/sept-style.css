@@ -1,4 +1,4 @@
-/* ===== 9月任务拆解器 - 补充样式（周目标+完成度） ===== */
+/* ===== 9月任务分解器 - 补充样式（周目标+完成度） ===== */
 
 /* 顶部返回旧版链接 */
 .btn-link-old {
@@ -68,7 +68,7 @@
 .month-progress-label { font-size: 13px; color: var(--text-secondary); margin-top: 6px; }
 .month-progress-label b { color: var(--accent); font-size: 15px; }
 
-/* 周目标拆解明细 */
+/* 周目标分解明细 */
 .week-detail-grid {
   display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-top: 12px;
 }
