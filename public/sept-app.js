@@ -161,8 +161,24 @@ function checkSession() {
   if (saved) {
     currentUser = JSON.parse(saved);
     showMainApp();
+  } else if (window.parent !== window) {
+    // 嵌入模式：向父页面请求当前登录用户，免二次输密码
+    window.parent.postMessage({ type: 'septRequestUser' }, '*');
   }
 }
+
+// 接收父页面推送的登录用户（嵌入主站时自动登录）
+window.addEventListener('message', function(e) {
+  if (e.data && e.data.type === 'septPushUser' && e.data.user) {
+    const u = e.data.user;
+    // 无登录或账号有变化时，自动登录为父页面当前用户
+    if (!currentUser || currentUser.name !== u.name || currentUser.role !== u.role) {
+      currentUser = u;
+      sessionStorage.setItem('septPlannerUser', JSON.stringify(u));
+      showMainApp();
+    }
+  }
+});
 
 // ===== 数据加载 =====
 function refreshData() {

@@ -310,13 +310,25 @@ function showSept() {
   });
   var septBtn = document.querySelector('.month-btn-sept');
   if (septBtn) septBtn.classList.add('active');
+  // 把当前登录用户同步给9月页面，免二次登录
+  pushSeptUser();
 }
 function hideSept() {
   document.getElementById('septFrameWrap').style.display = 'none';
 }
-// 9月页面内点击"7/8月计划"时通知本页切回主应用
+// 向9月iframe推送当前登录用户（app.js中的currentUser）
+function pushSeptUser() {
+  try {
+    document.getElementById('septFrame').contentWindow.postMessage({
+      type: 'septPushUser',
+      user: (typeof currentUser !== 'undefined' && currentUser) ? currentUser : null
+    }, '*');
+  } catch (err) {}
+}
 window.addEventListener('message', function(e) {
   if (e.data && e.data.type === 'exitSept') hideSept();
+  // 9月页面请求当前登录用户（首次加载时）
+  if (e.data && e.data.type === 'septRequestUser') pushSeptUser();
 });
 </script>
 </body>

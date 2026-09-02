@@ -240,6 +240,8 @@ function handleLogin() {
       currentUser = res.user;
       sessionStorage.setItem('salesPlannerUser', JSON.stringify(currentUser));
       showMainApp();
+      // 登录成功后同步给9月嵌入页面，免二次登录
+      if (typeof pushSeptUser === 'function') pushSeptUser();
     } else {
       showLoginError(res.message);
     }
@@ -303,6 +305,8 @@ function handleLogout() {
   document.getElementById('mainApp').style.display = 'none';
   document.getElementById('loginPage').style.display = 'flex';
   document.getElementById('loginPassword').value = '';
+  // 登出后同步给9月嵌入页面
+  if (typeof pushSeptUser === 'function') pushSeptUser();
 }
 
 // 检查session恢复
@@ -311,6 +315,8 @@ function checkSession() {
   if (saved) {
     currentUser = JSON.parse(saved);
     showMainApp();
+    // 页面刷新恢复登录后，同步给9月嵌入页面
+    if (typeof pushSeptUser === 'function') pushSeptUser();
   }
 }
 
